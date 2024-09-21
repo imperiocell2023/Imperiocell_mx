@@ -40,42 +40,40 @@ section {
     border: 1px solid #ccc;
     margin-bottom: 20px;
     padding: 15px;
-    display: flex;  /* Cambia a flexbox para alinear la imagen y el texto en una línea */
-    align-items: flex-start;  /* Alinea la imagen y el texto desde la parte superior */
-    text-align: left;  /* Alinea el texto a la izquierda */
-    flex-wrap: wrap;  /* Permite que el contenido se ajuste en varias líneas si es necesario */
+    display: flex;  /* Flexbox para alinear imagen y texto */
+    align-items: flex-start;
+    text-align: left;
+    flex-wrap: nowrap;  /* No permite que se apilen en móviles */
 }
 
-/* Asegura que la imagen del teléfono no sea demasiado grande */
 .phone-card img {
-    width: 150px;  /* Ajusta el ancho de la imagen */
+    width: 150px;  /* Ajusta el tamaño de la imagen para pantallas grandes */
     height: auto;
-    margin-right: 20px;  /* Espacio entre la imagen y el texto */
+    margin-right: 20px;
 }
 
-/* Asegura que la información ocupe el espacio restante */
 .phone-info {
-    flex: 1;  /* El texto ocupará el espacio restante en la tarjeta */
+    flex: 1;
     min-width: 200px;
 }
 
 /* Ajustes para pantallas pequeñas (como móviles) */
 @media (max-width: 768px) {
     .phone-card {
-        flex-direction: column;  /* En pantallas pequeñas, la imagen y el texto se apilarán verticalmente */
-        text-align: center;  /* Alinea todo al centro en pantallas pequeñas */
+        flex-wrap: nowrap;  /* Mantiene la imagen y el texto en una línea horizontal */
+        justify-content: space-between;  /* Asegura que la imagen y el texto tengan espacio entre sí */
     }
 
     .phone-card img {
-        margin-right: 0;  /* Quita el margen derecho cuando la imagen está apilada */
-        margin-bottom: 15px;  /* Agrega margen inferior para separar la imagen del texto */
+        width: 100px;  /* Disminuye el tamaño de la imagen en pantallas pequeñas */
+        margin-right: 10px;  /* Reduce el espacio entre la imagen y el texto */
     }
 
     .phone-info {
-        min-width: auto;  /* Permite que el texto se ajuste en pantallas pequeñas */
+        font-size: 0.9em;  /* Reduce el tamaño del texto en pantallas pequeñas para que quepa mejor */
+        min-width: auto;
     }
 }
-
 button {
     background-color: #333;
     color: white;
