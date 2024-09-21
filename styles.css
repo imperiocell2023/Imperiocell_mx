@@ -35,44 +35,52 @@ section {
     padding: 20px;
 }
 
+/* Tarjeta de teléfono */
 .phone-card {
     background-color: white;
     border: 1px solid #ccc;
     margin-bottom: 20px;
     padding: 15px;
-    display: flex;  /* Flexbox para organizar los elementos */
+    display: flex;
     align-items: flex-start;
-    justify-content: space-between;  /* Mantener espacio entre imagen y texto */
-    flex-wrap: wrap;  /* Permitir que los elementos se adapten en pantallas pequeñas */
+    justify-content: space-between;
+    flex-wrap: wrap;
     text-align: left;
-    max-width: 100%;  /* Asegura que no exceda el ancho del contenedor */
+    max-width: 100%;  /* Asegura que no sobrepase el ancho de la pantalla */
+    box-sizing: border-box;  /* Asegura que el padding se incluya dentro del ancho total */
 }
 
+/* Ajustes para la imagen */
 .phone-card img {
-    width: 40%;  /* Ajusta el tamaño de la imagen para que no ocupe todo el espacio */
-    height: auto;
+    width: 100%;  /* Asegura que la imagen se ajuste bien al contenedor */
+    max-width: 300px;  /* Limita el tamaño máximo de la imagen para evitar estiramientos en pantallas más grandes */
+    height: auto;  /* Mantiene la proporción de la imagen */
 }
 
+/* Información del celular */
 .phone-info {
-    flex: 1;  /* El texto tomará el espacio restante */
-    margin-left: 20px;  /* Espacio entre la imagen y el texto */
+    flex: 1;
+    margin-left: 15px;  /* Añade espacio entre la imagen y el texto */
+    max-width: 100%;  /* Evita que el texto sobrepase el ancho */
 }
 
+/* Responsividad para pantallas más pequeñas */
 @media (max-width: 768px) {
     .phone-card {
-        flex-direction: column;  /* En pantallas pequeñas, apila la imagen y el texto verticalmente */
-        text-align: center;  /* Centra el texto para pantallas pequeñas */
+        flex-direction: column;  /* Apila la imagen y el texto verticalmente en pantallas pequeñas */
+        text-align: center;  /* Centra todo en pantallas pequeñas */
     }
 
     .phone-card img {
-        width: 100%;  /* Asegura que la imagen ocupe todo el ancho en pantallas pequeñas */
-        margin-bottom: 15px;  /* Añade espacio debajo de la imagen */
+        width: 100%;  /* Asegura que la imagen tome todo el ancho disponible */
+        margin-bottom: 10px;  /* Añade un pequeño margen debajo de la imagen */
     }
 
     .phone-info {
-        margin-left: 0;  /* Remueve el margen lateral en pantallas pequeñas */
+        margin-left: 0;  /* Remueve el margen izquierdo para pantallas pequeñas */
     }
 }
+
 
 button {
     background-color: #333;
