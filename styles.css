@@ -46,15 +46,15 @@ section {
 .phone-card {
     background-color: white;
     border: 1px solid #ccc;
-    margin-bottom: 20px;
     padding: 15px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
     text-align: left;
-    max-width: 100%;  /* Asegura que no sobrepase el ancho de la pantalla */
-    box-sizing: border-box;  /* Asegura que el padding se incluya dentro del ancho total */
+    max-width: calc(50% - 20px);  /* Asegura que las tarjetas se acomoden 2 por fila */
+    box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
 /* Ajustes para la imagen */
