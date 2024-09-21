@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones de Compra</title>
+</head>
+<body>
+    <h1>Opciones de compra para tu celular</h1>
+    
+    <div id="phone-details"></div>
+    
+    <form id="purchase-form">
+        <h2>Elige el tipo de compra</h2>
+        <label>
+            <input type="radio" name="purchase-type" value="Compra en un pago" required> Crédito
+        </label>
+        <label>
+            <input type="radio" name="purchase-type" value="Celular a credito sin tarjeta" required> Contado
+        </label>
+        
+        <input type="submit" value="Continuar">
+    </form>
+
+    <script>
+        // Función para obtener los parámetros de la URL
+        function getQueryParams() {
+            const params = {};
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+
+            params.phone = urlParams.get('phone');
+            params.price = urlParams.get('price');
+
+            return params;
+        }
+
+        // Mostrar los datos del teléfono seleccionado
+        document.addEventListener('DOMContentLoaded', function () {
+            const params = getQueryParams();
+            const phoneDetailsDiv = document.getElementById('phone-details');
+            
+            phoneDetailsDiv.innerHTML = `
+                <h2>${params.phone}</h2>
+                <p><strong>Precio:</strong> $${params.price}</p>
+            `;
+        });
+
+        // Manejar el envío del formulario
+        document.getElementById('purchase-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const purchaseType = document.querySelector('input[name="purchase-type"]:checked').value;
+            
+            // Aquí rediriges según el tipo de compra seleccionado
+            if (purchaseType === 'Seleccionaste Compra en un pago') {
+                alert('Seleccionaste Compra en un pago');
+                // Redirigir a la página o sección correspondiente
+            } else {
+                alert('Celular a credito sin tarjeta');
+                // Redirigir a la página o sección correspondiente
+            }
+        });
+    </script>
+</body>
+</html>
