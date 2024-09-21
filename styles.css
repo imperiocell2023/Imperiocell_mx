@@ -51,35 +51,40 @@ section {
 }
 
 /* Ajustes para la imagen */
-.phone-card img {
-    width: 100%;  /* Asegura que la imagen se ajuste bien al contenedor */
-    max-width: 300px;  /* Limita el tamaño máximo de la imagen para evitar estiramientos en pantallas más grandes */
-    height: auto;  /* Mantiene la proporción de la imagen */
-}
+    .phone-card img {
+        width: 100%;  /* Asegura que la imagen tome todo el ancho disponible */
+        margin-bottom: 10px;  /* Añade un pequeño margen debajo de la imagen */
+        max-width: 100%;  /* Evita que la imagen sea más ancha que el contenedor */
+        height: auto;  /* Mantiene la proporción correcta de la imagen */
+    }
 
 /* Información del celular */
-.phone-info {
-    flex: 1;
-    margin-left: 15px;  /* Añade espacio entre la imagen y el texto */
-    max-width: 100%;  /* Evita que el texto sobrepase el ancho */
-}
+    .phone-info {
+        margin-left: 0;  /* Remueve el margen izquierdo para pantallas pequeñas */
+        text-align: center;  /* Centra el texto en pantallas pequeñas */
+        max-width: 100%;  /* Asegura que el texto no exceda el ancho */
+    }
 
 /* Responsividad para pantallas más pequeñas */
 @media (max-width: 768px) {
     .phone-card {
         flex-direction: column;  /* Apila la imagen y el texto verticalmente en pantallas pequeñas */
         text-align: center;  /* Centra todo en pantallas pequeñas */
+        width: 100%;  /* Asegura que la tarjeta tome todo el ancho disponible */
     }
 
     .phone-card img {
         width: 100%;  /* Asegura que la imagen tome todo el ancho disponible */
         margin-bottom: 10px;  /* Añade un pequeño margen debajo de la imagen */
+        max-width: 100%;  /* Evita que la imagen sea más ancha que el contenedor */
+        height: auto;  /* Mantiene la proporción correcta de la imagen */
     }
 
     .phone-info {
         margin-left: 0;  /* Remueve el margen izquierdo para pantallas pequeñas */
+        text-align: center;  /* Centra el texto en pantallas pequeñas */
+        max-width: 100%;  /* Asegura que el texto no exceda el ancho */
     }
-}
 
 
 button {
