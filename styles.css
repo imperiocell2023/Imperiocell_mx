@@ -109,28 +109,9 @@ button:hover {
 }
 
 footer {
-    background-color: #36a0d1;  /* Color de fondo */
-    color: white;  /* Color del texto */
-    text-align: center;  /* Centrar el contenido */
-    padding: 20px 0;  /* Espaciado interno */
-    width: 100%;  /* Asegura que ocupe todo el ancho de la pantalla */
-    position: fixed;  /* Hace que el footer esté siempre en la parte inferior */
-    bottom: 0;  /* Asegura que esté al final del viewport */
-    left: 0;  /* Alineado al lado izquierdo */
-    box-sizing: border-box;  /* Para incluir el padding dentro del tamaño del elemento */
-}
-
-footer a {
-    color: white;  /* Color de los enlaces */
-    text-decoration: none;  /* Eliminar subrayado en enlaces */
-}
-
-footer a:hover {
-    text-decoration: underline;  /* Subrayado en hover para los enlaces */
-}
-
-footer p, footer h2 {
-    margin: 0;  /* Elimina los márgenes por defecto */
-    padding: 5px 0;  /* Añade algo de espaciado */
+    background-color: #36a0d1;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
 }
 
