@@ -40,40 +40,40 @@ section {
     border: 1px solid #ccc;
     margin-bottom: 20px;
     padding: 15px;
-    display: flex;  /* Flexbox para alinear imagen y texto */
+    display: flex;  /* Flexbox para organizar los elementos */
     align-items: flex-start;
+    justify-content: space-between;  /* Mantener espacio entre imagen y texto */
+    flex-wrap: wrap;  /* Permitir que los elementos se adapten en pantallas pequeñas */
     text-align: left;
-    flex-wrap: nowrap;  /* No permite que se apilen en móviles */
+    max-width: 100%;  /* Asegura que no exceda el ancho del contenedor */
 }
 
 .phone-card img {
-    width: 150px;  /* Ajusta el tamaño de la imagen para pantallas grandes */
+    width: 40%;  /* Ajusta el tamaño de la imagen para que no ocupe todo el espacio */
     height: auto;
-    margin-right: 20px;
 }
 
 .phone-info {
-    flex: 1;
-    min-width: 200px;
+    flex: 1;  /* El texto tomará el espacio restante */
+    margin-left: 20px;  /* Espacio entre la imagen y el texto */
 }
 
-/* Ajustes para pantallas pequeñas (como móviles) */
 @media (max-width: 768px) {
     .phone-card {
-        flex-wrap: nowrap;  /* Mantiene la imagen y el texto en una línea horizontal */
-        justify-content: space-between;  /* Asegura que la imagen y el texto tengan espacio entre sí */
+        flex-direction: column;  /* En pantallas pequeñas, apila la imagen y el texto verticalmente */
+        text-align: center;  /* Centra el texto para pantallas pequeñas */
     }
 
     .phone-card img {
-        width: 100px;  /* Disminuye el tamaño de la imagen en pantallas pequeñas */
-        margin-right: 10px;  /* Reduce el espacio entre la imagen y el texto */
+        width: 100%;  /* Asegura que la imagen ocupe todo el ancho en pantallas pequeñas */
+        margin-bottom: 15px;  /* Añade espacio debajo de la imagen */
     }
 
     .phone-info {
-        font-size: 0.9em;  /* Reduce el tamaño del texto en pantallas pequeñas para que quepa mejor */
-        min-width: auto;
+        margin-left: 0;  /* Remueve el margen lateral en pantallas pequeñas */
     }
 }
+
 button {
     background-color: #333;
     color: white;
