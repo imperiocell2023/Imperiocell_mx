@@ -40,7 +40,40 @@ section {
     border: 1px solid #ccc;
     margin-bottom: 20px;
     padding: 15px;
-    text-align: center;
+    display: flex;  /* Cambia a flexbox para alinear la imagen y el texto en una línea */
+    align-items: flex-start;  /* Alinea la imagen y el texto desde la parte superior */
+    text-align: left;  /* Alinea el texto a la izquierda */
+    flex-wrap: wrap;  /* Permite que el contenido se ajuste en varias líneas si es necesario */
+}
+
+/* Asegura que la imagen del teléfono no sea demasiado grande */
+.phone-card img {
+    width: 150px;  /* Ajusta el ancho de la imagen */
+    height: auto;
+    margin-right: 20px;  /* Espacio entre la imagen y el texto */
+}
+
+/* Asegura que la información ocupe el espacio restante */
+.phone-info {
+    flex: 1;  /* El texto ocupará el espacio restante en la tarjeta */
+    min-width: 200px;
+}
+
+/* Ajustes para pantallas pequeñas (como móviles) */
+@media (max-width: 768px) {
+    .phone-card {
+        flex-direction: column;  /* En pantallas pequeñas, la imagen y el texto se apilarán verticalmente */
+        text-align: center;  /* Alinea todo al centro en pantallas pequeñas */
+    }
+
+    .phone-card img {
+        margin-right: 0;  /* Quita el margen derecho cuando la imagen está apilada */
+        margin-bottom: 15px;  /* Agrega margen inferior para separar la imagen del texto */
+    }
+
+    .phone-info {
+        min-width: auto;  /* Permite que el texto se ajuste en pantallas pequeñas */
+    }
 }
 
 button {
