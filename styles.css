@@ -113,4 +113,15 @@ footer {
     color: white;
     text-align: center;
     padding: 20px 0;
+    width: 100%; /* Asegura que ocupe el 100% del ancho */
+    position: relative; /* Mantiene el footer en la parte inferior */
+    bottom: 0;
+    left: 0;
+
+@media (min-width: 769px) {
+    footer {
+        text-align: center; /* Asegura que el texto esté centrado en pantallas grandes */
+        padding: 20px 0;
+        width: 100%; /* Asegura que el footer siempre ocupe el ancho completo */
+    }
 }
