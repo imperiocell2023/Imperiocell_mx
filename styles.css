@@ -109,19 +109,35 @@ button:hover {
 }
 
 footer {
-    background-color: #36a0d1;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    width: 100%; /* Asegura que ocupe el 100% del ancho */
-    position: relative; /* Mantiene el footer en la parte inferior */
-    bottom: 0;
-    left: 0;
+    background-color: #36a0d1;  /* Color de fondo */
+    color: white;  /* Color del texto */
+    text-align: center;  /* Centrar el contenido */
+    padding: 20px 0;  /* Espaciado interno */
+    width: 100%;  /* Asegura que ocupe todo el ancho de la pantalla */
+    position: relative;  /* Mantén la posición relativa */
+    bottom: 0;  /* Asegura que esté al final de la página */
+    left: 0;    /* Alineado al lado izquierdo */
+    box-sizing: border-box;  /* Para incluir el padding dentro del tamaño del elemento */
+}
 
+footer a {
+    color: white;  /* Color de los enlaces */
+    text-decoration: none;  /* Eliminar subrayado en enlaces */
+}
+
+footer a:hover {
+    text-decoration: underline;  /* Subrayado en hover para los enlaces */
+}
+
+footer p, footer h2 {
+    margin: 0;  /* Elimina los márgenes por defecto */
+    padding: 5px 0;  /* Añade algo de espaciado interno */
+}
+
+/* Para pantallas grandes */
 @media (min-width: 769px) {
     footer {
-        text-align: center; /* Asegura que el texto esté centrado en pantallas grandes */
-        padding: 20px 0;
-        width: 100%; /* Asegura que el footer siempre ocupe el ancho completo */
+        padding: 40px 0;  /* Mayor espaciado para pantallas más grandes */
     }
 }
+
