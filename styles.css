@@ -46,8 +46,17 @@ section {
     justify-content: space-between;
     flex-wrap: wrap;
     text-align: left;
-    max-width: 100%;  /* Asegura que no sobrepase el ancho de la pantalla */
-    box-sizing: border-box;  /* Asegura que el padding se incluya dentro del ancho total */
+    max-width: 100%;  
+    box-sizing: border-box;  
+    flex-basis: 30%;  /* Cada tarjeta ocupa el 30% del ancho de la fila */
+    margin-right: 10px;  /* Añade espacio entre las tarjetas */
+}
+
+.phone-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Asegura que haya espacio equitativo entre los elementos */
+    margin-bottom: 20px;  /* Añade espacio entre las filas */
 }
 
 /* Ajustes para la imagen */
