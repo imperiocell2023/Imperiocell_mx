@@ -3,17 +3,15 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Comprar</title>
 </head>
 <body>
-    <h1>Opciones de compra</h1>
-    
+    <h1>Opciones de compra</h1>    
     <div id="phone-details"></div>
-    
     <form id="purchase-form">
-        <h2>Elige el tipo de compra</h2>
+        <h2>Elige como estrenar</h2>
         <label>
             <input type="radio" name="purchase-type" value="Compra en un pago" required> Crédito
         </label>
@@ -30,7 +28,6 @@
             const params = {};
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
-
             params.phone = urlParams.get('phone');
             params.price = urlParams.get('price');
 
@@ -55,7 +52,7 @@
             const purchaseType = document.querySelector('input[name="purchase-type"]:checked').value;
             
             // Aquí rediriges según el tipo de compra seleccionado
-            if (purchaseType === 'Seleccionaste Compra en un pago') {
+            if (purchaseType === 'Seleccionaste Contado') {
                 alert('Seleccionaste Compra en un pago');
                 // Redirigir a la página o sección correspondiente
             } else {
