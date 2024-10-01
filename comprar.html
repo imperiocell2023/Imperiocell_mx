@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="styles.css">
     <title>Comprar</title>
 </head>
+        <header>
+        <h1>ImperioCell MX</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#phones">Teléfonos</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/Portada web.jpg" alt="Imagen a lo largo" style="width: 100%; height: auto;">
+
 <body>
     <h1>Opciones de compra</h1>    
     <div id="phone-details"></div>
@@ -21,7 +33,16 @@
         
         <input type="submit" value="Continuar">
     </form>
+        <footer>
+        <section id="contact">
+ <div style="text-align: center; margin: 20px 0;">
+            <h2>Contacto</h2>
+            <p><a href="https://wa.me/5625014478" target="_blank">5625014478</a></p>
+            <p><a href="mailto:imperiocell.payjoy@gmail.com">
 
+imperiocell.payjoy@gmail.com</a></p>
+        </section>
+    </footer>
     <script>
         // Función para obtener los parámetros de la URL
         function getQueryParams() {
@@ -30,7 +51,6 @@
             const urlParams = new URLSearchParams(queryString);
             params.phone = urlParams.get('phone');
             params.price = urlParams.get('price');
-
             return params;
         }
 
