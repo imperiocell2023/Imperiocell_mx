@@ -40,7 +40,7 @@
                     Cargador: 25W Fast Charging<br>
                     Procesador: Exynos 1380
                 </p>
-                <button 
+                <button id="buy-button"
                     style="padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;"
                     class="buy-button" 
                     data-phone="Samsung Galaxy A25 5G" 
@@ -81,7 +81,7 @@
             Cargador: 33W Fast Charging<br>
             Procesador: MediaTek Dimensity 700
             </p>
-            <button style="padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Comprar</button>
+            <button style="padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Comprar</button>
         </div>
     </div>
 
@@ -98,7 +98,7 @@
             Cargador: 22.5W Fast Charging<br>
             Procesador: Qualcomm Snapdragon 680
             </p>
-            <button style="padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Comprar</button>
+            <button style="padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Comprar</button>
         </div>
     </div>
 </div>
@@ -127,5 +127,21 @@
 imperiocell.payjoy@gmail.com</a></p>
         </section>
     </footer>
+    <script>
+    // Selecciona todos los botones con la clase 'buy-button'
+    const buyButtons = document.querySelectorAll('.buy-button');
+
+    // Añade un evento de clic a cada botón
+    buyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const phoneName = this.getAttribute('data-phone');
+            const phonePrice = this.getAttribute('data-price');
+
+            // Redirige a la segunda página con los datos del teléfono en la URL
+            window.location.href = `opciones-compra.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}`;
+        });
+    });
+</script>
+
 </body>
 </html>
