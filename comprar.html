@@ -24,23 +24,13 @@
     <form id="purchase-form">
         <h2>Elige cómo estrenar</h2>
         <label>
+            <input type="radio" name="purchase-type" value="Compra en un pago" required> Compra en un pago
+        </label>    
+                <label>
             <input type="radio" name="purchase-type" value="Celular a pagos sin tarjeta" required> Celular a pagos sin tarjeta
         </label>
-        <label>
-            <input type="radio" name="purchase-type" value="Compra en un pago" required> Compra en un pago
-        </label>        
         <input type="submit" value="Continuar">
     </form>   
-    <footer>
-        <section id="contact">
-            <div style="text-align: center; margin: 20px 0;">
-                <h2>Contacto</h2>
-                <p><a href="https://wa.me/5625014478" target="_blank">5625014478</a></p>
-                <p><a href="mailto:imperiocell.payjoy@gmail.com">imperiocell.payjoy@gmail.com</a></p>
-            </div>
-        </section>
-    </footer>
-
     <script>
         // Función para obtener los parámetros de la URL
         function getQueryParams() {
@@ -80,5 +70,14 @@
             }
         });
     </script>
+        <footer>
+        <section id="contact">
+            <div style="text-align: center; margin: 20px 0;"background-color: #36a0d1;>
+                <h2>Contacto</h2>
+                <p><a href="https://wa.me/5625014478" target="_blank">5625014478</a></p>
+                <p><a href="mailto:imperiocell.payjoy@gmail.com">imperiocell.payjoy@gmail.com</a></p>
+            </div>
+        </section>
+    </footer>
 </body>
 </html>
