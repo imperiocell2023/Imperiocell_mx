@@ -135,7 +135,7 @@
             <p><a href="mailto:imperiocell.payjoy@gmail.com">imperiocell.payjoy@gmail.com</a></p>
         </section>
     </footer>
-    <script>
+<script>
     // Selecciona todos los botones con la clase 'buy-button'
     const buyButtons = document.querySelectorAll('.buy-button');
 
@@ -144,11 +144,13 @@
         button.addEventListener('click', function() {
             const phoneName = this.getAttribute('data-phone');
             const phonePrice = this.getAttribute('data-price');
-                    const image = this.getAttribute('data-image'); // Extraer la URL de la imagen
-            // Redirige a la segunda página con los datos del teléfono en la URL
-            window.location.href = `comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}`;
+            const phoneImage = this.getAttribute('data-image'); // Extraer la URL de la imagen
+            
+            // Redirige a la segunda página con los datos del teléfono en la URL, incluyendo la imagen
+            window.location.href = `comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}&image=${encodeURIComponent(phoneImage)}`;
         });
     });
 </script>
+
 </body>
 </html>
