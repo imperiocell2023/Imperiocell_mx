@@ -22,16 +22,7 @@
     <img id="phone-image" alt="Imagen del teléfono" style="width: 300px; height: auto; margin-right:20px;" class="phone-image">
     <div id="phone-details" class="phone-info"style="text-align:center;">     </div> 
                          <br>
-    <form id="purchase-form" class="phone-info">
-        <h2>Elige cómo estrenar</h2>    
-        <label>
-            <input type="radio" name="purchase-type" value="En un pago" required> En un pago
-        </label>    
-                <label>
-            <input type="radio" name="purchase-type" value="A pagos sin tarjeta" required> A pagos sin tarjeta
-        </label>
-        <input type="submit" value="Continuar">
-    </form>  
+
       </div>
     <script>
         // Función para obtener los parámetros de la URL
@@ -56,6 +47,17 @@
             phoneDetailsDiv.innerHTML = `
                 <h2>${params.phone}</h2>
                 <p><strong>Precio:</strong> ${params.price}</p>
+                               <br>
+    <form id="purchase-form" class="phone-info">
+        <h2>Elige cómo estrenar</h2>    
+        <label>
+            <input type="radio" name="purchase-type" value="En un pago" required> En un pago
+        </label>    
+                <label>
+            <input type="radio" name="purchase-type" value="A pagos sin tarjeta" required> A pagos sin tarjeta
+        </label>
+        <input type="submit" value="Continuar">
+    </form>  
             `;
         });
         // Manejar el envío del formulario
