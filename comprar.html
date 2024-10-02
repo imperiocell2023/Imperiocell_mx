@@ -7,58 +7,67 @@
     <link rel="stylesheet" href="styles.css">
     <title>Comprar</title>
 </head>
-        <header>
+<body>
+    <header>
         <h1>ImperioCell MX</h1>
         <nav>
             <ul>  
                <li><a href="index.html#home">Inicio</a></li>
-                <li><a href="index.html#phones">Teléfonos</a></li>
+               <li><a href="index.html#phones">Teléfonos</a></li>
             </ul>
         </nav>
     </header> 
 
-<body>
     <h1>Opciones de compra</h1>   
-        <img id="phone-image" alt="Imagen del teléfono">
+    <img id="phone-image" alt="Imagen del teléfono">
     
     <div id="phone-details"></div>
     <form id="purchase-form">
-        <h2>Elige como estrenar</h2>
+        <h2>Elige cómo estrenar</h2>
         <label>
             <input type="radio" name="purchase-type" value="Compra en un pago" required> Crédito
         </label>
         <label>
-            <input type="radio" name="purchase-type" value="Celular a credito sin tarjeta" required> Contado
+            <input type="radio" name="purchase-type" value="Celular a crédito sin tarjeta" required> Contado
         </label>
         
         <input type="submit" value="Continuar">
     </form>
-        <footer>
+    
+    <footer>
         <section id="contact">
- <div style="text-align: center; margin: 20px 0;">
-            <h2>Contacto</h2>
-            <p><a href="https://wa.me/5625014478" target="_blank">5625014478</a></p>
-            <p><a href="mailto:imperiocell.payjoy@gmail.com">imperiocell.payjoy@gmail.com</a></p>
+            <div style="text-align: center; margin: 20px 0;">
+                <h2>Contacto</h2>
+                <p><a href="https://wa.me/5625014478" target="_blank">5625014478</a></p>
+                <p><a href="mailto:imperiocell.payjoy@gmail.com">imperiocell.payjoy@gmail.com</a></p>
+            </div>
         </section>
     </footer>
+
     <script>
         // Función para obtener los parámetros de la URL
         function getQueryParams() {
             const params = {};
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
-                const image = params.get('image');
+            
+            // Extraer los parámetros de la URL
             params.phone = urlParams.get('phone');
             params.price = urlParams.get('price');
+            params.image = urlParams.get('image');  // Asegúrate de obtener el parámetro de la imagen también
+
             return params;
         }
 
         // Mostrar los datos del teléfono seleccionado
-                document.getElementById('phone-image').src = image;
         document.addEventListener('DOMContentLoaded', function () {
             const params = getQueryParams();
+
+            // Asignar la imagen del teléfono
+            document.getElementById('phone-image').src = params.image;
+
+            // Mostrar el nombre y precio del teléfono
             const phoneDetailsDiv = document.getElementById('phone-details');
-            
             phoneDetailsDiv.innerHTML = `
                 <h2>${params.phone}</h2>
                 <p><strong>Precio:</strong> ${params.price}</p>
@@ -76,7 +85,7 @@
                 alert('Seleccionaste Compra en un pago');
                 // Redirigir a la página o sección correspondiente
             } else {
-                alert('Celular a credito sin tarjeta');
+                alert('Celular a crédito sin tarjeta');
                 // Redirigir a la página o sección correspondiente
             }
         });
