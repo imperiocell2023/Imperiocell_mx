@@ -18,7 +18,9 @@
     </header> 
 
 <body>
-    <h1>Opciones de compra</h1>    
+    <h1>Opciones de compra</h1>   
+        <img id="phone-image" alt="Imagen del teléfono">
+    
     <div id="phone-details"></div>
     <form id="purchase-form">
         <h2>Elige como estrenar</h2>
@@ -45,6 +47,7 @@
             const params = {};
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
+                const image = params.get('image');
             params.phone = urlParams.get('phone');
             params.price = urlParams.get('price');
             return params;
