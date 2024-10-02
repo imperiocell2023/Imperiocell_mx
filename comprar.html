@@ -24,15 +24,13 @@
     <form id="purchase-form">
         <h2>Elige cómo estrenar</h2>
         <label>
-            <input type="radio" name="purchase-type" value="Compra en un pago" required> Crédito
+            <input type="radio" name="purchase-type" value="Celular a pagos sin tarjeta" required> Celular a pagos sin tarjeta
         </label>
         <label>
-            <input type="radio" name="purchase-type" value="Celular a crédito sin tarjeta" required> Contado
-        </label>
-        
+            <input type="radio" name="purchase-type" value="Compra en un pago" required> Compra en un pago
+        </label>        
         <input type="submit" value="Continuar">
-    </form>
-    
+    </form>   
     <footer>
         <section id="contact">
             <div style="text-align: center; margin: 20px 0;">
@@ -54,17 +52,13 @@
             params.phone = urlParams.get('phone');
             params.price = urlParams.get('price');
             params.image = urlParams.get('image');  // Asegúrate de obtener el parámetro de la imagen también
-
             return params;
         }
-
         // Mostrar los datos del teléfono seleccionado
         document.addEventListener('DOMContentLoaded', function () {
             const params = getQueryParams();
-
             // Asignar la imagen del teléfono
             document.getElementById('phone-image').src = params.image;
-
             // Mostrar el nombre y precio del teléfono
             const phoneDetailsDiv = document.getElementById('phone-details');
             phoneDetailsDiv.innerHTML = `
@@ -72,19 +66,16 @@
                 <p><strong>Precio:</strong> ${params.price}</p>
             `;
         });
-
         // Manejar el envío del formulario
         document.getElementById('purchase-form').addEventListener('submit', function (event) {
             event.preventDefault();
-
-            const purchaseType = document.querySelector('input[name="purchase-type"]:checked').value;
-            
+            const purchaseType = document.querySelector('input[name="purchase-type"]:checked').value;            
             // Aquí rediriges según el tipo de compra seleccionado
             if (purchaseType === 'Compra en un pago') {
                 alert('Seleccionaste Compra en un pago');
                 // Redirigir a la página o sección correspondiente
             } else {
-                alert('Celular a crédito sin tarjeta');
+                alert('Celular a pagos sin tarjeta');
                 // Redirigir a la página o sección correspondiente
             }
         });
