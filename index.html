@@ -144,7 +144,7 @@
         button.addEventListener('click', function() {
             const phoneName = this.getAttribute('data-phone');
             const phonePrice = this.getAttribute('data-price');
-
+                    const image = this.getAttribute('data-image'); // Extraer la URL de la imagen
             // Redirige a la segunda página con los datos del teléfono en la URL
             window.location.href = `comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}`;
         });
