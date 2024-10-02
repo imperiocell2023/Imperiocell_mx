@@ -24,10 +24,10 @@
     <form id="purchase-form" class="phone-info">
         <h2>Elige cómo estrenar</h2>    
         <label>
-            <input type="radio" name="purchase-type" value="Compra en un pago" required> Compra en un pago
+            <input type="radio" name="purchase-type" value="En un pago" required> Compra en un pago
         </label>    
                 <label>
-            <input type="radio" name="purchase-type" value="Celular a pagos sin tarjeta" required> Celular a pagos sin tarjeta
+            <input type="radio" name="purchase-type" value="A pagos sin tarjeta" required> Celular a pagos sin tarjeta
         </label>
         <input type="submit" value="Continuar">
     </form>  
@@ -62,11 +62,11 @@
             event.preventDefault();
             const purchaseType = document.querySelector('input[name="purchase-type"]:checked').value;            
             // Aquí rediriges según el tipo de compra seleccionado
-            if (purchaseType === 'Compra en un pago') {
-                alert('Seleccionaste Compra en un pago');
+            if (purchaseType === 'En un pago') {
+                alert('Seleccionaste compra en un pago');
                 // Redirigir a la página o sección correspondiente
             } else {
-                alert('Celular a pagos sin tarjeta');
+                alert('Seleccionaste a pagos sin tarjeta');
                 // Redirigir a la página o sección correspondiente
             }
         });
