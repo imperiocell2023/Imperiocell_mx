@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
@@ -16,14 +16,14 @@
                <li><a href="index.html#phones">Teléfonos</a></li>
             </ul>
         </nav>
-</header>     
-            <br>
- <div class="phone-card"style="text-align:center;width: 75%;justify-content:space-around;">
-    <img id="phone-image" alt="Imagen del teléfono" style="width: 300px; height: auto; margin-right:20px;" class="phone-image">
-    <div id="phone-details" class="phone-info"style="text-align:center;">     </div> 
-                         <br>
+    </header>     
+    <br>
+    <div class="phone-card" style="text-align:center;width: 75%;justify-content:space-around;">
+        <img id="phone-image" alt="Imagen del teléfono" style="width: 300px; height: auto; margin-right:20px;" class="phone-image">
+        <div id="phone-details" class="phone-info" style="text-align:center;"></div> 
+        <br>
+    </div>
 
-      </div>
     <script>
         // Función para obtener los parámetros de la URL
         function getQueryParams() {
@@ -37,6 +37,7 @@
             params.image = urlParams.get('image');  // Asegúrate de obtener el parámetro de la imagen también
             return params;
         }
+
         // Mostrar los datos del teléfono seleccionado
         document.addEventListener('DOMContentLoaded', function () {
             const params = getQueryParams();
@@ -47,37 +48,40 @@
             phoneDetailsDiv.innerHTML = `
                 <h2>${params.phone}</h2>
                 <p><strong>Precio:</strong> ${params.price}</p>
-                               <br>
-    <form id="purchase-form" class="phone-info">
-        <h2>Elige cómo estrenar</h2>    
-        <label>
-            <input type="radio" name="purchase-type" value="En un pago" required> En un pago
-        </label>    
-                <label>
-            <input type="radio" name="purchase-type" value="A pagos sin tarjeta" required> A pagos sin tarjeta
-        </label>
-        <input type="submit" value="Continuar">
-    </form>  
+                <br>
+                <form id="purchase-form" class="phone-info">
+                    <h2>Elige cómo estrenar</h2>    
+                    <label>
+                        <input type="radio" name="purchase-type" value="En un pago" required> En un pago
+                    </label>    
+                    <label>
+                        <input type="radio" name="purchase-type" value="A pagos sin tarjeta" required> A pagos sin tarjeta
+                    </label>
+                    <input type="submit" value="Continuar">
+                </form>  
             `;
-        });
-        // Manejar el envío del formulario
-        document.getElementById('purchase-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const purchaseType = document.querySelector('input[name="purchase-type"]:checked').value;            
-            // Aquí rediriges según el tipo de compra seleccionado
-            if (purchaseType === 'En un pago') {
-                alert('Seleccionaste compra en un pago');
-               window.open('en_un_pago.html', 'popup', 'width=600,height=400');
-            } else {
-                alert('Seleccionaste a pagos sin tarjeta');
-              window.location.href = 'https://maps.app.goo.gl/cDCR66WVcdswPPE7A'; 
-            }
+
+            // Mover el listener dentro del bloque DOMContentLoaded
+            document.getElementById('purchase-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const purchaseType = document.querySelector('input[name="purchase-type"]:checked').value;
+                
+                // Aquí rediriges según el tipo de compra seleccionado
+                if (purchaseType === 'En un pago') {
+                    alert('Seleccionaste compra en un pago');
+                    window.open('en_un_pago.html', 'popup', 'width=600,height=400');
+                } else {
+                    alert('Seleccionaste a pagos sin tarjeta');
+                    window.location.href = 'https://maps.app.goo.gl/cDCR66WVcdswPPE7A';
+                }
+            });
         });
     </script>
-            <footer>
+
+    <footer>
         <section id="contact">
-            <div style="text-align:center; margin:20px0;color: white;background-color: #36a0d1;"style="width: 100%;">
-                                          <br>
+            <div style="text-align:center; margin:20px0;color: white;background-color: #36a0d1;" style="width: 100%;">
+                <br>
                 <h2>Contacto</h2>
                 <p><a href="https://wa.me/5625014478" target="_blank">5625014478</a></p>
                 <p><a href="mailto:imperiocell.payjoy@gmail.com" target="_blank">imperiocell.payjoy@gmail.com</a></p>
