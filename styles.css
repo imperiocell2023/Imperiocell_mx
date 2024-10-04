@@ -116,5 +116,6 @@ footer {
     width: 100%;      /* Asegura que el footer ocupe todo el ancho */
     position: relative;  /* Mantén esto para que esté en su flujo natural */
     box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+        margin-top: auto;
 }
 
