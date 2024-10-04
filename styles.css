@@ -109,14 +109,12 @@ button:hover {
 }
 
 footer {
-    background: linear-gradient(to top, #36a0d1 55%, white 100%);
-    color: white;
-    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to top, #36a0d1 55%, #f4f4f4 100%);
+    color: #333;
     padding: 10px 0;
-            margin-top: auto;
-    width: 100%;      /* Asegura que el footer ocupe todo el ancho */
-    position: relative;  /* Mantén esto para que esté en su flujo natural */
-    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
 
 }
 
