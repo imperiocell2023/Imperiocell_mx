@@ -5,8 +5,8 @@ body {
     background-color: #f4f4f4;
 }
 
-header {
-    background-color: #36a0d1;
+header { 
+    background: linear-gradient(to bottom, #36a0d1, white);
     color: white;
     padding: 10px 0;
     text-align: center;
@@ -109,7 +109,7 @@ button:hover {
 }
 
 footer {
-    background-color: #36a0d1;
+    background: linear-gradient(to top, #36a0d1, white);
     color: white;
     text-align: center;
     padding: 20px 0;
