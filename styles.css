@@ -23,6 +23,8 @@ header h1 {
     display: flex;
     align-items: center;
     margin-left: auto;
+    max-width: 100%; /* Evita que el contenedor se salga de la pantalla */
+    padding-right: 10px;
 }
 
 #searchInput {
@@ -32,6 +34,8 @@ header h1 {
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-right: 10px;
+    width: 100%; /* Para pantallas pequeñas */
+    max-width: 200px; /* Limita el ancho del input en pantallas grandes */
 }
 
 #searchButton {
