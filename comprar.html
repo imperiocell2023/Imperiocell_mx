@@ -66,10 +66,27 @@
                 event.preventDefault();
                 const purchaseType = document.querySelector('input[name="purchase-type"]:checked').value;
                 
-                // Aquí rediriges según el tipo de compra seleccionado
-                if (purchaseType === 'En un pago') {
-                    alert('Seleccionaste compra en un pago');
-                    window.open('en_un_pago.html', 'popup', 'width=600,height=400');
+ if (purchaseType === 'En un pago') {
+        const popupContent = `
+            1.- Transfiere el costo del equipo a la cuenta CLABE: 123456789012345678<br>
+            2.- En el concepto indica el nombre del teléfono que escoges y tu primer nombre<br>
+            3.- Manda mensaje al WhatsApp 5625014478 compartiendo el comprobante y acuerda fecha para acudir por tu teléfono o el envío.<br>
+            4.- ¡Disfruta tu nuevo teléfono :D!
+        `;
+
+        // Crear y mostrar el pop-up
+        const popup = window.open('', 'popup', 'width=600,height=400');
+        popup.document.write(`
+            <html>
+                <head><title>Compra en un pago</title></head>
+                <body style="font-family: Arial, sans-serif; text-align: center; padding: 20px;">
+                    <h2>¡Sigue estos pasos para completar tu compra!</h2>
+                    <p>${popupContent}</p>
+                    <button onclick="window.close()">Cerrar</button>
+                </body>
+            </html>
+        `);
+                    
                 } else {
                 alert('Acude a nuestra sucursal para estrenar a pagos sin tarjeta :)');
         window.open('https://maps.app.goo.gl/cDCR66WVcdswPPE7A', '_blank');
