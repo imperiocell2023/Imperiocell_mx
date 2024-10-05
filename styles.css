@@ -35,6 +35,17 @@ section {
     padding: 20px;
             text-align: center;
 }
+.swiper-container {
+  width: 100%;
+  height: auto;
+}
+
+.swiper-slide {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 /* Tarjeta de teléfono */
 .phone-card {
