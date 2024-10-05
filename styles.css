@@ -5,16 +5,20 @@ body {
     background-color: #f4f4f4;
 }
 
-header { 
+header {
     background: linear-gradient(to bottom, #36a0d1, white);
     color: white;
     padding: 10px 0;
     text-align: center;
     display: flex;
     justify-content: space-between;
-
+    align-items: center; /* Asegura que el contenido esté alineado verticalmente */
 }
-
+header h1 {
+    margin: 0;
+    flex-grow: 1; /* Esto asegura que el título tome el espacio restante */
+    text-align: center; /* Centra el título horizontalmente */
+}
 .search-bar {
     display: flex;
     align-items: center;
@@ -38,10 +42,6 @@ header {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-header h1 {
-    margin: 0;
 }
 
 nav ul {
