@@ -146,15 +146,32 @@
         </a>
     </div>
 <script>
+
+    document.getElementById('searchButton').addEventListener('click', function() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const phoneCards = document.querySelectorAll('.phone-card');
+
+    phoneCards.forEach(card => {
+        const phoneName = card.querySelector('h2').textContent.toLowerCase();
+        if (phoneName.includes(searchInput)) {
+            card.style.display = 'flex'; // Mostrar tarjeta
+        } else {
+            card.style.display = 'none'; // Ocultar tarjeta
+        }
+    });
+});
+
+// Inicializar el carrusel Swiper
 const swiper = new Swiper('.swiper-container', {
-    slidesPerView: 4, // Mostrar 4 imágenes por página
-    spaceBetween: 20, // Espacio entre imágenes
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
-    loop: true, // Hacer que el carrusel sea infinito
 });
+
 
     // Selecciona todos los botones con la clase 'buy-button'
     const buyButtons = document.querySelectorAll('.buy-button');
