@@ -146,38 +146,30 @@
         </a>
     </div>
 <script>
-    document.getElementById('searchButton').addEventListener('click', function() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const phoneCards = document.querySelectorAll('.phone-card');
+    function filterPhones() {
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+        const phoneCards = document.querySelectorAll('.phone-card');
 
-    phoneCards.forEach(card => {
-        const phoneName = card.querySelector('h2').textContent.toLowerCase();
-        if (phoneName.includes(searchInput)) {
-            card.style.display = 'flex'; // Mostrar tarjeta
-        } else {
-            card.style.display = 'none'; // Ocultar tarjeta
-        }
-    });
-});
-
-        document.addEventListener('DOMContentLoaded', function () {
-        const searchInput = document.getElementById('search-input');
-        
-        searchInput.addEventListener('keydown', function (event) {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                redirectSearch();
+        phoneCards.forEach(card => {
+            const phoneName = card.querySelector('h2').textContent.toLowerCase();
+            if (phoneName.includes(searchInput)) {
+                card.style.display = 'flex'; // Mostrar tarjeta
+            } else {
+                card.style.display = 'none'; // Ocultar tarjeta
             }
         });
+    }
 
-        document.getElementById('search-button').addEventListener('click', redirectSearch);
+    // Detectar el evento 'click' en el botón de búsqueda
+    document.getElementById('searchButton').addEventListener('click', function() {
+        filterPhones();
+    });
 
-        function redirectSearch() {
-            const searchQuery = searchInput.value.trim();
-            if (searchQuery) {
-                // Aquí puedes redirigir a la página de teléfonos con el query de búsqueda
-                window.location.href = 'index.html#phones';
-            }
+    // Detectar el evento 'keydown' en el campo de búsqueda
+    document.getElementById('searchInput').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Evitar el comportamiento predeterminado
+            filterPhones(); // Filtrar los teléfonos al presionar "Enter"
         }
     });
 
@@ -191,7 +183,6 @@ const swiper = new Swiper('.swiper-container', {
         prevEl: '.swiper-button-prev',
     },
 });
-
 
     // Selecciona todos los botones con la clase 'buy-button'
     const buyButtons = document.querySelectorAll('.buy-button');
