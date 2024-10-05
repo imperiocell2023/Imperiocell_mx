@@ -135,6 +135,18 @@
         </a>
     </div>
 <script>
+
+  var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 4, // 4 teléfonos visibles a la vez
+    spaceBetween: 10, // Espacio entre teléfonos
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    loop: true,
+  });
+
+
     // Selecciona todos los botones con la clase 'buy-button'
     const buyButtons = document.querySelectorAll('.buy-button');
 
