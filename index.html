@@ -292,24 +292,30 @@
 </footer>
 
 <script>
-// Inicializar el carrusel Swiper
-const swiper = new Swiper('.swiper-container', {
-    slidesPerView: 1,
-    spaceBetween: 10,
-    loop: true,
+  var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 4, // Número de tarjetas visibles a la vez
+    spaceBetween: 30, // Espacio entre tarjetas
     navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-},
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
     },
-    loop: true,  // Esto hace que el carrusel sea infinito
+    loop: false, // Desactiva el loop, o activa si quieres que sea infinito
+    breakpoints: {
+      640: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+      },
+    }
   });
-
 </script>
-
 
 </body>
 </html>
