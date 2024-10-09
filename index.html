@@ -177,16 +177,26 @@
         }
     });
 
+
+
 // Inicializar el carrusel Swiper
 const swiper = new Swiper('.swiper-container', {
     slidesPerView: 1,
-    spaceBetween: 20,
+    spaceBetween: 10,
     loop: true,
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
+},
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
     },
+    loop: true,  // Esto hace que el carrusel sea infinito
+  });
+
 });
+
 
     // Selecciona todos los botones con la clase 'buy-button'
     const buyButtons = document.querySelectorAll('.buy-button');
