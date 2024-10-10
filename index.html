@@ -189,38 +189,23 @@
     });
 
     
-    var swiper = new Swiper('.swiper-container', {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        loop: true,
+  var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 1, // Muestra una imagen a la vez
+    spaceBetween: 0, // No deja espacio entre las imágenes
+    loop: true, // Permite que las imágenes se repitan
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
     },
     autoplay: {
-      delay: 5000,  // Cambia la imagen cada 5 segundos
-},
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            // Cambia la cantidad de slides visibles según el tamaño de pantalla
-            640: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-            },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 40,
-            },
-            1024: {
-                slidesPerView: 2,
-                spaceBetween: 50,
-            },
-        },
-    });
+      delay: 3000, // Desliza automáticamente cada 3 segundos
+      disableOnInteraction: false, // Continúa el autoplay después de la interacción
+    },
+  });
 
 
     // Selecciona todos los botones con la clase 'buy-button'
