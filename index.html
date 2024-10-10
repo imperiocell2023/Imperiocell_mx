@@ -187,6 +187,24 @@
             filterPhones(); // Filtrar los teléfonos al presionar "Enter"
         }
     });
+
+
+  var swiper = new Swiper('.swiper-container.portada', {
+    slidesPerView: 1,  // Muestra una imagen a la vez
+    spaceBetween: 30,  // Espacio entre las imágenes
+    loop: true,        // Habilita el loop para repetir las imágenes
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    autoplay: {
+      delay: 5000,  // Cambia la imagen cada 5 segundos
+    },
+  });
     
     var swiper = new Swiper('.swiper-container', {
         slidesPerView: 1,
