@@ -76,6 +76,9 @@ section {
 .swiper-container {
     position: relative; /* Asegúrate de que el contenedor esté posicionado correctamente */
 
+    overflow: hidden; /* Añade esta línea */
+
+
 }
 
 /* Estilos para las flechas de navegación */
