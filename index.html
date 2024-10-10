@@ -190,6 +190,9 @@
 
     
   var swiper = new Swiper('.swiper-container', {
+
+  loop: true, // Esto permite un deslizamiento continuo
+  grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
     slidesPerView: 1, // Muestra una imagen a la vez
     spaceBetween: 0, // No deja espacio entre las imágenes
     loop: true, // Permite que las imágenes se repitan
@@ -202,7 +205,7 @@
       clickable: true,
     },
     autoplay: {
-      delay: 3000, // Desliza automáticamente cada 3 segundos
+      delay: 5000, // Desliza automáticamente cada 5 segundos
       disableOnInteraction: false, // Continúa el autoplay después de la interacción
     },
   });
