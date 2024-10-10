@@ -122,6 +122,19 @@ section {
 .phone-card button:hover {
     background-color: #555;
 }
+
+@media (max-width: 768px) {
+  .swiper-slide img {
+    height: 100%; /* Ajustar la altura para pantallas pequeñas */
+  }
+}
+
+@media (min-width: 769px) {
+  .swiper-slide img {
+    height: 88%; /* Ajustar la altura para pantallas grandes */
+  }
+}
+
 @media (max-width: 768px) {
     .phone-card {
         flex-direction: column;  /* Apila la imagen y el texto verticalmente en pantallas pequeñas */
