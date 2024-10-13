@@ -85,7 +85,7 @@ width: 100%;
 /* Estilos para las flechas de navegación */
 .swiper-button-next,
 .swiper-button-prev {
-    color: #fff; /* Cambia el color según tu diseño */
+    color: #36a0d1; /* Cambia el color según tu diseño */
     top: 50%; /* Alinea verticalmente en el centro del contenedor */
     transform: translateY(-50%); /* Ajusta la posición */
     z-index: 10; /* Asegura que las flechas estén por encima de otras capas */
