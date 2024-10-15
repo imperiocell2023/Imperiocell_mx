@@ -342,7 +342,7 @@ function mostrarTelefonos(telefonos) {
     phoneSection.innerHTML = ''; // Limpiar la sección
 
     telefonos.forEach(telefono => {
-        const [marca, modelo, memoria, camara, frontal, precio, enganches, total, semanal, bateria, resolucion, procesador, cargador] = telefono;
+        const [marca, modelo, memoria, camara, frontal, Precio_web, enganche, total, semanal, bateria, resolucion, procesador, cargador, extras] = telefono;
 
         const phoneCard = `
             <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
