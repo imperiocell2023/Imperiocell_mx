@@ -332,10 +332,8 @@ obtenerDatosTelefonos().then(datos => {
 function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; // Limpiar la sección
-
     telefonos.forEach(telefono => {
-        const [marca, modelo, memoria, camara, frontal, precio, enganches, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web] = telefono;
-
+        const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web] = telefono;              
         const phoneCard = `
             <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
                 <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
@@ -354,8 +352,9 @@ function mostrarTelefonos(telefonos) {
                         style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer;"
                         class="buy-button"
                         data-phone="${modelo}" 
-                        data-price="${precio_web}">
-                        Comprar
+                        data-price="${precio_web}"
+                        data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, '_')}.jpg" 
+                        >Comprar
                     </button>
                 </div>
             </div>
