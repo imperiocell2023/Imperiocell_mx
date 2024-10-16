@@ -335,6 +335,7 @@ function mostrarTelefonos(telefonos) {
     telefonos.forEach(telefono => {
         const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web] = telefono;              
         const phoneCard = `
+        <div class="swiper-slide">
             <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
                 <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
                 <div class="phone-info" style="flex: 1;">
@@ -351,21 +352,29 @@ function mostrarTelefonos(telefonos) {
                         class="buy-button"               
                         data-phone="${modelo}" 
                         data-price="${precio_web}"
-                        data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, '_')}.jpg" 
+                        data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, ' ')}.jpg" 
                         >Comprar
                     </button>
                 </div>
             </div>
+            </div>
+         
         `;
 
         phoneSection.innerHTML += phoneCard;
     });
 }
-
-// Llamar la función para mostrar los teléfonos cuando los datos sean obtenidos
-obtenerDatosTelefonos().then(datos => {
-    mostrarTelefonos(datos.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
-});
+        // Llamar la función para mostrar los teléfonos cuando los datos sean obtenidos
+    obtenerDatosTelefonos().then(datos => {
+        if (datos && datos.length > 0) {
+            console.log('Datos obtenidos:', datos);
+            mostrarTelefonos(datos.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
+        } else {
+            console.error('No se obtuvieron datos de la hoja.');
+        }
+    }).catch(error => {
+        console.error('Error al obtener los datos:', error);
+    });
 
     
 
