@@ -341,9 +341,7 @@ function mostrarTelefonos(telefonos) {
         const [marca, modelo, memoria, camara, frontal, Precio_web, enganche, total, semanal, bateria, resolucion, procesador, cargador, extras] = telefono;
 
         const phoneCard = `
-src="https://unpkg.com/swiper/swiper-bundle.min.js"
-<div class="swiper-container"> 
-<div class="swiper-wrapper"> 
+
 
             <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
                 <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, '_')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
@@ -367,14 +365,7 @@ src="https://unpkg.com/swiper/swiper-bundle.min.js"
                     </button>
                 </div>
             </div>
-        </div> <div class="swiper-slide">
-            </div>
-            </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-            </div>
-        
+
             
         `;
 
