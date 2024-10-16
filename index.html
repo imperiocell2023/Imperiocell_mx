@@ -54,7 +54,6 @@
     <section id="phones"> 
 <div class="swiper-container"> 
 <div class="swiper-wrapper"> 
-
 <div class="swiper-slide">
     <div class="phone-group" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
        <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
@@ -98,51 +97,8 @@
             </div>
         </div>
             </div>
-    <div class="phone-group" style="display: flex; justify-content: space-between; margin-bottom: 20px;">      
-                <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
-        <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/SPARK 20 PRO.jpg" alt="Tecno Spark 20 Pro" style="width: 300px; height: auto; margin-right: 20px;">  
-            <div class="phone-info" style="flex: 1;">
-        <h2 style="font-size: 1.5em; color: #36a0d1;">Tecno Spark 20 Pro</h2>
-        <p style="font-size: 1em; margin: 7px 0; color: #28a745;"><strong>Precio: $5,399</strong></p>
-        <p style="font-size: 1em; margin: 4px 0;"><strong>Memoria: 8/256 GB<br>
-            Cámara: 108 MP Frontal 32 MP<br>
-            Batería: 5000 mAh</strong></p>
-        <p style="font-size: 0.9em; color: #555;">
-            Resolución: 2400 x 1080 (FHD+)<br>
-            Cargador: 33W Fast Charging<br>
-            Procesador: MediaTek Dimensity 700           </p>
-            <button id="buy-button" style="padding: 10px 15px; background-color:#36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer;"
-                    class="buy-button" 
-                    data-phone="Tecno Spark 20 Pro" 
-                    data-price="$5,399"
-                    data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/SPARK 20 PRO.jpg"
-                >Comprar</button>
-        </div>
-    </div>
-    <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
-        <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/X7b (Dual SIM).jpg" alt="HONOR X7b (Dual SIM)" style="width: 300px; height: auto; margin-right: 20px;">  
-    <div class="phone-info" style="flex: 1;">
-        <h2 style="font-size: 1.5em; color: #36a0d1;">HONOR X7b (Dual SIM)</h2>
-        <p style="font-size: 1em; margin: 7px 0; color: #28a745;"><strong>Precio: $4,899</strong></p>
-        <p style="font-size: 1em; margin: 4px 0;"><strong>Memoria: 8/128 GB</strong>
-            <br>Cámara: 108 MP Frontal 8 MP
-            <br>Batería: 5330 mAh</strong></p>
-        <p style="font-size: 0.9em; color: #555;">
-            Resolución: 2400 x 1080 (FHD+)<br>
-            Cargador: 22.5W Fast Charging<br>
-            Procesador: Qualcomm Snapdragon 680          </p>
-            <button id="buy-button" style="padding: 10px 15px; background-color:#36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer;"
-                    class="buy-button" 
-                    data-phone="HONOR X7b (Dual SIM)" 
-                    data-price="$4,899"
-                    data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/X7b (Dual SIM).jpg"
-                >Comprar</button>
-        </div>
-    </div>
-</div>
 
 </div> <div class="swiper-slide">
-        <!-- Agrega más teléfonos siguiendo el mismo formato... -->
 
 
     <div class="phone-group" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
@@ -190,7 +146,6 @@
 
 </div>
    </div>
-
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
@@ -221,27 +176,20 @@
             }
         });
     }
-
-    // Detectar el evento 'click' en el botón de búsqueda
-    document.getElementById('searchButton').addEventListener('click', function() {
+    document.getElementById('searchButton').addEventListener('click', function() {     // Detectar el evento 'click' en el botón de búsqueda
         filterPhones();
     });
-
-    // Detectar el evento 'keydown' en el campo de búsqueda
-    document.getElementById('searchInput').addEventListener('keydown', function(event) {
+    document.getElementById('searchInput').addEventListener('keydown', function(event) {      // Detectar el evento 'keydown' en el campo de búsqueda
         if (event.key === 'Enter') {
             event.preventDefault(); // Evitar el comportamiento predeterminado
             filterPhones(); // Filtrar los teléfonos al presionar "Enter"
         }
     });
 
-
-
 const SHEET_ID = '16RGHwlzDHBQrBP-xjfXtwu58K5myaAAKbigHxCQt2NA';
 const API_KEY = 'AIzaSyA4PH8UdUEs3Xq06ygGNJoGrImVGHGpi5c';
-const RANGE = 'Precios!A1:P19'; // Ajusta el rango según tu tabla
+const RANGE = 'Precios!A1:P19'; 
 
-// Función para obtener datos de Google Sheets
 async function obtenerDatosTelefonos() {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
     const response = await fetch(url);
@@ -261,6 +209,8 @@ function mostrarTelefonos(telefonos) {
     telefonos.forEach(telefono => {
         const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web] = telefono;              
         const phoneCard = `
+        <div class="swiper-container"> 
+<div class="swiper-wrapper"> 
         <div class="swiper-slide">
             <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
                 <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
@@ -284,7 +234,12 @@ function mostrarTelefonos(telefonos) {
                 </div>
             </div>
             </div>
-         
+
+            </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
         `;
 
         phoneSection.innerHTML += phoneCard;
