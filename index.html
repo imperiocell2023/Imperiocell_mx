@@ -287,28 +287,6 @@
         }
     });
 
-    
-  var swiper = new Swiper('.swiper-container', {
-
-  loop: true, // Esto permite un deslizamiento continuo
-  grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
-    slidesPerView: 1, // Muestra una imagen a la vez
-    spaceBetween: 0, // No deja espacio entre las imágenes
-    loop: true, // Permite que las imágenes se repitan
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    autoplay: {
-      delay: 8000, // Desliza automáticamente cada 5 segundos
-      disableOnInteraction: false, // Continúa el autoplay después de la interacción
-    },
-  });
-
 
     
 const SHEET_ID = '16RGHwlzDHBQrBP-xjfXtwu58K5myaAAKbigHxCQt2NA';
@@ -320,6 +298,8 @@ async function obtenerDatosTelefonos() {
     const response = await fetch(url);
     const data = await response.json();
     return data.values;
+
+
 }
 // Llamar a la función y mostrar los datos en la consola (puedes conectarlo con el HTML)
 obtenerDatosTelefonos().then(datos => {
@@ -327,6 +307,7 @@ obtenerDatosTelefonos().then(datos => {
 });
 function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
+    const phoneSection = document.querySelector('.swiper-wrapper');
     phoneSection.innerHTML = ''; // Limpiar la sección
 
     telefonos.forEach(telefono => {
@@ -337,7 +318,7 @@ function mostrarTelefonos(telefonos) {
                 <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, '_')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
                 <div class="phone-info" style="flex: 1;">
                     <h2 style="font-size: 1.5em; color: #36a0d1;">${marca} ${modelo}</h2>
-                    <p style="font-size: 1em; margin: 7px 0;color: #28a745;"><strong>Precio: ${precio}</strong></p>
+                    <p style="font-size: 1em; margin: 7px 0;color: #28a745;"><strong>Precio: ${precio_web}</strong></p>
                     <p style="font-size: 1em; margin: 4px 0;"><strong>Memoria: ${memoria}<br>
                         Cámara: ${camara} Frontal: ${frontal} <br>
                         Batería: ${bateria </strong> </p>
@@ -368,7 +349,26 @@ obtenerDatosTelefonos().then(datos => {
     
 
     
+  var swiper = new Swiper('.swiper-container', {
 
+  loop: true, // Esto permite un deslizamiento continuo
+  grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
+    slidesPerView: 1, // Muestra una imagen a la vez
+    spaceBetween: 0, // No deja espacio entre las imágenes
+    loop: true, // Permite que las imágenes se repitan
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    autoplay: {
+      delay: 8000, // Desliza automáticamente cada 5 segundos
+      disableOnInteraction: false, // Continúa el autoplay después de la interacción
+    },
+  });
 
 
     // Selecciona todos los botones con la clase 'buy-button'
