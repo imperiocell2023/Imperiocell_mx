@@ -334,14 +334,14 @@ function mostrarTelefonos(telefonos) {
     phoneSection.innerHTML = ''; // Limpiar la sección
 
     telefonos.forEach(telefono => {
-        const [marca, modelo, memoria, camara, frontal, precio, enganches, total, semanal, bateria, resolucion, procesador, extras, cargador, Precio_web] = telefono;
+        const [marca, modelo, memoria, camara, frontal, precio, enganches, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web] = telefono;
 
         const phoneCard = `
             <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
-                <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, '_')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
+                <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
                 <div class="phone-info" style="flex: 1;">
                     <h2 style="font-size: 1.5em; color: #36a0d1;">${marca} ${modelo}</h2>
-                    <p style="font-size: 1em; margin: 7px 0;color: #28a745;"><strong>Precio: ${precio}</strong></p>
+                    <p style="font-size: 1em; margin: 7px 0;color: #28a745;"><strong>Precio: ${precio_web}</strong></p>
                     <p style="font-size: 1em; margin: 4px 0;"><strong>Memoria: ${memoria}<br>
                         Cámara: ${camara} MP Frontal ${frontal} MP<br>
                         Batería: ${bateria}</strong></p>
@@ -354,7 +354,7 @@ function mostrarTelefonos(telefonos) {
                         style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer;"
                         class="buy-button"
                         data-phone="${modelo}" 
-                        data-price="${precio}">
+                        data-price="${precio_web}">
                         Comprar
                     </button>
                 </div>
