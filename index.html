@@ -311,11 +311,11 @@
 
     
 
+    
 const SHEET_ID = '16RGHwlzDHBQrBP-xjfXtwu58K5myaAAKbigHxCQt2NA';
 const API_KEY = 'AIzaSyA4PH8UdUEs3Xq06ygGNJoGrImVGHGpi5c';
 const RANGE = 'Precios!A1:P19'; // Ajusta el rango según tu tabla
 
-    
 
 // Función para obtener datos de Google Sheets
 async function obtenerDatosTelefonos() {
@@ -324,23 +324,20 @@ async function obtenerDatosTelefonos() {
     const data = await response.json();
     return data.values;
 }
-
+    
 // Llamar a la función y mostrar los datos en la consola (puedes conectarlo con el HTML)
 obtenerDatosTelefonos().then(datos => {
     console.log(datos);
-    // Aquí es donde puedes manipular los datos y agregarlos dinámicamente al HTML
 });
-
 function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; // Limpiar la sección
 
+
+    
     telefonos.forEach(telefono => {
-        const [marca, modelo, memoria, camara, frontal, Precio_web, enganche, total, semanal, bateria, resolucion, procesador, cargador, extras] = telefono;
-
+        const [marca, modelo, memoria, camara, frontal, precio_web, enganche, total, semanal, bateria, resolucion, procesador, cargador, extras] = telefono;
         const phoneCard = `
-
-
             <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
                 <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, '_')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
                 <div class="phone-info" style="flex: 1;">
@@ -348,7 +345,7 @@ function mostrarTelefonos(telefonos) {
                     <p style="font-size: 1em; margin: 7px 0;color: #28a745;"><strong>Precio: ${precio}</strong></p>
                     <p style="font-size: 1em; margin: 4px 0;"><strong>Memoria: ${memoria}<br>
                         Cámara: ${camara} Frontal: ${frontal} <br>
-                        Batería: ${bateria}</strong></p>
+                        Batería: ${bateria </strong> </p>
                     <p style="font-size: 0.9em; color: #555;">     
                         Resolución: ${resolucion}<br>
                         Cargador: ${cargador} <br>                    
@@ -357,30 +354,21 @@ function mostrarTelefonos(telefonos) {
                         style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: auto;"
                         class="buy-button"
                         data-phone="${modelo}" 
-                        data-price="${Precio_web}">
-                        data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, '_')}.jpg" 
+                        data-price="${precio_web}">
+
                         Comprar
                     </button>
                 </div>
             </div>
-
-            
         `;
-
         phoneSection.innerHTML += phoneCard;
     });
 }
-
 // Llamar la función para mostrar los teléfonos cuando los datos sean obtenidos
 obtenerDatosTelefonos().then(datos => {
     mostrarTelefonos(datos.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
 });
-
-
-
-    
-
-
+ 
 
     
 
