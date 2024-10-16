@@ -361,15 +361,11 @@ function mostrarTelefonos(telefonos) {
       clickable: true,
     },
     autoplay: {
-      delay: 8000, // Desliza automáticamente cada 5 segundos
+      delay: 8000, // Desliza automáticamente cada 8 segundos
       disableOnInteraction: false, // Continúa el autoplay después de la interacción
     },
   });
 
-    // Llamar la función para mostrar los teléfonos cuando los datos sean obtenidos
-obtenerDatosTelefonos().then(datos => {
-    mostrarTelefonos(datos.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
-});
 
 
 
@@ -384,6 +380,13 @@ obtenerDatosTelefonos().then(datos => {
             window.location.href = `comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}&image=${encodeURIComponent(phoneImage)}`;
         });
     });
+
+
+        // Llamar la función para mostrar los teléfonos cuando los datos sean obtenidos
+obtenerDatosTelefonos().then(datos => {
+    mostrarTelefonos(datos.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
+});
+
 </script>
 <footer>
     <section id="contact" style="padding:10px0; background: linear-gradient(to top,#36a0d1 38%, #f4f4f4 100%);">
