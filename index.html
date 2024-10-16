@@ -313,7 +313,7 @@
     
 const SHEET_ID = '16RGHwlzDHBQrBP-xjfXtwu58K5myaAAKbigHxCQt2NA';
 const API_KEY = 'AIzaSyA4PH8UdUEs3Xq06ygGNJoGrImVGHGpi5c';
-const RANGE = 'Precios!A1:P19'; // Ajusta el rango según tu tabla
+const RANGE = 'A1:P19'; // Ajusta el rango según tu tabla
 
 // Función para obtener datos de Google Sheets
 async function obtenerDatosTelefonos() {
@@ -351,7 +351,7 @@ function mostrarTelefonos(telefonos) {
                         class="buy-button"
                         data-phone="${modelo}" 
                         data-price="${precio_web}">
-
+                        data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, '_')}.jpg" 
                         Comprar
                     </button>
                 </div>
