@@ -341,16 +341,14 @@ function mostrarTelefonos(telefonos) {
                     <h2 style="font-size: 1.5em; color: #36a0d1;">${marca} ${modelo}</h2>
                     <p style="font-size: 1em; margin: 7px 0;color: #28a745;"><strong>Precio: ${precio_web}</strong></p>
                     <p style="font-size: 1em; margin: 4px 0;"><strong>Memoria: ${memoria}<br>
-                        Cámara: ${camara} MP Frontal ${frontal} MP<br>
+                        Cámara: ${camara} Frontal ${frontal} <br>
                         Batería: ${bateria}</strong></p>
                     <p style="font-size: 0.9em; color: #555;">
                         Resolución: ${resolucion}<br>
                         Procesador: ${procesador}<br>
-                        Cargador: ${cargador}
-                    </p>
-                    <button id="buy-button" 
-                        style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer;"
-                        class="buy-button"
+                        Cargador: ${cargador} </p>
+                    <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;"
+                        class="buy-button"               
                         data-phone="${modelo}" 
                         data-price="${precio_web}"
                         data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, '_')}.jpg" 
