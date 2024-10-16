@@ -336,15 +336,11 @@ function mostrarTelefonos(telefonos) {
                     </button>
                 </div>
             </div>
-                   </div>
+         </div>
         `;
         phoneSection.innerHTML += phoneCard;
     });
 }
-// Llamar la función para mostrar los teléfonos cuando los datos sean obtenidos
-obtenerDatosTelefonos().then(datos => {
-    mostrarTelefonos(datos.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
-});
 
     
 
@@ -369,6 +365,12 @@ obtenerDatosTelefonos().then(datos => {
       disableOnInteraction: false, // Continúa el autoplay después de la interacción
     },
   });
+
+    // Llamar la función para mostrar los teléfonos cuando los datos sean obtenidos
+obtenerDatosTelefonos().then(datos => {
+    mostrarTelefonos(datos.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
+});
+
 
 
     // Selecciona todos los botones con la clase 'buy-button'
