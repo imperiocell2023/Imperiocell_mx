@@ -307,7 +307,7 @@ obtenerDatosTelefonos().then(datos => {
 });
 function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
-    const phoneSection = document.querySelector('.swiper-wrapper');
+
     phoneSection.innerHTML = ''; // Limpiar la sección
 
     telefonos.forEach(telefono => {
@@ -333,7 +333,7 @@ function mostrarTelefonos(telefonos) {
                         data-price="${precio_web}"
                         data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, '_')}.jpg" 
                         >Comprar                            
-                    </button>
+                    </button>    
                 </div>
             </div>
          </div>
@@ -341,7 +341,10 @@ function mostrarTelefonos(telefonos) {
         phoneSection.innerHTML += phoneCard;
     });
 }
-
+        // Llamar la función para mostrar los teléfonos cuando los datos sean obtenidos
+obtenerDatosTelefonos().then(datos => {
+    mostrarTelefonos(datos.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
+});
     
 
     
@@ -366,9 +369,6 @@ function mostrarTelefonos(telefonos) {
     },
   });
 
-
-
-
     // Selecciona todos los botones con la clase 'buy-button'
     const buyButtons = document.querySelectorAll('.buy-button');
     buyButtons.forEach(button => {
@@ -380,12 +380,6 @@ function mostrarTelefonos(telefonos) {
             window.location.href = `comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}&image=${encodeURIComponent(phoneImage)}`;
         });
     });
-
-
-        // Llamar la función para mostrar los teléfonos cuando los datos sean obtenidos
-obtenerDatosTelefonos().then(datos => {
-    mostrarTelefonos(datos.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
-});
 
 </script>
 <footer>
