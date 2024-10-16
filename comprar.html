@@ -36,7 +36,7 @@
             // Extraer los parámetros de la URL
             params.phone = urlParams.get('phone');
             params.price = urlParams.get('price');
-            params.image = urlParams.get('image');  // Asegúrate de obtener el parámetro de la imagen también
+            params.image = urlParams.get('image');  
             return params;
         }
 
@@ -48,9 +48,8 @@
             // Mostrar el nombre y precio del teléfono
             const phoneDetailsDiv = document.getElementById('phone-details');
             phoneDetailsDiv.innerHTML = `
-                <h2>${params.phone}</h2>
-                <p><strong>Precio:</strong> ${params.price}</p>
-                <br>
+                <p style="font-size: 1em; margin: 4px 0;"><strong>${params.phone}</strong></p>
+                <p style="font-size: 1em; margin: 7px 0;color: #28a745;"><strong> ${params.price}</p>
                 <form id="purchase-form" class="phone-info">
                     <h2>Elige cómo estrenar 🤩</h2>    
                     <label>
