@@ -313,7 +313,6 @@ function mostrarTelefonos(telefonos) {
     telefonos.forEach(telefono => {
         const [marca, modelo, memoria, camara, frontal, precio_web, enganche, total, semanal, bateria, resolucion, cargador, procesador, extras] = telefono;
                 const phoneCard = `
-                <div class="swiper-slide">
             <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
                 <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, '_')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
                 <div class="phone-info" style="flex: 1;">
@@ -334,7 +333,6 @@ function mostrarTelefonos(telefonos) {
                         data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/${modelo.replace(/\s+/g, '_')}.jpg" 
                         >Comprar                            
                     </button>    
-                </div>
             </div>
          </div>
         `;
