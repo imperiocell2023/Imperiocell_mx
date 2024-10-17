@@ -216,7 +216,6 @@ function mostrarTelefonos(telefonos) {
         <div class="swiper-container"> 
 <div class="swiper-wrapper"> 
                                  <div class="swiper-slide">     
-            <div class="phone-group" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
             <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
                 <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
                 <div class="phone-info" style="flex: 1;">
@@ -239,8 +238,6 @@ function mostrarTelefonos(telefonos) {
                 </div>
             </div>
              </div>    
-  
-            </div>
 
             </div>
         <div class="swiper-button-next"></div>
@@ -272,7 +269,6 @@ function mostrarTelefonos(telefonos) {
     },
   });
     
-
             // Selecciona todos los botones con la clase 'buy-button'
     const buyButtons = document.querySelectorAll('.buy-button');
     buyButtons.forEach(button => {
@@ -280,7 +276,6 @@ function mostrarTelefonos(telefonos) {
             const phoneName = this.getAttribute('data-phone');
             const phonePrice = this.getAttribute('data-price');
             const phoneImage = this.getAttribute('data-image'); // Extraer la URL de la imagen
-            // Redirige a la segunda página con los datos del teléfono en la URL, incluyendo la imagen
             window.location.href = `comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}&image=${encodeURIComponent(phoneImage)}`;
         });
     });
