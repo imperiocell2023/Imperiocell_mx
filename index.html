@@ -205,7 +205,7 @@ function mostrarTelefonos(telefonos) {
     phoneSection.innerHTML = ''; // Limpiar la sección
 
   // Filter data to exclude rows where "No" is 0
-  const filteredData = datos.filter(row => row[0] !== 0); // Assuming "No" is in the first column (index 0)
+  const filteredData = datos.filter(row => row[15] !== 0); // Assuming "No" is in the first column (index 0)
 
   if (filteredData.length > 0) {
     filteredData.forEach(telefono => {
