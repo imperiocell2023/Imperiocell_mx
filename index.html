@@ -194,10 +194,12 @@ async function obtenerDatosTelefonos() {
     return data.values;
 }
 
-// Llamar a la función y mostrar los datos en la consola (puedes conectarlo con el HTML)
+// Llamar a la función y mostrar los datos filtrados
 obtenerDatosTelefonos().then(datos => {
-    console.log(datos);
-    // Aquí es donde puedes manipular los datos y agregarlos dinámicamente al HTML
+    // Filtrar los datos para excluir las filas donde el valor de "No." es 0
+    const telefonosFiltrados = datos.filter(telefono => telefono[15] !== '0'); // Aquí la columna "No" es la 16, por lo que su índice es 15
+    console.log(telefonosFiltrados); // Puedes verificar los datos filtrados en la consola
+    mostrarTelefonos(telefonosFiltrados); // Mostrar solo los teléfonos filtrados
 });
 
 function mostrarTelefonos(telefonos) {
