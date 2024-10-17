@@ -185,7 +185,7 @@
 
 const SHEET_ID = '16RGHwlzDHBQrBP-xjfXtwu58K5myaAAKbigHxCQt2NA';
 const API_KEY = 'AIzaSyA4PH8UdUEs3Xq06ygGNJoGrImVGHGpi5c';
-const RANGE = 'Precios!Precios'; 
+const RANGE = 'Precios!A1:P19'; 
 
 async function obtenerDatosTelefonos() {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
