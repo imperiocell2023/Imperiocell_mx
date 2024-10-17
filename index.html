@@ -212,10 +212,10 @@ function mostrarTelefonos(telefonos) {
 
   telefonos.forEach(telefono => {
         const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;              
-        const phoneCard = ` src="https://unpkg.com/swiper/swiper-bundle.min.js"
+        const phoneCard = ` 
         <div class="swiper-container"> 
-<div class="swiper-wrapper"> 
-                                 <div class="swiper-slide">     
+  <div class="swiper-wrapper"> 
+ <div class="swiper-slide">     
             <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
                 <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
                 <div class="phone-info" style="flex: 1;">
@@ -235,10 +235,10 @@ function mostrarTelefonos(telefonos) {
                         data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" 
                         >Comprar
                     </button>
+                     <div class="swiper-slide">    </div>
                 </div>
             </div>
              </div>    
-
             </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
