@@ -203,8 +203,13 @@ obtenerDatosTelefonos().then(datos => {
 function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; // Limpiar la sección
-    telefonos.forEach(telefono => {
-        const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web] = telefono;              
+
+  // Filter data to exclude rows where "No." is 0
+  const filteredData = datos.filter(row => row[0] !== 0); // Assuming "No." is in the first column (index 0)
+
+  if (filteredData.length > 0) {
+    filteredData.forEach(telefono => {
+        const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, NO.] = telefono;              
         const phoneCard = `
         <div class="swiper-container"> 
 <div class="swiper-wrapper"> 
