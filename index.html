@@ -252,11 +252,23 @@ function mostrarTelefonos(telefonos) {
         phoneSection.innerHTML += phoneCard;
     });
 
+            // Selecciona todos los botones con la clase 'buy-button'
+    const buyButtons = document.querySelectorAll('.buy-button');
+    buyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const phoneName = this.getAttribute('data-phone');
+            const phonePrice = this.getAttribute('data-price');
+            const phoneImage = this.getAttribute('data-image'); // Extraer la URL de la imagen
+            // Redirige a la segunda página con los datos del teléfono en la URL, incluyendo la imagen
+            window.location.href = `comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}&image=${encodeURIComponent(phoneImage)}`;
+        });
+    });
+
   var swiper = new Swiper('.swiper-container', {
   loop: true, // Esto permite un deslizamiento continuo
   grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
-    slidesPerView: 1, // Muestra una imagen a la vez
-    spaceBetween: 0, // No deja espacio entre las imágenes
+    slidesPerView: 2, // Muestra una imagen a la vez
+    spaceBetween: 20, // No deja espacio entre las imágenes
     loop: true, // Permite que las imágenes se repitan
     navigation: {
       nextEl: '.swiper-button-next',
@@ -271,20 +283,10 @@ function mostrarTelefonos(telefonos) {
       disableOnInteraction: false, // Continúa el autoplay después de la interacción
     },
   });
+
+
+
     
-
-            // Selecciona todos los botones con la clase 'buy-button'
-    const buyButtons = document.querySelectorAll('.buy-button');
-    buyButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const phoneName = this.getAttribute('data-phone');
-            const phonePrice = this.getAttribute('data-price');
-            const phoneImage = this.getAttribute('data-image'); // Extraer la URL de la imagen
-            // Redirige a la segunda página con los datos del teléfono en la URL, incluyendo la imagen
-            window.location.href = `comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}&image=${encodeURIComponent(phoneImage)}`;
-        });
-    });
-
     
 }
         // Llamar la función para mostrar los teléfonos cuando los datos sean obtenidos
