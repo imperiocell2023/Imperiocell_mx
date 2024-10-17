@@ -269,21 +269,33 @@ function mostrarTelefonos(telefonos) {
   grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
     slidesPerView: 2, // Muestra una imagen a la vez
     spaceBetween: 20, // No deja espacio entre las imágenes
-    loop: true, // Permite que las imágenes se repitan
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        loop: true, // Permite ciclo infinito en las diapositivas
+        breakpoints: {
+            640: {
+                slidesPerView: 1,  // Un solo slide visible en pantallas pequeñas
+                spaceBetween: 10,
+            },
+            1024: {
+                slidesPerView: 2,  // Dos slides en pantallas medianas
+                spaceBetween: 20,
+            },
+            1440: {
+                slidesPerView: 3,  // Tres slides en pantallas más grandes
+                spaceBetween: 30,
+            },
     autoplay: {
       delay: 8000, // Desliza automáticamente cada 8 segundos
       disableOnInteraction: false, // Continúa el autoplay después de la interacción
     },
   });
-
 
 
     
