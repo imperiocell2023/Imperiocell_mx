@@ -283,15 +283,6 @@ obtenerDatosTelefonos().then(datos => {
         return telefono.length >= 16 && telefono[15] !== "x";
     });
 
-    // Verificar si los datos filtrados contienen teléfonos válidos
-    if (telefonosFiltrados.length > 0) {
-        console.log('Datos obtenidos:', telefonosFiltrados);
-        mostrarTelefonos(telefonosFiltrados.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
-    } else {
-        console.error('No se obtuvieron datos válidos de la hoja.');
-    }
-}).catch(error => {
-    console.error('Error al obtener los datos:', error);
 });
 
 
