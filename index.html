@@ -245,34 +245,25 @@ function mostrarTelefonos(telefonos) {
         phoneSection.innerHTML += phoneCard;
     });
 
-    const swiper = new Swiper('.swiper-container', {
-        slidesPerView: 2,    // Número de slides visibles al mismo tiempo
-        spaceBetween: 20,    // Espacio entre las tarjetas de teléfonos
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        loop: true, // Permite ciclo infinito en las diapositivas
-        breakpoints: {
-            640: {
-                slidesPerView: 1,  // Un solo slide visible en pantallas pequeñas
-                spaceBetween: 10,
-            },
-            1024: {
-                slidesPerView: 2,  // Dos slides en pantallas medianas
-                spaceBetween: 20,
-            },
-            1440: {
-                slidesPerView: 3,  // Tres slides en pantallas más grandes
-                spaceBetween: 30,
-            }
-        }
-    });
-    
+  var swiper = new Swiper('.swiper-container', {
+  loop: true, // Esto permite un deslizamiento continuo
+  grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
+    slidesPerView: 1, // Muestra una imagen a la vez
+    spaceBetween: 0, // No deja espacio entre las imágenes
+    loop: true, // Permite que las imágenes se repitan
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    autoplay: {
+      delay: 8000, // Desliza automáticamente cada 8 segundos
+      disableOnInteraction: false, // Continúa el autoplay después de la interacción
+    },
+  });    
             // Selecciona todos los botones con la clase 'buy-button'
     const buyButtons = document.querySelectorAll('.buy-button');
     buyButtons.forEach(button => {
