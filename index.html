@@ -196,10 +196,10 @@ async function obtenerDatosTelefonos() {
 
 // Llamar a la función y mostrar los datos filtrados
 obtenerDatosTelefonos().then(datos => {
-    // Filtrar los datos para excluir las filas donde el valor de "NO" sea 0 (o sea tratado como texto '0')
+    // Filtrar los datos para excluir las filas donde el valor de "NO" sea 0
     const telefonosFiltrados = datos.filter(telefono => {
-        // Asegurarse de que la fila tenga al menos 16 columnas y que la columna "NO" (índice 15) no sea '0' o 0
-        return telefono.length >= 16 && telefono[15] && parseInt(telefono[15]) !== 0;
+        // Asegurarse de que la fila tenga al menos 16 columnas y que la columna "NO" sea un número mayor que 0
+        return telefono.length >= 16 && Number(telefono[15]) > 0;
     });
 
     console.log(telefonosFiltrados); // Verificar los datos filtrados en la consola
