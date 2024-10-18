@@ -248,6 +248,44 @@ obtenerDatosTelefonos().then(datos => {
             swiperWrapper.innerHTML += phoneCard;
     });
 
+                // Inicializar Swiper para teléfonos
+        var phonesSwiper = new Swiper('.phones-swiper', {
+            loop: true, // Loop slides
+            grabCursor: true,
+            slidesPerView: 4, // Mostrar 4 slides a la vez
+            spaceBetween: 10, // Espacio entre slides
+            navigation: {
+                nextEl: '.phones-swiper .swiper-button-next',
+                prevEl: '.phones-swiper .swiper-button-prev',
+            },
+            pagination: {
+                el: '.phones-swiper .swiper-pagination',
+                clickable: true,
+            },
+            autoplay: {
+                delay: 8000, // Desliza automáticamente cada 8 segundos
+                disableOnInteraction: false, // Continúa el autoplay después de la interacción
+            },
+            breakpoints: {
+                // Responsive breakpoints
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                },
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 15,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                },
+            },
+        });
  
             // Selecciona todos los botones con la clase 'buy-button'
     const buyButtons = document.querySelectorAll('.buy-button');
