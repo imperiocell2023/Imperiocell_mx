@@ -159,77 +159,65 @@ function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; // Limpiar la sección
 
-let phoneCards = ''; // Aquí guardaremos todas las tarjetas que se generarán dinámicamente
-
-// Supongamos que tienes un array con los datos de los teléfonos
-phonesData.forEach((telefono, index) => {
-    const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
-    
-    // Crea la tarjeta de un teléfono
-    const phoneCard = `
-        <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
-            <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
-            <div class="phone-info" style="flex: 1;">
-                <h2 style="font-size: 1.5em; color: #36a0d1;">${marca} ${modelo}</h2>
-                <p style="font-size: 1em; margin: 7px 0;color: #28a745;"><strong>Precio: ${precio_web}</strong></p>
-                <p style="font-size: 1em; margin: 4px 0;"><strong>Memoria: ${memoria}<br>
-                    Cámara: ${camara} Frontal ${frontal} <br>
-                    Batería: ${bateria}</strong></p>
-                <p style="font-size: 0.9em; color: #555;">
-                    Resolución: ${resolucion}<br>
-                    Procesador: ${procesador}<br>
-                    Cargador: ${cargador} </p>
-                <button id="buy-button" style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;"
-                    class="buy-button"               
-                    data-phone="${marca} <br> ${modelo} <br> Cámara: ${camara} Frontal ${frontal} <br> Batería: ${bateria}" 
-                    data-price="${precio_web}"
-                    data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" 
-                    >Comprar
-                </button>
+  telefonos.forEach(telefono => {
+        const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;              
+        const phoneCard = ` 
+                    <section id="phones">   
+<div class="swiper-container"> 
+<div class="swiper-wrapper"> 
+ <div class="swiper-slide">     
+            <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
+                <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
+                <div class="phone-info" style="flex: 1;">
+                    <h2 style="font-size: 1.5em; color: #36a0d1;">${marca} ${modelo}</h2>
+                    <p style="font-size: 1em; margin: 7px 0;color: #28a745;"><strong>Precio: ${precio_web}</strong></p>
+                    <p style="font-size: 1em; margin: 4px 0;"><strong>Memoria: ${memoria}<br>
+                        Cámara: ${camara} Frontal ${frontal} <br>
+                        Batería: ${bateria}</strong></p>
+                    <p style="font-size: 0.9em; color: #555;">
+                        Resolución: ${resolucion}<br>
+                        Procesador: ${procesador}<br>
+                        Cargador: ${cargador} </p>
+                    <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;"
+                        class="buy-button"               
+                        data-phone="${marca} <br> ${modelo} <br> Cámara: ${camara} Frontal ${frontal} <br> Batería: ${bateria} " 
+                        data-price="${precio_web}"
+                        data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" 
+                        >Comprar
+                    </button>
+                </div>
             </div>
-        </div>
-    `;
-
-    // Agrupar cada 2 tarjetas en un solo slide
-    if (index % 2 === 0) {
-        phoneCards += `<div class="swiper-slide"><div class="phone-group" style="display: flex; justify-content: space-between; margin-bottom: 10px;">`;
-    }
-
-    phoneCards += phoneCard; // Añadir la tarjeta al slide
-
-    if (index % 2 === 1 || index === phonesData.length - 1) {
-        phoneCards += `</div></div>`; // Cerrar el grupo de tarjetas y el slide después de 2 tarjetas
-    }
-});
-
-// Insertar las tarjetas en el carrusel
-document.getElementById('phones').innerHTML = `
-<section id="phones">   
-    <div class="swiper-container"> 
-        <div class="swiper-wrapper">
-            ${phoneCards} <!-- Aquí se agregan todas las tarjetas generadas dinámicamente -->
-        </div>
+            </div>
+            </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
     </div>
-</section>`;
+            </section>
+        `;
 
         phoneSection.innerHTML += phoneCard;
     });
 
-var swiper = new Swiper('.swiper-container', {
-    slidesPerView: 2, // Número de tarjetas a mostrar
-    spaceBetween: 30, // Espacio entre tarjetas
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
+  var swiper = new Swiper('.swiper-container', {
+  loop: true, // Esto permite un deslizamiento continuo
+  grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
+    slidesPerView: 1, // Muestra una imagen a la vez
+    spaceBetween: 0, // No deja espacio entre las imágenes
+    loop: true, // Permite que las imágenes se repitan
     navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
     },
-});
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    autoplay: {
+      delay: 8000, // Desliza automáticamente cada 8 segundos
+      disableOnInteraction: false, // Continúa el autoplay después de la interacción
+    },
+  });  
 
 
     
