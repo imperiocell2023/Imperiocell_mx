@@ -49,7 +49,7 @@
     </div>
     </section>
 
-    <section id="phones"> 
+
 <div class="swiper-container"> 
 <div class="swiper-wrapper"> 
 <div class="swiper-slide">
@@ -148,7 +148,7 @@
         <div class="swiper-pagination"></div>
     </div>
 
-    </section>
+
     <div style="text-align: center; margin: 20px 0;">
         <a href="https://maps.app.goo.gl/cDCR66WVcdswPPE7A" target="_blank" style="padding: 15px 25px; background-color: #2c3aab; color: white; text-decoration: none; font-size: 20px; border-radius: 5px; display: inline-block;">
             Encuéntranos aquí
@@ -205,13 +205,14 @@ obtenerDatosTelefonos().then(datos => {
     mostrarTelefonos(telefonosFiltrados); // Mostrar solo los teléfonos filtrados
 });
 
-function mostrarTelefonos(telefonos) {
-    const phoneSection = document.getElementById('phones');
-    phoneSection.innerHTML = ''; // Limpiar la sección
+    function mostrarTelefonos(telefonos) {
+        const swiperWrapper = document.querySelector('.phones-swiper .swiper-wrapper');
+        swiperWrapper.innerHTML = ''; // Limpiar swiper-wrapper
 
   telefonos.forEach(telefono => {
         const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;              
         const phoneCard = ` 
+            <section id="phones"> 
 <div class="swiper-container"> 
 <div class="swiper-wrapper"> 
  <div class="swiper-slide">     
@@ -242,9 +243,9 @@ function mostrarTelefonos(telefonos) {
         <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
     </div>
+        </section>
         `;
-
-        phoneSection.innerHTML += phoneCard;
+            swiperWrapper.innerHTML += phoneCard;
     });
 
  
