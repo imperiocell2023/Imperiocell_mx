@@ -195,20 +195,19 @@ obtenerDatosTelefonos().then(datos => {
     // Filtrar los datos para excluir las filas donde el valor de la columna 'No.' sea "x"
     const telefonosFiltrados = datos.filter(telefono => {
         // Asegurarse de que la fila tenga al menos 16 columnas y que la columna 'No.' no sea "x"
-        return telefono.length >= 16 && telefono[15] !== "x";
+        return telefono[15] !== "x";
     });
 
     console.log(telefonosFiltrados); // Verificar los datos filtrados en la consola
     mostrarTelefonos(telefonosFiltrados); // Mostrar solo los teléfonos filtrados
 });
-
 function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; // Limpiar la sección
 
   telefonos.forEach(telefono => {
         const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;              
-        const phoneCard = ` <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        const phoneCard = ` 
                     <section id="phones">   
 <div class="swiper-container"> 
 <div class="swiper-wrapper"> 
@@ -246,7 +245,6 @@ function mostrarTelefonos(telefonos) {
         phoneSection.innerHTML += phoneCard;
     });
 
- 
             // Selecciona todos los botones con la clase 'buy-button'
     const buyButtons = document.querySelectorAll('.buy-button');
     buyButtons.forEach(button => {
