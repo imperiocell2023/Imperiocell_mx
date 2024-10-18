@@ -24,12 +24,10 @@
     </nav>
                 </div>
 </header>
-  <!-- Swiper JS -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>  <!-- Swiper JS -->
 <div class="swiper-container"> 
 <div class="swiper-wrapper"> 
 <div class="swiper-slide">
-
     <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/Portada short.jpg" alt="Imagen a lo largo" style="width: 100%; height: 88%;">
 </div> 
 <div class="swiper-slide">
@@ -211,6 +209,7 @@ function mostrarTelefonos(telefonos) {
   telefonos.forEach(telefono => {
         const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;              
         const phoneCard = ` 
+                    <section id="phones"> src="https://unpkg.com/swiper/swiper-bundle.min.js
 <div class="swiper-container"> 
 <div class="swiper-wrapper"> 
  <div class="swiper-slide">     
@@ -241,6 +240,7 @@ function mostrarTelefonos(telefonos) {
         <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
     </div>
+            </section>
         `;
 
         phoneSection.innerHTML += phoneCard;
