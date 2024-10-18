@@ -162,8 +162,8 @@ function mostrarTelefonos(telefonos) {
 let phoneCards = ''; // Aquí guardaremos todas las tarjetas que se generarán dinámicamente
 
 // Supongamos que tienes un array con los datos de los teléfonos
-phonesData.forEach((phone, index) => {
-    const { marca, modelo, precio_web, memoria, camara, frontal, bateria, resolucion, procesador, cargador } = phone;
+phonesData.forEach((telefono, index) => {
+    const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
     
     // Crea la tarjeta de un teléfono
     const phoneCard = `
