@@ -26,9 +26,9 @@
 </header>
   <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<div class="swiper-container"> 
-<div class="swiper-wrapper"> 
-<div class="swiper-slide">
+<div class="swiper-container portada-swiper"> 
+    <div class="swiper-wrapper"> 
+        <div class="swiper-slide">
 
     <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/Portada short.jpg" alt="Imagen a lo largo" style="width: 100%; height: 88%;">
 </div> 
@@ -318,25 +318,27 @@ obtenerDatosTelefonos().then(datos => {
 });
 
 
-  var swiper = new Swiper('.swiper-container', {
-  loop: true, // Esto permite un deslizamiento continuo
-  grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
-    slidesPerView: 1, // Muestra una imagen a la vez
-    spaceBetween: 0, // No deja espacio entre las imágenes
-    loop: true, // Permite que las imágenes se repitan
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    autoplay: {
-      delay: 8000, // Desliza automáticamente cada 8 segundos
-      disableOnInteraction: false, // Continúa el autoplay después de la interacción
-    },
-  });   
+    // Inicializar Swiper para portada después de que el DOM esté cargado
+    document.addEventListener('DOMContentLoaded', function () {
+        var portadaSwiper = new Swiper('.portada-swiper', {
+            loop: true, // Permite un deslizamiento continuo
+            grabCursor: true,
+            slidesPerView: 1,
+            spaceBetween: 0,
+            navigation: {
+                nextEl: '.portada-swiper .swiper-button-next',
+                prevEl: '.portada-swiper .swiper-button-prev',
+            },
+            pagination: {
+                el: '.portada-swiper .swiper-pagination',
+                clickable: true,
+            },
+            autoplay: {
+                delay: 8000, // Desliza automáticamente cada 8 segundos
+                disableOnInteraction: false, // Continúa el autoplay después de la interacción
+            },
+        });
+    });
 
 </script>
 <footer>
