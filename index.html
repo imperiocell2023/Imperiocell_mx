@@ -26,9 +26,9 @@
 </header>
   <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<div class="swiper-container portada-swiper"> 
-    <div class="swiper-wrapper"> 
-        <div class="swiper-slide">
+<div class="swiper-container"> 
+<div class="swiper-wrapper"> 
+<div class="swiper-slide">
 
     <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/Portada short.jpg" alt="Imagen a lo largo" style="width: 100%; height: 88%;">
 </div> 
@@ -49,7 +49,7 @@
     </div>
     </section>
 
-
+    <section id="phones"> 
 <div class="swiper-container"> 
 <div class="swiper-wrapper"> 
 <div class="swiper-slide">
@@ -148,7 +148,7 @@
         <div class="swiper-pagination"></div>
     </div>
 
-
+    </section>
     <div style="text-align: center; margin: 20px 0;">
         <a href="https://maps.app.goo.gl/cDCR66WVcdswPPE7A" target="_blank" style="padding: 15px 25px; background-color: #2c3aab; color: white; text-decoration: none; font-size: 20px; border-radius: 5px; display: inline-block;">
             Encuéntranos aquí
@@ -186,7 +186,6 @@
 const SHEET_ID = '16RGHwlzDHBQrBP-xjfXtwu58K5myaAAKbigHxCQt2NA';
 const API_KEY = 'AIzaSyA4PH8UdUEs3Xq06ygGNJoGrImVGHGpi5c';
 const RANGE = 'Precios!A1:P19'; 
-
 async function obtenerDatosTelefonos() {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
     const response = await fetch(url);
@@ -205,14 +204,13 @@ obtenerDatosTelefonos().then(datos => {
     mostrarTelefonos(telefonosFiltrados); // Mostrar solo los teléfonos filtrados
 });
 
-    function mostrarTelefonos(telefonos) {
-        const swiperWrapper = document.querySelector('.phones-swiper .swiper-wrapper');
-        swiperWrapper.innerHTML = ''; // Limpiar swiper-wrapper
+function mostrarTelefonos(telefonos) {
+    const phoneSection = document.getElementById('phones');
+    phoneSection.innerHTML = ''; // Limpiar la sección
 
   telefonos.forEach(telefono => {
         const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;              
         const phoneCard = ` 
-            <section id="phones"> 
 <div class="swiper-container"> 
 <div class="swiper-wrapper"> 
  <div class="swiper-slide">     
@@ -243,49 +241,11 @@ obtenerDatosTelefonos().then(datos => {
         <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
     </div>
-        </section>
         `;
-            swiperWrapper.innerHTML += phoneCard;
+
+        phoneSection.innerHTML += phoneCard;
     });
 
-                // Inicializar Swiper para teléfonos
-        var phonesSwiper = new Swiper('.phones-swiper', {
-            loop: true, // Loop slides
-            grabCursor: true,
-            slidesPerView: 4, // Mostrar 4 slides a la vez
-            spaceBetween: 10, // Espacio entre slides
-            navigation: {
-                nextEl: '.phones-swiper .swiper-button-next',
-                prevEl: '.phones-swiper .swiper-button-prev',
-            },
-            pagination: {
-                el: '.phones-swiper .swiper-pagination',
-                clickable: true,
-            },
-            autoplay: {
-                delay: 8000, // Desliza automáticamente cada 8 segundos
-                disableOnInteraction: false, // Continúa el autoplay después de la interacción
-            },
-            breakpoints: {
-                // Responsive breakpoints
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 10,
-                },
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 10,
-                },
-                768: {
-                    slidesPerView: 3,
-                    spaceBetween: 15,
-                },
-                1024: {
-                    slidesPerView: 4,
-                    spaceBetween: 20,
-                },
-            },
-        });
  
             // Selecciona todos los botones con la clase 'buy-button'
     const buyButtons = document.querySelectorAll('.buy-button');
@@ -318,27 +278,25 @@ obtenerDatosTelefonos().then(datos => {
 });
 
 
-    // Inicializar Swiper para portada después de que el DOM esté cargado
-    document.addEventListener('DOMContentLoaded', function () {
-        var portadaSwiper = new Swiper('.portada-swiper', {
-            loop: true, // Permite un deslizamiento continuo
-            grabCursor: true,
-            slidesPerView: 1,
-            spaceBetween: 0,
-            navigation: {
-                nextEl: '.portada-swiper .swiper-button-next',
-                prevEl: '.portada-swiper .swiper-button-prev',
-            },
-            pagination: {
-                el: '.portada-swiper .swiper-pagination',
-                clickable: true,
-            },
-            autoplay: {
-                delay: 8000, // Desliza automáticamente cada 8 segundos
-                disableOnInteraction: false, // Continúa el autoplay después de la interacción
-            },
-        });
-    });
+  var swiper = new Swiper('.swiper-container', {
+  loop: true, // Esto permite un deslizamiento continuo
+  grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
+    slidesPerView: 1, // Muestra una imagen a la vez
+    spaceBetween: 0, // No deja espacio entre las imágenes
+    loop: true, // Permite que las imágenes se repitan
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    autoplay: {
+      delay: 8000, // Desliza automáticamente cada 8 segundos
+      disableOnInteraction: false, // Continúa el autoplay después de la interacción
+    },
+  });   
 
 </script>
 <footer>
