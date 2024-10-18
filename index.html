@@ -93,7 +93,7 @@
             </div>
         </div>
             </div>
-
+  </div>
    </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -146,9 +146,7 @@ async function obtenerDatosTelefonos() {
 }
 
 obtenerDatosTelefonos().then(datos => {
-    // Filtrar los datos para excluir las filas donde el valor de la columna 'No.' sea "x"
     const telefonosFiltrados = datos.filter(telefono => {
-        // Asegurarse de que la fila tenga al menos 16 columnas y que la columna 'No.' no sea "x"
         return telefono[15] !== "x";
     });
 
