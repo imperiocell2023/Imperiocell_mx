@@ -164,6 +164,7 @@ function mostrarTelefonos(telefonos) {
 <div class="swiper-container"> 
 <div class="swiper-wrapper"> 
  <div class="swiper-slide">     
+     <div class="phone-group" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
             <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
                 <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
                 <div class="phone-info" style="flex: 1;">
@@ -185,6 +186,27 @@ function mostrarTelefonos(telefonos) {
                     </button>
                 </div>
             </div>
+            <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
+                <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
+                <div class="phone-info" style="flex: 1;">
+                    <h2 style="font-size: 1.5em; color: #36a0d1;">${marca} ${modelo}</h2>
+                    <p style="font-size: 1em; margin: 7px 0;color: #28a745;"><strong>Precio: ${precio_web}</strong></p>
+                    <p style="font-size: 1em; margin: 4px 0;"><strong>Memoria: ${memoria}<br>
+                        Cámara: ${camara} Frontal ${frontal} <br>
+                        Batería: ${bateria}</strong></p>
+                    <p style="font-size: 0.9em; color: #555;">
+                        Resolución: ${resolucion}<br>
+                        Procesador: ${procesador}<br>
+                        Cargador: ${cargador} </p>
+                    <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;"
+                        class="buy-button"               
+                        data-phone="${marca} <br> ${modelo} <br> Cámara: ${camara} Frontal ${frontal} <br> Batería: ${bateria} " 
+                        data-price="${precio_web}"
+                        data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" 
+                        >Comprar
+                    </button>
+                </div>
+            </div>                 </div>           
             </div>
             </div>
         <div class="swiper-button-next"></div>
@@ -206,9 +228,7 @@ function mostrarTelefonos(telefonos) {
         });
     });    
 }
-// Llamar la función para mostrar los teléfonos cuando los datos sean obtenidos
 obtenerDatosTelefonos().then(datos => { 
-    // Filtrar los datos para excluir las filas donde el valor de la columna 'No.' sea "x"
     const telefonosFiltrados = datos.filter(telefono => {
         return telefono[15] !== "x";
     });
@@ -218,8 +238,8 @@ obtenerDatosTelefonos().then(datos => {
   var swiper = new Swiper('.swiper-container', {
   loop: true, // Esto permite un deslizamiento continuo
   grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
-    slidesPerView: 1, // Muestra una imagen a la vez
-    spaceBetween: 0, // No deja espacio entre las imágenes
+    slidesPerView: 3, // Muestra una imagen a la vez
+    spaceBetween: 10px, // No deja espacio entre las imágenes
     loop: true, // Permite que las imágenes se repitan
     navigation: {
       nextEl: '.swiper-button-next',
