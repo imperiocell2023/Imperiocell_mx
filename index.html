@@ -201,7 +201,7 @@ function mostrarTelefonos(telefonos) {
 
 var swiper = new Swiper('.swiper-container', {
     slidesPerView: 4, // Mostrar 4 tarjetas al mismo tiempo
-    spaceBetween: 10, // Espacio entre tarjetas
+    spaceBetween: 10, // Reduce el espacio entre las tarjetas
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
@@ -210,19 +210,18 @@ var swiper = new Swiper('.swiper-container', {
         el: '.swiper-pagination',
         clickable: true,
     },
-    // Responsiveness: Ajustar para pantallas pequeñas
     breakpoints: {
         640: {
-            slidesPerView: 1,
+            slidesPerView: 1, // 1 tarjeta en pantallas pequeñas
             spaceBetween: 20,
         },
         768: {
-            slidesPerView: 2,
+            slidesPerView: 2, // 2 tarjetas en pantallas medianas
             spaceBetween: 20,
         },
         1024: {
-            slidesPerView: 4,
-            spaceBetween: 10,
+            slidesPerView: 4, // 4 tarjetas en pantallas grandes
+            spaceBetween: 10, // Espacio reducido
         },
     },
 });
