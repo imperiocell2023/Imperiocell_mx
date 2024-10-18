@@ -199,27 +199,6 @@ function mostrarTelefonos(telefonos) {
         phoneSection.innerHTML += phoneCard;
     });
 
-            // Selecciona todos los botones con la clase 'buy-button'
-    const buyButtons = document.querySelectorAll('.buy-button');
-    buyButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const phoneName = this.getAttribute('data-phone');
-            const phonePrice = this.getAttribute('data-price');
-            const phoneImage = this.getAttribute('data-image'); // Extraer la URL de la imagen
-            window.location.href = `comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}&image=${encodeURIComponent(phoneImage)}`;
-        });
-    });    
-}
-// Llamar la función para mostrar los teléfonos cuando los datos sean obtenidos
-obtenerDatosTelefonos().then(datos => { 
-    // Filtrar los datos para excluir las filas donde el valor de la columna 'No.' sea "x"
-    const telefonosFiltrados = datos.filter(telefono => {
-        return telefono[15] !== "x";
-    });
-        mostrarTelefonos(telefonosFiltrados.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
-});
-
-
 var swiper = new Swiper('.swiper-container', {
     slidesPerView: 4, // Mostrar 4 tarjetas al mismo tiempo
     spaceBetween: 10, // Espacio entre tarjetas
@@ -247,6 +226,26 @@ var swiper = new Swiper('.swiper-container', {
         },
     },
 });
+    
+    const buyButtons = document.querySelectorAll('.buy-button');
+    buyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const phoneName = this.getAttribute('data-phone');
+            const phonePrice = this.getAttribute('data-price');
+            const phoneImage = this.getAttribute('data-image'); // Extraer la URL de la imagen
+            window.location.href = `comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}&image=${encodeURIComponent(phoneImage)}`;
+        });
+    });    
+}
+// Llamar la función para mostrar los teléfonos cuando los datos sean obtenidos
+obtenerDatosTelefonos().then(datos => { 
+    // Filtrar los datos para excluir las filas donde el valor de la columna 'No.' sea "x"
+    const telefonosFiltrados = datos.filter(telefono => {
+        return telefono[15] !== "x";
+    });
+        mostrarTelefonos(telefonosFiltrados.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
+});
+
 
 
 </script>
