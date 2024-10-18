@@ -195,32 +195,9 @@ function mostrarTelefonos(telefonos) {
     </div>
             </section>
         `;
+       phoneSection.innerHTML += phoneCard;
+    }); 
 
-        phoneSection.innerHTML += phoneCard;
-    });
-
-  var swiper = new Swiper('.swiper-container', {
-  loop: true, // Esto permite un deslizamiento continuo
-  grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
-    slidesPerView: 1, // Muestra una imagen a la vez
-    spaceBetween: 0, // No deja espacio entre las imágenes
-    loop: true, // Permite que las imágenes se repitan
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    autoplay: {
-      delay: 8000, // Desliza automáticamente cada 8 segundos
-      disableOnInteraction: false, // Continúa el autoplay después de la interacción
-    },
-  });  
-
-
-    
     const buyButtons = document.querySelectorAll('.buy-button');
     buyButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -240,7 +217,25 @@ obtenerDatosTelefonos().then(datos => {
         mostrarTelefonos(telefonosFiltrados.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
 });
 
-
+  var swiper = new Swiper('.swiper-container', {
+  loop: true, // Esto permite un deslizamiento continuo
+  grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
+    slidesPerView: 1, // Muestra una imagen a la vez
+    spaceBetween: 0, // No deja espacio entre las imágenes
+    loop: true, // Permite que las imágenes se repitan
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    autoplay: {
+      delay: 8000, // Desliza automáticamente cada 8 segundos
+      disableOnInteraction: false, // Continúa el autoplay después de la interacción
+    },
+  }); 
 
 </script>
 <footer>
