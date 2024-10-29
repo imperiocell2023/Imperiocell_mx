@@ -22,7 +22,7 @@
             <li><a href="#contact">Contacto</a></li>
         </ul>
     </nav>
-                </div>
+ </div>
 </header>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>  
 <div class="swiper-container"> 
@@ -46,44 +46,7 @@
         <button id="searchButton">Buscar</button>
     </div>
     </section>
-<div class="swiper-container"> 
-<div class="swiper-wrapper"> 
-<div class="swiper-slide">
-    <div class="phone-group" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-       <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
-            <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/Galaxy A25 5G.jpg" alt="Samsung Galaxy A25 5G" style="width: 300px; height: auto; margin-right: 20px;">  
-            <div class="phone-info" style="flex: 1;">
-                <h2 style="font-size: 1.5em; color: #36a0d1;">Samsung Galaxy A25 5G</h2>
-                <p style="font-size: 1em; margin: 7px 0;color: #28a745;"><strong>Precio: $5,299</strong></p>
-                <button id="buy-button" style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: auto;"
-                    class="buy-button" 
-                    data-phone="Samsung Galaxy A25 5G" 
-                    data-price="$5,299"
-                    data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/Galaxy A25 5G.jpg" 
-                >Comprar</button>
-            </div>
-        </div>
-        <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
-            <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/Moto G84 5G.jpg" alt="Motorola Moto G84 5G" style="width: 300px; height: auto; margin-right: 20px;">  
-            <div class="phone-info" style="flex: 1;">
-                <h2 style="font-size: 1.5em; color: #36a0d1;">Motorola Moto G84 5G</h2>
-                <p style="font-size: 1em; margin: 7px 0; color: #28a745;"><strong>Precio: $5,599</strong></p>
-                <button id="buy-button" style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer;"
-                    class="buy-button" 
-                    data-phone="Motorola Moto G84 5G" 
-                    data-price="$5,599"
-                    data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/Moto G84 5G.jpg"
-                    >Comprar</button>
-            </div>
-        </div>
-            </div>
-  </div>
-   </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-    </div>
-
+  <section id="phones">  
     </section>
     <div style="text-align: center; margin: 20px 0;">
         <a href="https://maps.app.goo.gl/cDCR66WVcdswPPE7A" target="_blank" style="padding: 15px 25px; background-color: #2c3aab; color: white; text-decoration: none; font-size: 20px; border-radius: 5px; display: inline-block;">
@@ -144,7 +107,7 @@ function mostrarTelefonos(telefonos) {
   telefonos.forEach(telefono => {
         const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;              
         const phoneCard = ` 
-                    <section id="phones">   
+       <section id="phones">   
 <div class="swiper-container"> 
 <div class="swiper-wrapper"> 
  <div class="swiper-slide">     
@@ -190,7 +153,8 @@ function mostrarTelefonos(telefonos) {
                         >Comprar
                     </button>
                 </div>
-            </div>                 </div>           
+            </div>                 
+            </div>           
             </div>
             </div>
         <div class="swiper-button-next"></div>
