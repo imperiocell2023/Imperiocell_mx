@@ -147,7 +147,7 @@ async function obtenerDatosTelefonos() {
 
 obtenerDatosTelefonos().then(datos => {
     const telefonosFiltrados = datos.filter(telefono => {
-        return telefono[15] !== 0;
+        return telefono[15] !== "x";
     });
 
     console.log(telefonosFiltrados); // Verificar los datos filtrados en la consola
@@ -230,7 +230,7 @@ function mostrarTelefonos(telefonos) {
 }
 obtenerDatosTelefonos().then(datos => { 
     const telefonosFiltrados = datos.filter(telefono => {
-        return telefono[15] !== 0;
+        return telefono[15] !== "x";
     });
         mostrarTelefonos(telefonosFiltrados.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
 });
