@@ -24,7 +24,7 @@
     </nav>
                 </div>
 </header>
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>  
 <div class="swiper-container"> 
 <div class="swiper-wrapper"> 
 <div class="swiper-slide">
@@ -197,7 +197,7 @@ function mostrarTelefonos(telefonos) {
                         Resolución: ${resolucion}<br>
                         Procesador: ${procesador}<br>
                         Cargador: ${cargador} </p>
-                        <p style="font-size: 1em; margin: 5px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
+                        <p style="font-size: 1em; margin: 3px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
                     <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;"
                         class="buy-button"               
                         data-phone="${marca}  ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal}<br> Batería: ${bateria} <br> Extras: ${extras}" 
@@ -223,7 +223,7 @@ function mostrarTelefonos(telefonos) {
         button.addEventListener('click', function() {
             const phoneName = this.getAttribute('data-phone');
             const phonePrice = this.getAttribute('data-price');
-            const phoneImage = this.getAttribute('data-image'); // Extraer la URL de la imagen
+            const phoneImage = this.getAttribute('data-image'); 
             window.location.href = `comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}&image=${encodeURIComponent(phoneImage)}`;
         });
     });    
