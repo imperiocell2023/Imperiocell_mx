@@ -32,8 +32,7 @@
             const params = {};
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
-            
-            // Extraer los parámetros de la URL
+
             params.phone = urlParams.get('phone');
             params.price = urlParams.get('price');
             params.image = urlParams.get('image');  
@@ -45,11 +44,10 @@
             const params = getQueryParams();
             // Asignar la imagen del teléfono
             document.getElementById('phone-image').src = params.image;
-            // Mostrar el nombre y precio del teléfono
             const phoneDetailsDiv = document.getElementById('phone-details');
             phoneDetailsDiv.innerHTML = `
-                <p style="font-size: 1em; margin: 4px 0;"><strong>${params.phone}</strong></p>
-                <p style="font-size: 1em; margin: 7px 0;color: #28a745;"><strong> ${params.price}</p>
+                <p style="font-size: 0.9em; margin: 3px 0;"><strong>${params.phone}</strong></p>
+                <p style="font-size: 0.8em; margin: 7px 0;color: #28a745;"><strong> ${params.price}</p>
                 <form id="purchase-form" class="phone-info">
                     <h4>Elige cómo estrenar 🤩</h4>    
                     <label>
@@ -61,7 +59,6 @@
                     <input type="submit" value="Continuar">
                 </form>  
             `;
-
             // Mover el listener dentro del bloque DOMContentLoaded
             document.getElementById('purchase-form').addEventListener('submit', function (event) {
                 event.preventDefault();
@@ -77,7 +74,6 @@
 <br>
             *Nota:También puedes dejar un apartado y acordar lo demás*
         `;
-        // Crear y mostrar el pop-up
         const popup = window.open('', 'popup', 'width=600,height=400');
         popup.document.write(`
             <html>
