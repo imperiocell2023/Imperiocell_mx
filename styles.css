@@ -81,7 +81,7 @@ width: 100%;
 
 .swiper-button-next,
 .swiper-button-prev {
-    color: #36a0d1; /* Cambia el color según tu diseño */
+    color: #36a0d1; 
     top: 50%; /* Alinea verticalmente en el centro del contenedor */
     transform: translateY(-50%); /* Ajusta la posición */
     z-index: 10; /* Asegura que las flechas estén por encima de otras capas */
