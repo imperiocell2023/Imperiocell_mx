@@ -147,7 +147,7 @@ async function obtenerDatosTelefonos() {
 
 obtenerDatosTelefonos().then(datos => {
     const telefonosFiltrados = datos.filter(telefono => {
-        return telefono[15] !== "x";
+        return telefono[15] !== 0;
     });
 
     console.log(telefonosFiltrados); // Verificar los datos filtrados en la consola
@@ -176,7 +176,7 @@ function mostrarTelefonos(telefonos) {
                         Resolución: ${resolucion}<br>
                         Procesador: ${procesador}<br>
                         Cargador: ${cargador} </p>
-                        <p style="font-size: 1em; margin: 7px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
+                        <p style="font-size: 1em; margin: 7px 0;color: #28a745;"><strong> ${precio_web}</strong></p><br>
                     <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;"
                         class="buy-button"               
                         data-phone="${marca}  ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal} <br> Batería: ${bateria} <br> Extras: ${extras} " 
@@ -197,7 +197,7 @@ function mostrarTelefonos(telefonos) {
                         Resolución: ${resolucion}<br>
                         Procesador: ${procesador}<br>
                         Cargador: ${cargador} </p>
-                        <p style="font-size: 1em; margin: 3px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
+                        <p style="font-size: 1em; margin: 3px 0;color: #28a745;"><strong> ${precio_web}</strong></p><br>
                     <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;"
                         class="buy-button"               
                         data-phone="${marca}  ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal}<br> Batería: ${bateria} <br> Extras: ${extras}" 
@@ -230,7 +230,7 @@ function mostrarTelefonos(telefonos) {
 }
 obtenerDatosTelefonos().then(datos => { 
     const telefonosFiltrados = datos.filter(telefono => {
-        return telefono[15] !== "x";
+        return telefono[15] !== 0;
     });
         mostrarTelefonos(telefonosFiltrados.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
 });
