@@ -42,7 +42,7 @@
         <h2  > Tenemos el celular perfecto para ti 😃 </h2>
         <h3  > ¡Ya puedes estrenar a pagos sin tarjeta el mismo día! </h3> <br>
     <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Buscar teléfono..." />
+        <input type="text" id="searchInput" placeholder="Buscar..." />
         <button id="searchButton">Buscar</button>
     </div>
     </section>
@@ -62,7 +62,6 @@
     function filterPhones() {
         const searchInput = document.getElementById('searchInput').value.toLowerCase();
         const phoneCards = document.querySelectorAll('.phone-card');
-
         phoneCards.forEach(card => {
             const phoneName = card.querySelector('h2').textContent.toLowerCase();
             if (phoneName.includes(searchInput)) {
