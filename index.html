@@ -118,8 +118,8 @@ function mostrarTelefonos(telefonos) {
         // Para asegurarnos de que no se repitan, manejamos los teléfonos en pares
         const siguienteTelefono = telefonos[index + 1]; // Obtenemos el siguiente teléfono de la lista
         if (!siguienteTelefono) return; // Si no hay más teléfonos, paramos el bucle
-        const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
-        const [marca2, modelo2, memoria2, camara2, frontal2, precio2, enganche2, total2, semanal2, bateria2, resolucion2, procesador2, extras2, cargador2, precio_web2, no2] = siguienteTelefono;
+        const [marca, modelo, memoria, camara, frontal, precio, enganche, total, pagos, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
+        const [marca2, modelo2, memoria2, camara2, frontal2, precio2, enganche2, total2, pagos2, bateria2, resolucion2, procesador2, extras2, cargador2, precio_web2, no2] = siguienteTelefono;
 
         const phoneCard = ` 
        <section id="phones">   
@@ -140,7 +140,7 @@ function mostrarTelefonos(telefonos) {
                         Cargador: ${cargador} </p>
                         <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
                         <p style="font-size: 17px; color: #36a0d1;"> A crédito desde: </p>
-    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${semanal}</td> </tr></table><br>
+    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${pagos}</td> </tr></table><br>
                     <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;" class="buy-button"
                         data-phone="${marca}  ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal} <br> Batería: ${bateria} <br> Extras: ${extras} " 
                         data-price="${precio_web}"
@@ -160,7 +160,7 @@ function mostrarTelefonos(telefonos) {
                         Cargador: ${cargador2} </p>
                         <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web2}</strong></p>
                         <p style="font-size: 17px; color: #36a0d1;"> A crédito desde: </p>
-    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche2}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${semanal2}</td> </tr></table><br>
+    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche2}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${pagos2}</td> </tr></table><br>
                     <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;" class="buy-button"              
                         data-phone="${marca2}  ${modelo2} <br> Memoria: ${memoria2} <br> Cámara: ${camara2} Frontal: ${frontal2} <br> Batería: ${bateria2} <br> Extras: ${extras2} " 
                         data-price="${precio_web2}"
@@ -182,7 +182,7 @@ function mostrarTelefonos(telefonos) {
                         Cargador: ${cargador} </p>
                         <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
                         <p style="font-size: 17px; color: #36a0d1;"> A crédito desde: </p>
-    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${semanal}</td> </tr></table><br>
+    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${pagos}</td> </tr></table><br>
                     <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;" class="buy-button"             
                         data-phone="${marca}  ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal} <br> Batería: ${bateria} <br> Extras: ${extras}" 
                         data-price="${precio_web}"
@@ -201,7 +201,7 @@ function mostrarTelefonos(telefonos) {
                         Cargador: ${cargador} </p>
                         <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
                         <p style="font-size: 17px; color: #36a0d1;"> A crédito desde: </p>
-    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${semanal}</td> </tr></table><br>
+    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${pagos}</td> </tr></table><br>
                     <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;" class="buy-button"         
                         data-phone="${marca}  ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal} <br> Batería: ${bateria} <br> Extras: ${extras} " 
                         data-price="${precio_web}"
