@@ -61,25 +61,25 @@ function filterPhones() {
     const swiperButtons = document.querySelectorAll('.swiper-button-next, .swiper-button-prev');
     let hasVisible = false;
 
-phoneCards.forEach(card => {
-    const phoneName = card.querySelector('h2').textContent.toLowerCase();
-    if (phoneName.includes(searchInput)) {
-        card.style.display = 'flex'; // Mostrar tarjeta
-        hasVisible = true; // Se encontró al menos una tarjeta visible
-    } else {
-        card.style.display = 'none'; // Ocultar tarjeta y eliminar espacio
-    }
-});
-    // Cambia el display de los botones
+    phoneCards.forEach(card => {
+        const phoneName = card.querySelector('h2').textContent.toLowerCase();
+        if (phoneName.includes(searchInput)) {
+            card.style.display = 'flex'; // Mostrar tarjeta
+            hasVisible = true; // Se encontró al menos una tarjeta visible
+        } else {
+            card.style.display = 'none'; // Ocultar tarjeta y eliminar espacio
+        }
+    });
+    // Ocultar o mostrar los botones del swiper
     swiperButtons.forEach(button => {
-        button.style.display = hasVisible ? 'none' : 'block'; // Ocultar o mostrar botones
+        button.style.display = hasVisible ? 'block' : 'none'; // Mostrar botones solo si hay tarjetas visibles
     });
 
     // Si hay tarjetas visibles, desplazarse a la sección de teléfonos
     if (hasVisible) {
         document.getElementById('phones').scrollIntoView({ behavior: 'smooth' });
     }
-}
+}    
 
 document.getElementById('searchButton').addEventListener('click', function() {
     filterPhones();
