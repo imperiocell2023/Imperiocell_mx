@@ -70,7 +70,7 @@ function filterPhones() {
             card.style.display = 'none'; // Ocultar tarjeta y eliminar espacio
         }
     });
-    // Mostrar los botones del swiper solo si hay tarjetas visibles
+    // Ocultar o mostrar los botones del swiper
     swiperButtons.forEach(button => {
         button.style.display = hasVisible ? 'block' : 'none'; // Mostrar botones solo si hay tarjetas visibles
     });
@@ -79,7 +79,7 @@ function filterPhones() {
     if (hasVisible) {
         document.getElementById('phones').scrollIntoView({ behavior: 'smooth' });
     }
-}
+}    
 
 document.getElementById('searchButton').addEventListener('click', function() {
     filterPhones();
@@ -114,30 +114,21 @@ function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; // Limpiar la sección
 
-    const swiperWrapper = document.createElement('div');
-    swiperWrapper.classList.add('swiper-wrapper');
+    telefonos.forEach((telefono, index) => {
+        // Para asegurarnos de que no se repitan, manejamos los teléfonos en pares
+        const siguienteTelefono = telefonos[index + 1]; // Obtenemos el siguiente teléfono de la lista
+        if (!siguienteTelefono) return; // Si no hay más teléfonos, paramos el bucle
+        const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
+        const [marca2, modelo2, memoria2, camara2, frontal2, precio2, enganche2, total2, semanal2, bateria2, resolucion2, procesador2, extras2, cargador2, precio_web2, no2] = siguienteTelefono;
 
-    // Recorremos el array de teléfonos en bloques de 4
-    for (let i = 0; i < telefonos.length; i += 4) {
-        const swiperSlide = document.createElement('div');
-        swiperSlide.classList.add('swiper-slide');
-        
-        const phoneGroup = document.createElement('div');
-        phoneGroup.classList.add('phone-group');
-        phoneGroup.style.display = 'flex';
-        phoneGroup.style.justifyContent = 'space-between';
-
-        // Creamos hasta 4 tarjetas por fila
-        for (let j = i; j < i + 4 && j < telefonos.length; j++) {
-            const telefono = telefonos[j];
-            const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
-
-            const phoneCard = document.createElement('div');
-            phoneCard.classList.add('phone-card');
-            phoneCard.style.cssText = 'display: flex; padding: 15px; align-items: flex-start; width: 23%;';
-
-            phoneCard.innerHTML = `
-                <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 100%; height: auto; margin-right: 20px;">
+        const phoneCard = ` 
+       <section id="phones">   
+<div class="swiper-container"> 
+<div class="swiper-wrapper"> 
+ <div class="swiper-slide">     
+     <div class="phone-group" style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+            <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
+                <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
                 <div class="phone-info" style="flex: 1;">
                     <h2 style="font-size: 1.2em; color: #36a0d1;">${marca} <br> ${modelo}</h2>
                     <p style="font-size: 0.95em; margin: 4px 0;"><strong>Memoria: ${memoria}<br>
@@ -146,32 +137,84 @@ function mostrarTelefonos(telefonos) {
                     <p style="font-size: 0.8em; color: #555;">
                         Resolución: ${resolucion}<br>
                         Procesador: ${procesador}<br>
-                        Cargador: ${cargador}</p>
-                    <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong>${precio_web}</strong></p>
-                    <p style="font-size: 17px; color: #36a0d1;">A crédito desde:</p>
-                    <table style="width: 92%;">
-                        <tr>
-                            <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td>
-                            <td align="right" style="color: #28a745;font-size: 15px;">Pagos:<br> ${semanal}</td>
-                        </tr>
-                    </table><br>
-                    <button id="buy-button" style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;" class="buy-button"
-                        data-phone="${marca} ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal} <br> Batería: ${bateria} <br> Extras: ${extras}"
+                        Cargador: ${cargador} </p>
+                        <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
+                        <p style="font-size: 17px; color: #36a0d1;"> A crédito desde: </p>
+    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${semanal}</td> </tr></table><br>
+                    <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;" class="buy-button"
+                        data-phone="${marca}  ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal} <br> Batería: ${bateria} <br> Extras: ${extras} " 
                         data-price="${precio_web}"
-                        data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg">Comprar
-                    </button>
-                </div>
-            `;
-
-            phoneGroup.appendChild(phoneCard);
-        }
-
-        swiperSlide.appendChild(phoneGroup);
-        swiperWrapper.appendChild(swiperSlide);
-    }
-
-    phoneSection.appendChild(swiperWrapper);
-}
+                        data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" 
+                        >Comprar </button>    </div> </div>
+                        
+            <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
+                <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo2.replace(/\s+/g, ' ')}.jpg" alt="${modelo2}" style="width: 300px; height: auto; margin-right: 20px;">
+                <div class="phone-info" style="flex: 1;">
+                    <h2 style="font-size: 1.2em; color: #36a0d1;">${marca2} <br> ${modelo2}</h2>
+                    <p style="font-size: 0.95em; margin: 4px 0;"><strong>Memoria: ${memoria2}<br>
+                        Cámara: ${camara2} Frontal: ${frontal2} <br>
+                        Batería: ${bateria2}</strong></p>
+                    <p style="font-size: 0.8em; color: #555;">
+                        Resolución: ${resolucion2}<br>
+                        Procesador: ${procesador2}<br>
+                        Cargador: ${cargador2} </p>
+                        <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web2}</strong></p>
+                        <p style="font-size: 17px; color: #36a0d1;"> A crédito desde: </p>
+    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche2}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${semanal2}</td> </tr></table><br>
+                    <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;" class="buy-button"              
+                        data-phone="${marca2}  ${modelo2} <br> Memoria: ${memoria2} <br> Cámara: ${camara2} Frontal: ${frontal2} <br> Batería: ${bateria2} <br> Extras: ${extras2} " 
+                        data-price="${precio_web2}"
+                        data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo2.replace(/\s+/g, ' ')}.jpg" 
+                        >Comprar </button>    </div> </div>        </div>
+            </div>
+             <div class="swiper-slide">     
+     <div class="phone-group" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
+                <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
+                <div class="phone-info" style="flex: 1;">
+                    <h2 style="font-size: 1.2em; color: #36a0d1;">${marca} <br> ${modelo}</h2>
+                    <p style="font-size: 0.95em; margin: 4px 0;"><strong>Memoria: ${memoria}<br>
+                        Cámara: ${camara} Frontal: ${frontal} <br>
+                        Batería: ${bateria}</strong></p>
+                    <p style="font-size: 0.8em; color: #555;">
+                        Resolución: ${resolucion}<br>
+                        Procesador: ${procesador}<br>
+                        Cargador: ${cargador} </p>
+                        <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
+                        <p style="font-size: 17px; color: #36a0d1;"> A crédito desde: </p>
+    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${semanal}</td> </tr></table><br>
+                    <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;" class="buy-button"             
+                        data-phone="${marca}  ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal} <br> Batería: ${bateria} <br> Extras: ${extras}" 
+                        data-price="${precio_web}"
+                        data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" 
+                        >Comprar </button>    </div> </div>
+            <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
+                <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
+                <div class="phone-info" style="flex: 1;">
+                    <h2 style="font-size: 1.2em; color: #36a0d1;">${marca} <br> ${modelo}</h2>
+                    <p style="font-size: 0.95em; margin: 4px 0;"><strong>Memoria: ${memoria}<br>
+                        Cámara: ${camara} Frontal: ${frontal} <br>
+                        Batería: ${bateria}</strong></p>
+                    <p style="font-size: 0.8em; color: #555;">
+                        Resolución: ${resolucion}<br>
+                        Procesador: ${procesador}<br>
+                        Cargador: ${cargador} </p>
+                        <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
+                        <p style="font-size: 17px; color: #36a0d1;"> A crédito desde: </p>
+    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${semanal}</td> </tr></table><br>
+                    <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;" class="buy-button"         
+                        data-phone="${marca}  ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal} <br> Batería: ${bateria} <br> Extras: ${extras} " 
+                        data-price="${precio_web}"
+                        data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" 
+                        >Comprar </button>    </div> </div>        </div>           
+            </div>
+            </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+            </section>
+        `;    phoneSection.innerHTML += phoneCard;
 
         var swiper = new Swiper('.swiper-container', {
   loop: true, 
