@@ -64,15 +64,17 @@ function filterPhones() {
     phoneCards.forEach(card => {
         const phoneName = card.querySelector('h2').textContent.toLowerCase();
         if (phoneName.includes(searchInput)) {
-            card.style.display = 'flex';
+            card.style.opacity = '1';
+            card.style.visibility = 'visible';
             hasVisible = true;
         } else {
-            card.style.display = 'none';
+            card.style.opacity = '0';
+            card.style.visibility = 'hidden';
         }
     });
-    // Cambia la visibilidad de los botones
+    // Cambia el display de los botones
     swiperButtons.forEach(button => {
-        button.style.visibility = hasVisible ? 'hidden' : 'visible';
+        button.style.display = hasVisible ? 'none' : 'block'; // Ocultar o mostrar botones
     });
 
     // Si hay tarjetas visibles, desplazarse a la sección de teléfonos
@@ -81,16 +83,16 @@ function filterPhones() {
     }
 }
 
-    document.getElementById('searchButton').addEventListener('click', function() {
+document.getElementById('searchButton').addEventListener('click', function() {
+    filterPhones();
+});
+
+document.getElementById('searchInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); 
         filterPhones();
-    });
-    
-    document.getElementById('searchInput').addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-            event.preventDefault(); 
-            filterPhones();
-        }
-    });
+    }
+});
 
 const SHEET_ID = '16RGHwlzDHBQrBP-xjfXtwu58K5myaAAKbigHxCQt2NA';
 const API_KEY = 'AIzaSyA4PH8UdUEs3Xq06ygGNJoGrImVGHGpi5c';
