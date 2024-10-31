@@ -61,17 +61,15 @@ function filterPhones() {
     const swiperButtons = document.querySelectorAll('.swiper-button-next, .swiper-button-prev');
     let hasVisible = false;
 
-    phoneCards.forEach(card => {
-        const phoneName = card.querySelector('h2').textContent.toLowerCase();
-        if (phoneName.includes(searchInput)) {
-            card.style.opacity = '1';
-            card.style.visibility = 'visible';
-            hasVisible = true;
-        } else {
-            card.style.opacity = '0';
-            card.style.visibility = 'hidden';
-        }
-    });
+phoneCards.forEach(card => {
+    const phoneName = card.querySelector('h2').textContent.toLowerCase();
+    if (phoneName.includes(searchInput)) {
+        card.style.display = 'flex'; // Mostrar tarjeta
+        hasVisible = true; // Se encontró al menos una tarjeta visible
+    } else {
+        card.style.display = 'none'; // Ocultar tarjeta y eliminar espacio
+    }
+});
     // Cambia el display de los botones
     swiperButtons.forEach(button => {
         button.style.display = hasVisible ? 'none' : 'block'; // Ocultar o mostrar botones
