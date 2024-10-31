@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="es">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
@@ -7,14 +7,6 @@
     <title>Imperiocell MX - Tu celular perfecto a pagos</title>
     <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet"  href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <style>
-        .swiper-button-next, .swiper-button-prev {
-            display: none; /* Ocultar las flechas de navegación */
-        }
-        .swiper-container {
-            display: none; /* Ocultar el swiper por defecto */
-        }
-    </style>
 </head>
 <body>
 <header>
@@ -66,31 +58,22 @@
     function filterPhones() {
         const searchInput = document.getElementById('searchInput').value.toLowerCase();
         const phoneCards = document.querySelectorAll('.phone-card');
-        let hasVisible = false; // Para rastrear si hay tarjetas visibles
-
         phoneCards.forEach(card => {
             const phoneName = card.querySelector('h2').textContent.toLowerCase();
             if (phoneName.includes(searchInput)) {
                 card.style.display = 'flex'; // Mostrar tarjeta
-                hasVisible = true; // Se encontró al menos una tarjeta visible
             } else {
                 card.style.display = 'none'; // Ocultar tarjeta
             }
         });
-        // Si hay tarjetas visibles, desplazarse a la sección de teléfonos
-        if (hasVisible) {
-            document.getElementById('phones').scrollIntoView({ behavior: 'smooth' });
-        }
     }
-
-    document.getElementById('searchButton').addEventListener('click', function() {
+    document.getElementById('searchButton').addEventListener('click', function() {     // Detectar el evento 'click' en el botón de búsqueda
         filterPhones();
     });
-    
-    document.getElementById('searchInput').addEventListener('keydown', function(event) {
+    document.getElementById('searchInput').addEventListener('keydown', function(event) {      // Detectar el evento 'keydown' en el campo de búsqueda
         if (event.key === 'Enter') {
-            event.preventDefault(); 
-            filterPhones();
+            event.preventDefault(); // Evitar el comportamiento predeterminado
+            filterPhones(); // Filtrar los teléfonos al presionar "Enter"
         }
     });
 
@@ -112,15 +95,9 @@ obtenerDatosTelefonos().then(datos => {
     console.log(telefonosFiltrados); // Verificar los datos filtrados en la consola
     mostrarTelefonos(telefonosFiltrados); // Mostrar solo los teléfonos filtrados
 });
-    function mostrarTelefonos(telefonos) {
-        const phoneSection = document.getElementById('phones');
-        const swiperContainer = document.querySelector('.swiper-container');
-        phoneSection.innerHTML = ''; // Limpiar la sección
-        if (telefonos.length === 0) {
-            swiperContainer.style.display = 'none'; // Ocultar el swiper si no hay teléfonos
-            return;
-        }
-        swiperContainer.style.display = 'block'; // Mostrar el swiper si hay teléfonos
+function mostrarTelefonos(telefonos) {
+    const phoneSection = document.getElementById('phones');
+    phoneSection.innerHTML = ''; // Limpiar la sección
 
   telefonos.forEach(telefono => {
         const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;              
@@ -212,29 +189,8 @@ obtenerDatosTelefonos().then(datos => {
         <div class="swiper-pagination"></div>
     </div>
             </section>
-                    `;
-            swiperWrapper.innerHTML += phoneCard;
+        `;    phoneSection.innerHTML += phoneCard;
     }); 
-
-        const swiperContainer = document.querySelector('.swiper-container');
-        if (telefonos.length > 0) {
-            swiperContainer.style.display = 'block'; // Mostrar swiper
-            new Swiper('.swiper-container', {
-                loop: true,
-                slidesPerView: 1,
-                spaceBetween: 0,
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                autoplay: {
-                    delay: 8000,
-                    disableOnInteraction: false,
-    },
     
     const buyButtons = document.querySelectorAll('.buy-button');
     buyButtons.forEach(button => {
@@ -246,12 +202,30 @@ obtenerDatosTelefonos().then(datos => {
         });
     });    
 }
-    obtenerDatosTelefonos().then(datos => {
-        const telefonosFiltrados = datos.filter(telefono => telefono[15] !== "x");
-        mostrarTelefonos(telefonosFiltrados.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
+obtenerDatosTelefonos().then(datos => { 
+    const telefonosFiltrados = datos.filter(telefono => {
+        return telefono[15] !== "x";
     });
+        mostrarTelefonos(telefonosFiltrados.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
+});
 
-
+  var swiper = new Swiper('.swiper-container', {
+  loop: true, 
+  grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
+    slidesPerView: 1, // Muestra una imagen a la vez
+    spaceBetween: 0, 
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    autoplay: {
+      delay: 8000, 
+      disableOnInteraction: false, // Continúa el autoplay después de la interacción
+    },
   }); 
 
 </script>
