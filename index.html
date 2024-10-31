@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
@@ -7,6 +7,14 @@
     <title>Imperiocell MX - Tu celular perfecto a pagos</title>
     <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet"  href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        .swiper-button-next, .swiper-button-prev {
+            display: none; /* Ocultar las flechas de navegación */
+        }
+        .swiper-container {
+            display: none; /* Ocultar el swiper por defecto */
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -104,9 +112,15 @@ obtenerDatosTelefonos().then(datos => {
     console.log(telefonosFiltrados); // Verificar los datos filtrados en la consola
     mostrarTelefonos(telefonosFiltrados); // Mostrar solo los teléfonos filtrados
 });
-function mostrarTelefonos(telefonos) {
-    const phoneSection = document.getElementById('phones');
-    phoneSection.innerHTML = ''; // Limpiar la sección
+    function mostrarTelefonos(telefonos) {
+        const phoneSection = document.getElementById('phones');
+        const swiperContainer = document.querySelector('.swiper-container');
+        phoneSection.innerHTML = ''; // Limpiar la sección
+        if (telefonos.length === 0) {
+            swiperContainer.style.display = 'none'; // Ocultar el swiper si no hay teléfonos
+            return;
+        }
+        swiperContainer.style.display = 'block'; // Mostrar el swiper si hay teléfonos
 
   telefonos.forEach(telefono => {
         const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;              
@@ -198,8 +212,29 @@ function mostrarTelefonos(telefonos) {
         <div class="swiper-pagination"></div>
     </div>
             </section>
-        `;    phoneSection.innerHTML += phoneCard;
+                    `;
+            swiperWrapper.innerHTML += phoneCard;
     }); 
+
+        const swiperContainer = document.querySelector('.swiper-container');
+        if (telefonos.length > 0) {
+            swiperContainer.style.display = 'block'; // Mostrar swiper
+            new Swiper('.swiper-container', {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 0,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                autoplay: {
+                    delay: 8000,
+                    disableOnInteraction: false,
+    },
     
     const buyButtons = document.querySelectorAll('.buy-button');
     buyButtons.forEach(button => {
@@ -211,30 +246,12 @@ function mostrarTelefonos(telefonos) {
         });
     });    
 }
-obtenerDatosTelefonos().then(datos => { 
-    const telefonosFiltrados = datos.filter(telefono => {
-        return telefono[15] !== "x";
-    });
+    obtenerDatosTelefonos().then(datos => {
+        const telefonosFiltrados = datos.filter(telefono => telefono[15] !== "x");
         mostrarTelefonos(telefonosFiltrados.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
-});
+    });
 
-  var swiper = new Swiper('.swiper-container', {
-  loop: true, 
-  grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
-    slidesPerView: 1, // Muestra una imagen a la vez
-    spaceBetween: 0, 
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    autoplay: {
-      delay: 8000, 
-      disableOnInteraction: false, // Continúa el autoplay después de la interacción
-    },
+
   }); 
 
 </script>
