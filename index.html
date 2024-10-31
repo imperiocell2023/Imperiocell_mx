@@ -58,6 +58,7 @@
     function filterPhones() {
         const searchInput = document.getElementById('searchInput').value.toLowerCase();
         const phoneCards = document.querySelectorAll('.phone-card');
+        const swiperButtons = document.querySelectorAll('.swiper-button-next, .swiper-button-prev'); // Referencia a los botones del swiper
         let hasVisible = false; // Para rastrear si hay tarjetas visibles
 
         phoneCards.forEach(card => {
@@ -69,6 +70,11 @@
                 card.style.display = 'none'; // Ocultar tarjeta
             }
         });
+        // Ocultar o mostrar los botones del swiper
+        swiperButtons.forEach(button => {
+            button.style.display = hasVisible ? 'none' : 'block';
+        });
+
         // Si hay tarjetas visibles, desplazarse a la sección de teléfonos
         if (hasVisible) {
             document.getElementById('phones').scrollIntoView({ behavior: 'smooth' });
