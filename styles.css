@@ -85,7 +85,7 @@ width: 100%;
     top: 50%; /* Alinea verticalmente en el centro del contenedor */
     transform: translateY(-50%); /* Ajusta la posición */
     z-index: 10; /* Asegura que las flechas estén por encima de otras capas */
-
+    visibility: hidden; /* Ocultarlas inicialmente, se cambiará según la búsqueda */
 }
 
 /* Estilos para los puntos de paginación */
