@@ -120,8 +120,8 @@ obtenerDatosTelefonos().then(datos => {
 function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; 
-    for (let i = 0; i < telefonos.length; i += 3) {
-        const phoneCards = telefonos.slice(i, i + 3).map((telefono) => {
+    for (let i = 0; i < telefonos.length; i += 2) {
+        const phoneCards = telefonos.slice(i, i + 2).map((telefono) => {
             const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
 
             return `
