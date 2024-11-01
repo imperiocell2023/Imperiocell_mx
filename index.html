@@ -185,7 +185,8 @@ function mostrarTelefonos(telefonos) {
             disableOnInteraction: false,
         },
     });
-}
+
+    // Configuración de los botones "Comprar"
     const buyButtons = document.querySelectorAll('.buy-button');
     buyButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -194,8 +195,9 @@ function mostrarTelefonos(telefonos) {
             const phoneImage = this.getAttribute('data-image'); 
             window.location.href = `comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}&image=${encodeURIComponent(phoneImage)}`;
         });
-    });    
+    });
 }
+
 // Llamamos a la función para cargar los datos
 obtenerDatosTelefonos().then(datos => { 
     const telefonosFiltrados = datos.filter(telefono => {
