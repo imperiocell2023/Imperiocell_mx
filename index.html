@@ -96,7 +96,7 @@ const SHEET_ID = '16RGHwlzDHBQrBP-xjfXtwu58K5myaAAKbigHxCQt2NA';
 const API_KEY = 'AIzaSyA4PH8UdUEs3Xq06ygGNJoGrImVGHGpi5c';
 const RANGE = 'Precios!A1:P19'; 
 async function obtenerDatosTelefonos() {
-    const url = https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY};
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
     const response = await fetch(url);
     const data = await response.json();
     return data.values;
@@ -107,21 +107,18 @@ obtenerDatosTelefonos().then(datos => {
         return telefono[15] !== "x";
     });
 
-    console.log(telefonosFiltrados); // Verificar los datos filtrados en la consola
-    mostrarTelefonos(telefonosFiltrados); // Mostrar solo los teléfonos filtrados
+    console.log(telefonosFiltrados); 
+    mostrarTelefonos(telefonosFiltrados); 
 });
 function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
-    phoneSection.innerHTML = ''; // Limpiar la sección
+    phoneSection.innerHTML = ''; // Limpiar la sección antes de agregar tarjetas
 
-    telefonos.forEach((telefono, index) => {
-        // Para asegurarnos de que no se repitan, manejamos los teléfonos en pares
-        const siguienteTelefono = telefonos[index + 1]; // Obtenemos el siguiente teléfono de la lista
-        if (!siguienteTelefono) return; // Si no hay más teléfonos, paramos el bucle
+    // Recorre cada teléfono y crea una tarjeta para cada uno
+    telefonos.forEach((telefono) => {
         const [marca, modelo, memoria, camara, frontal, precio, enganche, total, pagos, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
-        const [marca2, modelo2, memoria2, camara2, frontal2, precio2, enganche2, total2, pagos2, bateria2, resolucion2, procesador2, extras2, cargador2, precio_web2, no2] = siguienteTelefono;
 
-        const phoneCard =  
+        const phoneCard = `
        <section id="phones">   
 <div class="swiper-container"> 
 <div class="swiper-wrapper"> 
@@ -148,23 +145,23 @@ function mostrarTelefonos(telefonos) {
                         >Comprar </button>    </div> </div>
                         
             <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
-                <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo2.replace(/\s+/g, ' ')}.jpg" alt="${modelo2}" style="width: 300px; height: auto; margin-right: 20px;">
+                <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
                 <div class="phone-info" style="flex: 1;">
-                    <h2 style="font-size: 1.2em; color: #36a0d1;">${marca2} <br> ${modelo2}</h2>
-                    <p style="font-size: 0.95em; margin: 4px 0;"><strong>Memoria: ${memoria2}<br>
-                        Cámara: ${camara2} Frontal: ${frontal2} <br>
-                        Batería: ${bateria2}</strong></p>
+                    <h2 style="font-size: 1.2em; color: #36a0d1;">${marca} <br> ${modelo}</h2>
+                    <p style="font-size: 0.95em; margin: 4px 0;"><strong>Memoria: ${memoria}<br>
+                        Cámara: ${camara} Frontal: ${frontal} <br>
+                        Batería: ${bateria}</strong></p>
                     <p style="font-size: 0.8em; color: #555;">
-                        Resolución: ${resolucion2}<br>
-                        Procesador: ${procesador2}<br>
-                        Cargador: ${cargador2} </p>
-                        <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web2}</strong></p>
+                        Resolución: ${resolucion}<br>
+                        Procesador: ${procesador}<br>
+                        Cargador: ${cargador} </p>
+                        <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
                         <p style="font-size: 17px; color: #36a0d1;"> A crédito desde: </p>
-    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche2}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${pagos2}</td> </tr></table><br>
-                    <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;" class="buy-button"              
-                        data-phone="${marca2}  ${modelo2} <br> Memoria: ${memoria2} <br> Cámara: ${camara2} Frontal: ${frontal2} <br> Batería: ${bateria2} <br> Extras: ${extras2} " 
-                        data-price="${precio_web2}"
-                        data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo2.replace(/\s+/g, ' ')}.jpg" 
+    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${pagos}</td> </tr></table><br>
+                    <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;" class="buy-button"             
+                        data-phone="${marca}  ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal} <br> Batería: ${bateria} <br> Extras: ${extras}" 
+                        data-price="${precio_web}"
+                        data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" 
                         >Comprar </button>    </div> </div>        </div>
             </div>
              <div class="swiper-slide">     
@@ -214,12 +211,12 @@ function mostrarTelefonos(telefonos) {
         <div class="swiper-pagination"></div>
     </div>
             </section>
-        ;    phoneSection.innerHTML += phoneCard;
+        `;    phoneSection.innerHTML += phoneCard;
 
         var swiper = new Swiper('.swiper-container', {
   loop: true, 
-  grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
-    slidesPerView: 1, // Muestra una imagen a la vez
+  grabCursor: true,
+    slidesPerView: 1, 
     spaceBetween: 0, 
     navigation: {    
       nextEl: '.swiper-button-next',
@@ -231,7 +228,7 @@ function mostrarTelefonos(telefonos) {
     },
     autoplay: {
       delay: 8000, 
-      disableOnInteraction: false, // Continúa el autoplay después de la interacción
+      disableOnInteraction: false, 
     },
   }); 
     }); 
@@ -242,7 +239,7 @@ function mostrarTelefonos(telefonos) {
             const phoneName = this.getAttribute('data-phone');
             const phonePrice = this.getAttribute('data-price');
             const phoneImage = this.getAttribute('data-image'); 
-            window.location.href = comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}&image=${encodeURIComponent(phoneImage)};
+            window.location.href = `comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}&image=${encodeURIComponent(phoneImage)}`;
         });
     });    
 }
@@ -252,8 +249,6 @@ obtenerDatosTelefonos().then(datos => {
     });
         mostrarTelefonos(telefonosFiltrados.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
 });
-
-
 
 </script>
 <footer>
