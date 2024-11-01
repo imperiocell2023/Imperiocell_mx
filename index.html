@@ -159,33 +159,41 @@ function filterPhones() {
     let hasVisiblePhones = false;
 
     swiperSlides.forEach(slide => {
+        // Mantener visible la portada
         const portadaImage = slide.querySelector('img[src*="portada"]');
         if (portadaImage) {
-            slide.style.display = 'block'; 
-            return;
+            slide.style.display = 'block'; // Mantener la portada siempre visible
+            return; // Saltar al siguiente slide sin hacer más verificaciones
         }
 
+        // Verificar si el slide contiene teléfonos que coincidan con la búsqueda
         const phoneCards = slide.querySelectorAll('.phone-card');
         let slideHasVisiblePhone = false;
 
         phoneCards.forEach(card => {
             const phoneName = card.querySelector('h2').textContent.toLowerCase();
             const isMatch = phoneName.includes(searchInput);
-            card.style.display = isMatch ? 'flex' : 'none'; 
-            if (isMatch) slideHasVisiblePhone = true; 
+            card.style.display = isMatch ? 'flex' : 'none'; // Mostrar u ocultar la tarjeta según la búsqueda
+            if (isMatch) slideHasVisiblePhone = true; // Marcar si el slide contiene al menos una coincidencia
         });
 
+        // Ocultar o mostrar el slide completo dependiendo de si tiene resultados
         slide.style.display = slideHasVisiblePhone ? 'block' : 'none';
-        if (slideHasVisiblePhone) hasVisiblePhones = true; 
+        if (slideHasVisiblePhone) hasVisiblePhones = true; // Marcar si hay al menos un teléfono visible en el filtro
     });
 
+    // Mostrar u ocultar la navegación del swiper según haya o no resultados
     const swiperButtons = document.querySelectorAll('.swiper-button-next, .swiper-button-prev');
     swiperButtons.forEach(button => button.style.display = hasVisiblePhones ? 'block' : 'none');
 
+    // Si hay resultados, desplazarse a la sección de teléfonos, de lo contrario, quedarnos en la portada
     if (hasVisiblePhones) {
         document.getElementById('phones').scrollIntoView({ behavior: 'smooth' });
+    } else {
+        document.querySelector('.swiper-container').scrollIntoView({ behavior: 'smooth' });
     }
 }
+
 </script>
 
 <footer>
