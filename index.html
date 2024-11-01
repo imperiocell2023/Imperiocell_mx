@@ -107,18 +107,20 @@ obtenerDatosTelefonos().then(datos => {
         return telefono[15] !== "x";
     });
 
-    console.log(telefonosFiltrados); 
-    mostrarTelefonos(telefonosFiltrados); 
+    console.log(telefonosFiltrados); // Verificar los datos filtrados en la consola
+    mostrarTelefonos(telefonosFiltrados); // Mostrar solo los teléfonos filtrados
 });
 function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
-    phoneSection.innerHTML = ''; 
+    phoneSection.innerHTML = ''; // Limpiar la sección
 
     telefonos.forEach((telefono, index) => {
+        // Para asegurarnos de que no se repitan, manejamos los teléfonos en pares
         const siguienteTelefono = telefonos[index + 1]; // Obtenemos el siguiente teléfono de la lista
         if (!siguienteTelefono) return; // Si no hay más teléfonos, paramos el bucle
         const [marca, modelo, memoria, camara, frontal, precio, enganche, total, pagos, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
         const [marca2, modelo2, memoria2, camara2, frontal2, precio2, enganche2, total2, pagos2, bateria2, resolucion2, procesador2, extras2, cargador2, precio_web2, no2] = siguienteTelefono;
+
         const phoneCard =  
        <section id="phones">   
 <div class="swiper-container"> 
@@ -216,8 +218,8 @@ function mostrarTelefonos(telefonos) {
 
         var swiper = new Swiper('.swiper-container', {
   loop: true, 
-  grabCursor: true, 
-    slidesPerView: 1, 
+  grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
+    slidesPerView: 1, // Muestra una imagen a la vez
     spaceBetween: 0, 
     navigation: {    
       nextEl: '.swiper-button-next',
@@ -229,7 +231,7 @@ function mostrarTelefonos(telefonos) {
     },
     autoplay: {
       delay: 8000, 
-      disableOnInteraction: false, 
+      disableOnInteraction: false, // Continúa el autoplay después de la interacción
     },
   }); 
     }); 
@@ -248,8 +250,10 @@ obtenerDatosTelefonos().then(datos => {
     const telefonosFiltrados = datos.filter(telefono => {
         return telefono[15] !== "x";
     });
-        mostrarTelefonos(telefonosFiltrados.slice(1)); 
+        mostrarTelefonos(telefonosFiltrados.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
 });
+
+
 
 </script>
 <footer>
