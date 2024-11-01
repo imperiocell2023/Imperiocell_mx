@@ -42,7 +42,16 @@
     <section id="home">
        <div class="search-bar" style="align-items: center;"> <input type="text" id="searchInput" placeholder="Buscar..." /> <button id="searchButton">Buscar</button> </div>
     </section>
-  <section id="phones"> 
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<div class="swiper-container"> 
+    <div class="swiper-wrapper" id="phones"> 
+        <!-- Aquí se insertarán las tarjetas de teléfonos dinámicamente -->
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+</div>
     </section>
     <div style="text-align: center; margin: 20px 0;">
         <a href="https://maps.app.goo.gl/cDCR66WVcdswPPE7A" target="_blank" style="padding: 15px 25px; background-color: #2c3aab; color: white; text-decoration: none; font-size: 20px; border-radius: 5px; display: inline-block;">
@@ -92,7 +101,7 @@ document.getElementById('searchInput').addEventListener('keydown', function(even
 
 const SHEET_ID = '16RGHwlzDHBQrBP-xjfXtwu58K5myaAAKbigHxCQt2NA';
 const API_KEY = 'AIzaSyA4PH8UdUEs3Xq06ygGNJoGrImVGHGpi5c';
-const RANGE = 'Precios!A1:P19'; 
+const RANGE = 'Precios!A1:P22'; 
 async function obtenerDatosTelefonos() {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
     const response = await fetch(url);
@@ -143,7 +152,7 @@ function mostrarTelefonos(telefonos) {
                             data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg">Comprar</button>
                     </div>
                 </div>`;
-        }).join(''); // Unimos todas las tarjetas para un solo slide
+        }).join('');
 
         const phoneGroup = `
             <div class="swiper-slide">     
@@ -152,15 +161,7 @@ function mostrarTelefonos(telefonos) {
                 </div>
             </div>`;
 
-        phoneSection.innerHTML += `
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    ${phoneGroup}
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>`;
+        phoneSection.innerHTML += phoneGroup;
     }
 
     new Swiper('.swiper-container', {
