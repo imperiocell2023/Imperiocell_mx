@@ -155,35 +155,40 @@ document.getElementById('searchInput').addEventListener('keydown', event => {
 
 function filterPhones() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const phoneCards = document.querySelectorAll('.phone-card');
     const swiperSlides = document.querySelectorAll('.swiper-slide');
     const swiperButtons = document.querySelectorAll('.swiper-button-next, .swiper-button-prev');
-    let hasVisible = false;
+    let hasVisiblePhones = false; // Para verificar si hay algún slide de teléfonos visible
 
     swiperSlides.forEach(slide => {
-        // Identificar la portada si su src contiene la palabra "portada"
+        // Identificar si el slide es una portada (si contiene una imagen con "portada" en su src)
         const portadaImage = slide.querySelector('img[src*="portada"]');
         if (portadaImage) {
             slide.style.display = 'block'; // Mantener la portada siempre visible
-            return; // Pasamos al siguiente slide sin hacer más verificaciones
+            return; // Saltar al siguiente slide sin hacer más verificaciones
         }
 
-        const cardsInSlide = slide.querySelectorAll('.phone-card');
-        let slideVisible = false;
+        // Si no es una portada, verificar si contiene algún teléfono que coincida con la búsqueda
+        const phoneCards = slide.querySelectorAll('.phone-card');
+        let slideHasVisiblePhone = false;
 
-        cardsInSlide.forEach(card => {
+        phoneCards.forEach(card => {
             const phoneName = card.querySelector('h2').textContent.toLowerCase();
-            const match = phoneName.includes(searchInput);
-            card.style.display = match ? 'flex' : 'none';
-            if (match) slideVisible = true; // Si hay alguna tarjeta visible en el slide
+            const isMatch = phoneName.includes(searchInput);
+            card.style.display = isMatch ? 'flex' : 'none'; // Mostrar u ocultar la tarjeta
+            if (isMatch) slideHasVisiblePhone = true; // Marcar si hay alguna tarjeta visible en el slide
         });
 
-        slide.style.display = slideVisible ? 'block' : 'none'; // Mostrar u ocultar el slide completo
-        if (slideVisible) hasVisible = true; // Marcar que al menos un slide es visible
+        slide.style.display = slideHasVisiblePhone ? 'block' : 'none'; // Mostrar u ocultar el slide completo
+        if (slideHasVisiblePhone) hasVisiblePhones = true; // Marcar si hay al menos un slide de teléfono visible
     });
 
-    swiperButtons.forEach(button => button.style.display = hasVisible ? 'block' : 'none');
-    if (hasVisible) document.getElementById('phones').scrollIntoView({ behavior: 'smooth' });
+    // Mostrar u ocultar los botones del carrusel dependiendo de si hay teléfonos visibles
+    swiperButtons.forEach(button => button.style.display = hasVisiblePhones ? 'block' : 'none');
+
+    // Desplazarse a la sección de teléfonos solo si hay algún teléfono visible
+    if (hasVisiblePhones) {
+        document.getElementById('phones').scrollIntoView({ behavior: 'smooth' });
+    }
 }
 </script>
 
