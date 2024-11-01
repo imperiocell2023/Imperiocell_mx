@@ -110,13 +110,7 @@ obtenerDatosTelefonos().then(datos => {
 });
 function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
-    phoneSection.innerHTML = ''; // Limpiar la sección antes de agregar tarjetas
-
-    // Crear la estructura del swiper-container y swiper-wrapper
-    let swiperHTML = `
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-    `;
+    phoneSection.innerHTML = ''; 
     for (let i = 0; i < telefonos.length; i += 3) {
         const phoneCards = telefonos.slice(i, i + 3).map((telefono) => {
             const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
@@ -150,28 +144,25 @@ function mostrarTelefonos(telefonos) {
                     </div>
                 </div>`;
         }).join(''); // Unimos todas las tarjetas para un solo slide
+
         const phoneGroup = `
             <div class="swiper-slide">     
                 <div class="phone-group" style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                     ${phoneCards}
                 </div>
             </div>`;
+
+        phoneSection.innerHTML += `
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    ${phoneGroup}
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>`;
     }
 
-    // Cerramos el contenedor Swiper
-    swiperHTML += `
-            </div> <!-- Cierra swiper-wrapper -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
-        </div> <!-- Cierra swiper-container -->
-    `;
-
-    // Insertamos todo el swiperHTML en el contenedor phoneSection
-    phoneSection.innerHTML = swiperHTML;
-
-
-    // Inicializar Swiper después de que se carguen los teléfonos
     new Swiper('.swiper-container', {
         loop: true,
         grabCursor: true,
@@ -191,7 +182,6 @@ function mostrarTelefonos(telefonos) {
         },
     });
 
-    // Configuración de los botones "Comprar"
     const buyButtons = document.querySelectorAll('.buy-button');
     buyButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -210,9 +200,6 @@ obtenerDatosTelefonos().then(datos => {
     });
     mostrarTelefonos(telefonosFiltrados.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
 });
-
-    
-
 
 </script>
 <footer>
