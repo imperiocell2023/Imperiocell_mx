@@ -6,54 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imperiocell MX - Tu celular perfecto a pagos</title>
     <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet"  href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 <body>
 <header>
-        <div style="flex-grow: 1; text-align: center;">
-    <h1>ImperioCell MX</h1>
-    <nav>
-        <ul>
-            <li><a href="#home">Inicio</a></li>
-            <li><a href="#phones">Teléfonos</a></li>
-            <li><a href="#contact">Contacto</a></li>
-        </ul>
-    </nav>
- </div>
-</header>
-    <section id="home">
-        <h2  > Tenemos el celular perfecto para ti 😃 </h2>
-        <h3  > ¡Ya puedes estrenar a pagos sin tarjeta el mismo día! </h3> 
-    </section>
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>  
-<div class="swiper-container"> 
-<div class="swiper-wrapper"> 
-<div class="swiper-slide">    
-    <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/Portada short.jpg" alt="Imagen a lo largo" style="width: 100%; height: 88%;">
-</div> 
-<div class="swiper-slide">
-    <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/Portada short.jpg" alt="Imagen a lo largo" style="width: 100%; height: 88%;">
-</div>
-</div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-    </div> 
-    <section id="home">
-       <div class="search-bar" style="align-items: center;"> <input type="text" id="searchInput" placeholder="Buscar..." /> <button id="searchButton">Buscar</button> </div>
-    </section>
-  <section id="phones"> 
-    </section>
-    <div style="text-align: center; margin: 20px 0;">
-        <a href="https://maps.app.goo.gl/cDCR66WVcdswPPE7A" target="_blank" style="padding: 15px 25px; background-color: #2c3aab; color: white; text-decoration: none; font-size: 20px; border-radius: 5px; display: inline-block;">
-            Encuéntranos aquí
-        </a>
-    </div>   
-    <div style="text-align: center; margin: 20px 0;">
-        <a href="https://forms.gle/YKPr2wuSFZNuFUg9A" target="_blank" style="padding: 15px 25px; background-color: #28a745; color: white; text-decoration: none; font-size: 20px; border-radius: 5px; display: inline-block; margin-bottom: 20px;">
-            Vende con nosotros a crédito
-        </a>
+    <div style="flex-grow: 1; text-align: center;">
+        <h1>ImperioCell MX</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#phones">Teléfonos</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
     </div>
+</header>
+
+<section id="home">
+    <h2>Tenemos el celular perfecto para ti 😃</h2>
+    <h3>¡Ya puedes estrenar a pagos sin tarjeta el mismo día!</h3>
+</section>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<div class="swiper-container"> 
+    <div class="swiper-wrapper" id="phones"> 
+        <!-- Aquí se insertarán las tarjetas de teléfonos dinámicamente -->
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+</div>
+
+<div style="text-align: center; margin: 20px 0;">
+    <a href="https://maps.app.goo.gl/cDCR66WVcdswPPE7A" target="_blank" style="padding: 15px 25px; background-color: #2c3aab; color: white; text-decoration: none; font-size: 20px; border-radius: 5px; display: inline-block;">
+        Encuéntranos aquí
+    </a>
+</div>
+
+<div style="text-align: center; margin: 20px 0;">
+    <a href="https://forms.gle/YKPr2wuSFZNuFUg9A" target="_blank" style="padding: 15px 25px; background-color: #28a745; color: white; text-decoration: none; font-size: 20px; border-radius: 5px; display: inline-block; margin-bottom: 20px;">
+        Vende con nosotros a crédito
+    </a>
+</div>
+
 <script>
 function filterPhones() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
@@ -64,14 +60,14 @@ function filterPhones() {
     phoneCards.forEach(card => {
         const phoneName = card.querySelector('h2').textContent.toLowerCase();
         if (phoneName.includes(searchInput)) {
-            card.style.display = 'flex'; // Mostrar tarjeta
-            hasVisible = true; // Se encontró al menos una tarjeta visible
+            card.style.display = 'flex'; 
+            hasVisible = true;
         } else {
-            card.style.display = 'none'; // Ocultar tarjeta y eliminar espacio
+            card.style.display = 'none';
         }
     });
     swiperButtons.forEach(button => {
-        button.style.display = hasVisible ? 'block' : 'none'; // Mostrar botones solo si hay tarjetas visibles
+        button.style.display = hasVisible ? 'block' : 'none';
     });
 
     if (hasVisible) {
@@ -105,12 +101,13 @@ obtenerDatosTelefonos().then(datos => {
         return telefono[15] !== "x";
     });
 
-    console.log(telefonosFiltrados); 
-    mostrarTelefonos(telefonosFiltrados); 
+    mostrarTelefonos(telefonosFiltrados.slice(1));
 });
+
 function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; 
+
     for (let i = 0; i < telefonos.length; i += 3) {
         const phoneCards = telefonos.slice(i, i + 3).map((telefono) => {
             const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
@@ -143,7 +140,7 @@ function mostrarTelefonos(telefonos) {
                             data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg">Comprar</button>
                     </div>
                 </div>`;
-        }).join(''); // Unimos todas las tarjetas para un solo slide
+        }).join('');
 
         const phoneGroup = `
             <div class="swiper-slide">     
@@ -152,15 +149,7 @@ function mostrarTelefonos(telefonos) {
                 </div>
             </div>`;
 
-        phoneSection.innerHTML += `
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    ${phoneGroup}
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>`;
+        phoneSection.innerHTML += phoneGroup;
     }
 
     new Swiper('.swiper-container', {
@@ -192,16 +181,8 @@ function mostrarTelefonos(telefonos) {
         });
     });
 }
-
-// Llamamos a la función para cargar los datos
-obtenerDatosTelefonos().then(datos => { 
-    const telefonosFiltrados = datos.filter(telefono => {
-        return telefono[15] !== "x";
-    });
-    mostrarTelefonos(telefonosFiltrados.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
-});
-
 </script>
+
 <footer>
     <section id="contact" style="padding:10px0; background: linear-gradient(to top,#36a0d1 38%, #f4f4f4 100%);">
         <div style="text-align: center; margin: 20px 0; color: white;">
