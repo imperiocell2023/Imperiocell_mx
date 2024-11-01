@@ -123,6 +123,15 @@ function mostrarTelefonos(telefonos) {
             </div>`;
     }
 
+    new Swiper('.swiper-container', {
+        loop: true,
+        grabCursor: true,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        autoplay: { delay: 8000, disableOnInteraction: false },
+    });
 
     document.querySelectorAll('.buy-button').forEach(button => {
         button.addEventListener('click', function() {
@@ -146,56 +155,49 @@ document.getElementById('searchInput').addEventListener('keydown', event => {
 
 function filterPhones() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const originalSlides = document.querySelectorAll('.swiper-slide');
-    const swiperWrapper = document.querySelector('.swiper-wrapper');
-    const swiperButtons = document.querySelectorAll('.swiper-button-next, .swiper-button-prev');
+    const swiperSlides = document.querySelectorAll('.swiper-slide');
     let hasVisiblePhones = false;
+    
+    // Contador para determinar cuántos slides visibles hay
+    let visibleSlidesCount = 0;
 
-    // Limpiar el contenedor del swiper para reconstruirlo
-    swiperWrapper.innerHTML = '';
-
-    originalSlides.forEach(slide => {
-        // Verificar si es una portada
+    swiperSlides.forEach(slide => {
+        // Mantener visible la portada
         const portadaImage = slide.querySelector('img[src*="portada"]');
         if (portadaImage) {
-            swiperWrapper.appendChild(slide.cloneNode(true)); // Mantener la portada visible
-            return;
+            slide.style.display = 'block'; // Mantener la portada siempre visible
+            visibleSlidesCount++; // Contar la portada como un slide visible
+            return; // Saltar al siguiente slide
         }
 
-        // Clonar el slide y filtrar sus tarjetas
-        const clonedSlide = slide.cloneNode(true);
-        const phoneCards = clonedSlide.querySelectorAll('.phone-card');
+        // Verificar si el slide contiene teléfonos que coincidan con la búsqueda
+        const phoneCards = slide.querySelectorAll('.phone-card');
         let slideHasVisiblePhone = false;
 
         phoneCards.forEach(card => {
             const phoneName = card.querySelector('h2').textContent.toLowerCase();
             const isMatch = phoneName.includes(searchInput);
-            card.style.display = isMatch ? 'flex' : 'none'; // Mostrar solo las tarjetas que coinciden
-            if (isMatch) slideHasVisiblePhone = true;
+            card.style.display = isMatch ? 'flex' : 'none'; // Mostrar u ocultar la tarjeta según la búsqueda
+            if (isMatch) slideHasVisiblePhone = true; // Marcar si el slide tiene al menos un teléfono visible
         });
 
-        // Agregar el slide solo si contiene teléfonos visibles
+        // Ocultar o mostrar el slide completo dependiendo de si tiene resultados
+        slide.style.display = slideHasVisiblePhone ? 'block' : 'none';
         if (slideHasVisiblePhone) {
-            swiperWrapper.appendChild(clonedSlide);
-            hasVisiblePhones = true;
+            hasVisiblePhones = true; // Marcar que hay al menos un teléfono visible
+            visibleSlidesCount++; // Incrementar el contador de slides visibles
         }
     });
 
-    // Configurar visibilidad de botones y paginación según los resultados
+    // Mostrar u ocultar la navegación del swiper según haya o no resultados
+    const swiperButtons = document.querySelectorAll('.swiper-button-next, .swiper-button-prev');
     swiperButtons.forEach(button => button.style.display = hasVisiblePhones ? 'block' : 'none');
 
-    // Reinstanciar el Swiper después de reconstruir los slides
-    new Swiper('.swiper-container', {
-        loop: true,
-        grabCursor: true,
-        slidesPerView: 1,
-        spaceBetween: 0,
-        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-        pagination: { el: '.swiper-pagination', clickable: true },
-        autoplay: { delay: 8000, disableOnInteraction: false },
-    });
+    // Ajustar el tamaño del carrusel para que no haya espacios en blanco
+    const swiperContainer = document.querySelector('.swiper-container');
+    swiperContainer.style.display = visibleSlidesCount > 0 ? 'block' : 'none'; // Ocultar el carrusel si no hay slides visibles
 
-    // Scroll solo si hay teléfonos visibles
+    // Si hay resultados, desplazarse a la sección de teléfonos
     if (hasVisiblePhones) {
         document.getElementById('phones').scrollIntoView({ behavior: 'smooth' });
     }
