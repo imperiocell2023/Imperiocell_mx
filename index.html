@@ -148,11 +148,9 @@ obtenerDatosTelefonos().then(datos => {
     mostrarTelefonos(telefonosFiltrados.slice(1));
 });
 
-['click', 'keydown'].forEach(event => {
-    document.getElementById('searchButton').addEventListener(event, e => {
-        if (event === 'keydown' && e.key !== 'Enter') return;
-        filterPhones();
-    });
+document.getElementById('searchButton').addEventListener('click', filterPhones);
+document.getElementById('searchInput').addEventListener('keydown', event => {
+    if (event.key === 'Enter') filterPhones();
 });
 
 function filterPhones() {
