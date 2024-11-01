@@ -156,14 +156,23 @@ document.getElementById('searchInput').addEventListener('keydown', event => {
 function filterPhones() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
     const phoneCards = document.querySelectorAll('.phone-card');
+    const swiperSlides = document.querySelectorAll('.swiper-slide');
     const swiperButtons = document.querySelectorAll('.swiper-button-next, .swiper-button-prev');
     let hasVisible = false;
 
-    phoneCards.forEach(card => {
-        const phoneName = card.querySelector('h2').textContent.toLowerCase();
-        const match = phoneName.includes(searchInput);
-        card.style.display = match ? 'flex' : 'none';
-        if (match) hasVisible = true;
+    swiperSlides.forEach(slide => {
+        const cardsInSlide = slide.querySelectorAll('.phone-card');
+        let slideVisible = false;
+
+        cardsInSlide.forEach(card => {
+            const phoneName = card.querySelector('h2').textContent.toLowerCase();
+            const match = phoneName.includes(searchInput);
+            card.style.display = match ? 'flex' : 'none';
+            if (match) slideVisible = true; // Si hay alguna tarjeta visible en el slide
+        });
+
+        slide.style.display = slideVisible ? 'block' : 'none'; // Mostrar u ocultar todo el slide
+        if (slideVisible) hasVisible = true; // Marcar que al menos un slide es visible
     });
 
     swiperButtons.forEach(button => button.style.display = hasVisible ? 'block' : 'none');
