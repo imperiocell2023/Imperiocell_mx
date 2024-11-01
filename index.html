@@ -64,16 +64,18 @@ function filterPhones() {
     phoneCards.forEach(card => {
         const phoneName = card.querySelector('h2').textContent.toLowerCase();
         if (phoneName.includes(searchInput)) {
-            card.style.display = 'flex'; 
-            hasVisible = true; 
+            card.style.display = 'flex'; // Mostrar tarjeta
+            hasVisible = true; // Se encontró al menos una tarjeta visible
         } else {
-            card.style.display = 'none'; 
+            card.style.display = 'none'; // Ocultar tarjeta y eliminar espacio
         }
     });
+    // Ocultar o mostrar los botones del swiper
     swiperButtons.forEach(button => {
         button.style.display = hasVisible ? 'block' : 'none'; // Mostrar botones solo si hay tarjetas visibles
     });
 
+    // Si hay tarjetas visibles, desplazarse a la sección de teléfonos
     if (hasVisible) {
         document.getElementById('phones').scrollIntoView({ behavior: 'smooth' });
     }
@@ -92,7 +94,7 @@ document.getElementById('searchInput').addEventListener('keydown', function(even
 
 const SHEET_ID = '16RGHwlzDHBQrBP-xjfXtwu58K5myaAAKbigHxCQt2NA';
 const API_KEY = 'AIzaSyA4PH8UdUEs3Xq06ygGNJoGrImVGHGpi5c';
-const RANGE = 'Precios!A1:P22'; 
+const RANGE = 'Precios!A1:P19'; 
 async function obtenerDatosTelefonos() {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
     const response = await fetch(url);
@@ -105,18 +107,21 @@ obtenerDatosTelefonos().then(datos => {
         return telefono[15] !== "x";
     });
 
-    console.log(telefonosFiltrados); 
-    mostrarTelefonos(telefonosFiltrados); 
+    console.log(telefonosFiltrados); // Verificar los datos filtrados en la consola
+    mostrarTelefonos(telefonosFiltrados); // Mostrar solo los teléfonos filtrados
 });
 function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
-    phoneSection.innerHTML = ''; 
+    phoneSection.innerHTML = ''; // Limpiar la sección
 
-    // Recorre cada teléfono y crea una tarjeta para cada uno
-    telefonos.forEach((telefono) => {
-        const [marca, modelo, memoria, camara, frontal, precio, enganche, total, pagos, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
+    telefonos.forEach((telefono, index) => {
+        // Para asegurarnos de que no se repitan, manejamos los teléfonos en pares
+        const siguienteTelefono = telefonos[index + 1]; // Obtenemos el siguiente teléfono de la lista
+        if (!siguienteTelefono) return; // Si no hay más teléfonos, paramos el bucle
+        const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
+        const [marca2, modelo2, memoria2, camara2, frontal2, precio2, enganche2, total2, semanal2, bateria2, resolucion2, procesador2, extras2, cargador2, precio_web2, no2] = siguienteTelefono;
 
-        const phoneCard = `
+        const phoneCard = ` 
        <section id="phones">   
 <div class="swiper-container"> 
 <div class="swiper-wrapper"> 
@@ -135,7 +140,7 @@ function mostrarTelefonos(telefonos) {
                         Cargador: ${cargador} </p>
                         <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
                         <p style="font-size: 17px; color: #36a0d1;"> A crédito desde: </p>
-    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${pagos}</td> </tr></table><br>
+    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${semanal}</td> </tr></table><br>
                     <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;" class="buy-button"
                         data-phone="${marca}  ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal} <br> Batería: ${bateria} <br> Extras: ${extras} " 
                         data-price="${precio_web}"
@@ -143,23 +148,23 @@ function mostrarTelefonos(telefonos) {
                         >Comprar </button>    </div> </div>
                         
             <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
-                <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
+                <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo2.replace(/\s+/g, ' ')}.jpg" alt="${modelo2}" style="width: 300px; height: auto; margin-right: 20px;">
                 <div class="phone-info" style="flex: 1;">
-                    <h2 style="font-size: 1.2em; color: #36a0d1;">${marca} <br> ${modelo}</h2>
-                    <p style="font-size: 0.95em; margin: 4px 0;"><strong>Memoria: ${memoria}<br>
-                        Cámara: ${camara} Frontal: ${frontal} <br>
-                        Batería: ${bateria}</strong></p>
+                    <h2 style="font-size: 1.2em; color: #36a0d1;">${marca2} <br> ${modelo2}</h2>
+                    <p style="font-size: 0.95em; margin: 4px 0;"><strong>Memoria: ${memoria2}<br>
+                        Cámara: ${camara2} Frontal: ${frontal2} <br>
+                        Batería: ${bateria2}</strong></p>
                     <p style="font-size: 0.8em; color: #555;">
-                        Resolución: ${resolucion}<br>
-                        Procesador: ${procesador}<br>
-                        Cargador: ${cargador} </p>
-                        <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
+                        Resolución: ${resolucion2}<br>
+                        Procesador: ${procesador2}<br>
+                        Cargador: ${cargador2} </p>
+                        <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web2}</strong></p>
                         <p style="font-size: 17px; color: #36a0d1;"> A crédito desde: </p>
-    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${pagos}</td> </tr></table><br>
-                    <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;" class="buy-button"             
-                        data-phone="${marca}  ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal} <br> Batería: ${bateria} <br> Extras: ${extras}" 
-                        data-price="${precio_web}"
-                        data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" 
+    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche2}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${semanal2}</td> </tr></table><br>
+                    <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;" class="buy-button"              
+                        data-phone="${marca2}  ${modelo2} <br> Memoria: ${memoria2} <br> Cámara: ${camara2} Frontal: ${frontal2} <br> Batería: ${bateria2} <br> Extras: ${extras2} " 
+                        data-price="${precio_web2}"
+                        data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo2.replace(/\s+/g, ' ')}.jpg" 
                         >Comprar </button>    </div> </div>        </div>
             </div>
              <div class="swiper-slide">     
@@ -177,7 +182,7 @@ function mostrarTelefonos(telefonos) {
                         Cargador: ${cargador} </p>
                         <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
                         <p style="font-size: 17px; color: #36a0d1;"> A crédito desde: </p>
-    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${pagos}</td> </tr></table><br>
+    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${semanal}</td> </tr></table><br>
                     <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;" class="buy-button"             
                         data-phone="${marca}  ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal} <br> Batería: ${bateria} <br> Extras: ${extras}" 
                         data-price="${precio_web}"
@@ -196,7 +201,7 @@ function mostrarTelefonos(telefonos) {
                         Cargador: ${cargador} </p>
                         <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
                         <p style="font-size: 17px; color: #36a0d1;"> A crédito desde: </p>
-    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${pagos}</td> </tr></table><br>
+    <table style="width: 92%;"> <tr> <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td> <td align="right"style="color: #28a745;font-size: 15px;">Pagos:<br> ${semanal}</td> </tr></table><br>
                     <button id="buy-button"   style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;" class="buy-button"         
                         data-phone="${marca}  ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal} <br> Batería: ${bateria} <br> Extras: ${extras} " 
                         data-price="${precio_web}"
@@ -213,8 +218,8 @@ function mostrarTelefonos(telefonos) {
 
         var swiper = new Swiper('.swiper-container', {
   loop: true, 
-  grabCursor: true,
-    slidesPerView: 1, 
+  grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
+    slidesPerView: 1, // Muestra una imagen a la vez
     spaceBetween: 0, 
     navigation: {    
       nextEl: '.swiper-button-next',
@@ -226,7 +231,7 @@ function mostrarTelefonos(telefonos) {
     },
     autoplay: {
       delay: 8000, 
-      disableOnInteraction: false, 
+      disableOnInteraction: false, // Continúa el autoplay después de la interacción
     },
   }); 
     }); 
@@ -245,8 +250,10 @@ obtenerDatosTelefonos().then(datos => {
     const telefonosFiltrados = datos.filter(telefono => {
         return telefono[15] !== "x";
     });
-        mostrarTelefonos(telefonosFiltrados.slice(1)); 
+        mostrarTelefonos(telefonosFiltrados.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
 });
+
+
 
 </script>
 <footer>
