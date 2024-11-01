@@ -114,10 +114,19 @@ function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; // Limpiar la sección
 
+    if (telefonos.length === 0) {
+        phoneSection.innerHTML = '<p>No hay teléfonos disponibles.</p>';
+        return;
+    }
+
+    const swiperContainer = document.createElement('div');
+    swiperContainer.classList.add('swiper-container');
+    const swiperWrapper = document.createElement('div');
+    swiperWrapper.classList.add('swiper-wrapper');
+
     telefonos.forEach((telefono, index) => {
-        // Para asegurarnos de que no se repitan, manejamos los teléfonos en pares
-        const siguienteTelefono = telefonos[index + 1]; // Obtenemos el siguiente teléfono de la lista
-        if (!siguienteTelefono) return; // Si no hay más teléfonos, paramos el bucle
+        const siguienteTelefono = telefonos[index + 1]; 
+        if (!siguienteTelefono) return;
         const [marca, modelo, memoria, camara, frontal, precio, enganche, total, pagos, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
         const [marca2, modelo2, memoria2, camara2, frontal2, precio2, enganche2, total2, pagos2, bateria2, resolucion2, procesador2, extras2, cargador2, precio_web2, no2] = siguienteTelefono;
 
@@ -214,26 +223,31 @@ function mostrarTelefonos(telefonos) {
         <div class="swiper-pagination"></div>
     </div>
             </section>
-        `;    phoneSection.innerHTML += phoneCard;
+        `;            swiperWrapper.innerHTML += phoneCard;
+    });
 
-        var swiper = new Swiper('.swiper-container', {
-  loop: true, 
-  grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
-    slidesPerView: 1, // Muestra una imagen a la vez
-    spaceBetween: 0, 
-    navigation: {    
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    autoplay: {
-      delay: 8000, 
-      disableOnInteraction: false, // Continúa el autoplay después de la interacción
-    },
-  }); 
+    swiperContainer.appendChild(swiperWrapper);
+    phoneSection.appendChild(swiperContainer);
+
+
+    var swiper = new Swiper('.swiper-container', {
+        loop: true,
+        grabCursor: true,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        autoplay: {
+            delay: 8000,
+            disableOnInteraction: false,
+        },
+    });
     }); 
     
     const buyButtons = document.querySelectorAll('.buy-button');
