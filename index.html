@@ -161,6 +161,13 @@ function filterPhones() {
     let hasVisible = false;
 
     swiperSlides.forEach(slide => {
+        // Identificar la portada si su src contiene la palabra "portada"
+        const portadaImage = slide.querySelector('img[src*="portada"]');
+        if (portadaImage) {
+            slide.style.display = 'block'; // Mantener la portada siempre visible
+            return; // Pasamos al siguiente slide sin hacer más verificaciones
+        }
+
         const cardsInSlide = slide.querySelectorAll('.phone-card');
         let slideVisible = false;
 
@@ -171,7 +178,7 @@ function filterPhones() {
             if (match) slideVisible = true; // Si hay alguna tarjeta visible en el slide
         });
 
-        slide.style.display = slideVisible ? 'block' : 'none'; // Mostrar u ocultar todo el slide
+        slide.style.display = slideVisible ? 'block' : 'none'; // Mostrar u ocultar el slide completo
         if (slideVisible) hasVisible = true; // Marcar que al menos un slide es visible
     });
 
