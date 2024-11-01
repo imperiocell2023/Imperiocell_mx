@@ -64,18 +64,16 @@ function filterPhones() {
     phoneCards.forEach(card => {
         const phoneName = card.querySelector('h2').textContent.toLowerCase();
         if (phoneName.includes(searchInput)) {
-            card.style.display = 'flex'; // Mostrar tarjeta
-            hasVisible = true; // Se encontró al menos una tarjeta visible
+            card.style.display = 'flex'; 
+            hasVisible = true; 
         } else {
-            card.style.display = 'none'; // Ocultar tarjeta y eliminar espacio
+            card.style.display = 'none'; 
         }
     });
-    // Ocultar o mostrar los botones del swiper
     swiperButtons.forEach(button => {
         button.style.display = hasVisible ? 'block' : 'none'; // Mostrar botones solo si hay tarjetas visibles
     });
 
-    // Si hay tarjetas visibles, desplazarse a la sección de teléfonos
     if (hasVisible) {
         document.getElementById('phones').scrollIntoView({ behavior: 'smooth' });
     }
@@ -94,7 +92,7 @@ document.getElementById('searchInput').addEventListener('keydown', function(even
 
 const SHEET_ID = '16RGHwlzDHBQrBP-xjfXtwu58K5myaAAKbigHxCQt2NA';
 const API_KEY = 'AIzaSyA4PH8UdUEs3Xq06ygGNJoGrImVGHGpi5c';
-const RANGE = 'Precios!A1:P19'; 
+const RANGE = 'Precios!A1:P22'; 
 async function obtenerDatosTelefonos() {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
     const response = await fetch(url);
@@ -112,7 +110,7 @@ obtenerDatosTelefonos().then(datos => {
 });
 function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
-    phoneSection.innerHTML = ''; // Limpiar la sección antes de agregar tarjetas
+    phoneSection.innerHTML = ''; 
 
     // Recorre cada teléfono y crea una tarjeta para cada uno
     telefonos.forEach((telefono) => {
@@ -247,7 +245,7 @@ obtenerDatosTelefonos().then(datos => {
     const telefonosFiltrados = datos.filter(telefono => {
         return telefono[15] !== "x";
     });
-        mostrarTelefonos(telefonosFiltrados.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
+        mostrarTelefonos(telefonosFiltrados.slice(1)); 
 });
 
 </script>
