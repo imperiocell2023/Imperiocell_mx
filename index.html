@@ -110,10 +110,8 @@ obtenerDatosTelefonos().then(datos => {
 });
 function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
-    phoneSection.innerHTML = ''; // Limpiar la sección
+    phoneSection.innerHTML = ''; 
 
-    telefonos.forEach((telefono, index) => {
-        // Para asegurarnos de que no se repitan, manejamos los teléfonos en pares
         const siguienteTelefono = telefonos[index + 1]; // Obtenemos el siguiente teléfono de la lista
         if (!siguienteTelefono) return; // Si no hay más teléfonos, paramos el bucle
         const [marca, modelo, memoria, camara, frontal, precio, enganche, total, pagos, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
@@ -165,7 +163,7 @@ function mostrarTelefonos(telefonos) {
                         data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo2.replace(/\s+/g, ' ')}.jpg" 
                         >Comprar </button>    </div> </div>        </div>
             </div>
-             <div class="swiper-slide">     
+             <div class="swiper-slide">         
      <div class="phone-group" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
             <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
                 <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
@@ -212,12 +210,12 @@ function mostrarTelefonos(telefonos) {
         <div class="swiper-pagination"></div>
     </div>
             </section>
-        ;    phoneSection.innerHTML += phoneCard;
+        `;    phoneSection.innerHTML += phoneCard;
 
         var swiper = new Swiper('.swiper-container', {
   loop: true, 
-  grabCursor: true, // Hace que el cursor se vea como una mano en dispositivos de escritorio 
-    slidesPerView: 1, // Muestra una imagen a la vez
+  grabCursor: true,
+    slidesPerView: 1, 
     spaceBetween: 0, 
     navigation: {    
       nextEl: '.swiper-button-next',
@@ -229,7 +227,7 @@ function mostrarTelefonos(telefonos) {
     },
     autoplay: {
       delay: 8000, 
-      disableOnInteraction: false, // Continúa el autoplay después de la interacción
+      disableOnInteraction: false, 
     },
   }); 
     }); 
@@ -240,7 +238,7 @@ function mostrarTelefonos(telefonos) {
             const phoneName = this.getAttribute('data-phone');
             const phonePrice = this.getAttribute('data-price');
             const phoneImage = this.getAttribute('data-image'); 
-            window.location.href = comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}&image=${encodeURIComponent(phoneImage)};
+            window.location.href = `comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}&image=${encodeURIComponent(phoneImage)}`;
         });
     });    
 }
@@ -248,7 +246,7 @@ obtenerDatosTelefonos().then(datos => {
     const telefonosFiltrados = datos.filter(telefono => {
         return telefono[15] !== "x";
     });
-        mostrarTelefonos(telefonosFiltrados.slice(1)); // Omitimos la primera fila que tiene los nombres de columnas
+        mostrarTelefonos(telefonosFiltrados.slice(1)); 
 });
 
 </script>
