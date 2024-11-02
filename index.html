@@ -77,15 +77,22 @@
         pagination: { el: '.swiper-pagination', clickable: true },
         autoplay: { delay: 8000, disableOnInteraction: false },
     });
-    const phoneSwiper = new Swiper('.phones-swiper', {
-        loop: true,
-        grabCursor: true,
-        slidesPerView: 1,
-        spaceBetween: 0,
-        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-        pagination: { el: '.swiper-pagination', clickable: true },
-        autoplay: { delay: 8000, disableOnInteraction: false },
-    });
+const phoneSwiper = new Swiper('.phones-swiper', {
+    loop: true,
+    grabCursor: true,
+    slidesPerView: 1, // Cambia según el tamaño de la pantalla
+    breakpoints: {
+        640: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+    },
+    spaceBetween: 20,
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    autoplay: { delay: 8000, disableOnInteraction: false },
+});
+
+    
 
 window.addEventListener('load', () => {
     const firstImage = document.querySelector('.portada-swiper .swiper-slide img');
@@ -146,8 +153,8 @@ function generatePhoneCard(telefono) {
 function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; 
-    for (let i = 0; i < telefonos.length; i += 3) {
-        const phoneCards = telefonos.slice(i, i + 3).map(generatePhoneCard).join('');
+    for (let i = 0; i < telefonos.length; i += 2) {
+        const phoneCards = telefonos.slice(i, i + 2).map(generatePhoneCard).join('');
         phoneSection.innerHTML += `
             <div class="swiper-slide">     
                 <div class="phone-group" style="display: flex; justify-content: space-between; margin-bottom: 5px;">
