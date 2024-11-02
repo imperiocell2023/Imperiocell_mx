@@ -98,14 +98,15 @@ window.addEventListener('load', () => {
         const firstImageHeight = firstImage.clientHeight;
         const firstImageWidth = firstImage.clientWidth;
 
-        // Aplica la altura y ancho de la primera imagen a todas las imágenes de la portada
+        // Aplica la altura y el ancho de la primera imagen a todas las imágenes de la portada
         document.querySelectorAll('.portada-swiper .swiper-slide img').forEach(img => {
             img.style.height = `${firstImageHeight}px`;
             img.style.width = `${firstImageWidth}px`;
-            img.style.objectFit = 'contain'; // Ajuste para mantener la proporción completa
+            img.style.objectFit = 'fill'; // Esto hace que la imagen llene todo el contenedor
         });
     }
 });
+
 
 const SHEET_ID = '16RGHwlzDHBQrBP-xjfXtwu58K5myaAAKbigHxCQt2NA';
 const API_KEY = 'AIzaSyA4PH8UdUEs3Xq06ygGNJoGrImVGHGpi5c';
