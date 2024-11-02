@@ -186,17 +186,27 @@ document.getElementById('searchInput').addEventListener('keydown', event => {
 
 function filterPhones() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const phoneCards = document.querySelectorAll('.phones-swiper .phone-card');
-    let hasVisiblePhones = false;
+    const phoneSection = document.getElementById('phones');
+    phoneSection.innerHTML = ''; // Limpia el contenedor del swiper
 
-    phoneCards.forEach(card => {
-        const phoneName = card.querySelector('h2').textContent.toLowerCase();
-        const isMatch = phoneName.includes(searchInput);
-        card.style.display = isMatch ? 'block' : 'none';
-        if (isMatch) hasVisiblePhones = true;
+    // Filtrar los teléfonos que coinciden con la búsqueda
+    obtenerDatosTelefonos().then(telefonos => {
+        const filteredPhones = telefonos.filter(telefono => {
+            const phoneName = `${telefono[0]} ${telefono[1]}`.toLowerCase();
+            return phoneName.includes(searchInput);
+        });
+
+        // Mostrar los teléfonos filtrados
+        if (filteredPhones.length > 0) {
+            mostrarTelefonos(filteredPhones.slice(1)); // Llama a mostrarTelefonos con los resultados filtrados
+        } else {
+            // Si no hay resultados, mostrar un mensaje o dejar el contenedor vacío
+            phoneSection.innerHTML = `<p style="text-align:center;">No se encontraron resultados.</p>`;
+        }
+
+        // Actualiza el swiper para reflejar los cambios
+        phoneSwiper.update();
     });
-    const swiperButtons = document.querySelectorAll('.phones-swiper .swiper-button-next, .phones-swiper .swiper-button-prev');
-    swiperButtons.forEach(button => button.style.display = hasVisiblePhones ? 'block' : 'none');
 }
 
 </script>
