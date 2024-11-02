@@ -96,12 +96,13 @@ window.addEventListener('load', () => {
     const firstImage = document.querySelector('.portada-swiper .swiper-slide img');
     if (firstImage) {
         const firstImageHeight = firstImage.clientHeight;
+        const firstImageWidth = firstImage.clientWidth;
 
-        // Aplica la altura de la primera imagen a todas las imágenes de la portada
+        // Aplica la altura y ancho de la primera imagen a todas las imágenes de la portada
         document.querySelectorAll('.portada-swiper .swiper-slide img').forEach(img => {
             img.style.height = `${firstImageHeight}px`;
-            img.style.width = 'auto';  // Ajusta el ancho automáticamente para mantener la proporción
-            img.style.objectFit = 'contain'; // Asegura que la imagen completa se vea sin recorte
+            img.style.width = `${firstImageWidth}px`;
+            img.style.objectFit = 'contain'; // Ajuste para mantener la proporción completa
         });
     }
 });
