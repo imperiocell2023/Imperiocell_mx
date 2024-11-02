@@ -164,12 +164,12 @@ function mostrarTelefonos(telefonos) {
     }
     phoneSwiper.update(); // Actualiza el Swiper después de cargar los teléfonos
 
-        document.querySelectorAll('.buy-button').forEach(button => {
+    document.querySelectorAll('.buy-button').forEach(button => {
         button.addEventListener('click', function() {
             const phoneName = this.getAttribute('data-phone');
             const phonePrice = this.getAttribute('data-price');
             const phoneImage = this.getAttribute('data-image'); 
-            window.location.href = comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}&image=${encodeURIComponent(phoneImage)};
+            window.location.href = `comprar.html?phone=${encodeURIComponent(phoneName)}&price=${encodeURIComponent(phonePrice)}&image=${encodeURIComponent(phoneImage)}`;
         });
     });
 }
