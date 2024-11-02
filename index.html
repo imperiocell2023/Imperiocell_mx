@@ -177,8 +177,8 @@ document.getElementById('searchInput').addEventListener('keydown', event => {
 function filterPhones() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
     const swiperSlides = document.querySelectorAll('.phones-swiper .swiper-slide');
-    let hasVisiblePhones = false;
-    
+    let visibleSlidesCount = 0; // Contador de slides visibles
+
     swiperSlides.forEach(slide => {
         const phoneCards = slide.querySelectorAll('.phone-card');
         let slideHasVisiblePhone = false;
@@ -190,13 +190,26 @@ function filterPhones() {
             if (isMatch) slideHasVisiblePhone = true;
         });
 
+        // Mostrar solo los slides que tienen al menos un teléfono visible
         slide.style.display = slideHasVisiblePhone ? 'block' : 'none';
-        if (slideHasVisiblePhone) hasVisiblePhones = true;
+        if (slideHasVisiblePhone) visibleSlidesCount++;
     });
 
-    document.querySelectorAll('.phones-swiper .swiper-button-next, .phones-swiper .swiper-button-prev')
-        .forEach(button => button.style.display = hasVisiblePhones ? 'block' : 'none');
+    // Actualizar los botones de navegación y la paginación según el número de slides visibles
+    const swiperButtons = document.querySelectorAll('.phones-swiper .swiper-button-next, .phones-swiper .swiper-button-prev');
+    swiperButtons.forEach(button => button.style.display = visibleSlidesCount > 1 ? 'block' : 'none');
+
+    // Reinicializar el swiper para que respete los slides visibles actuales
+    if (phoneSwiper) {
+        phoneSwiper.update(); // Actualiza el Swiper para que se reflejen los cambios
+    }
+
+    // Desplazar a la sección de teléfonos solo si hay algún teléfono visible
+    if (visibleSlidesCount > 0) {
+        document.getElementById('phones').scrollIntoView({ behavior: 'smooth' });
+    }
 }
+
 </script>
 
 <footer>
