@@ -123,7 +123,7 @@ function generatePhoneCard(telefono) {
     const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
     return `
         <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
-            <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 300px; height: auto; margin-right: 20px;">
+            <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 100%; height: auto; margin-right: 20px;">
             <div class="phone-info" style="flex: 1;">
                 <h2 style="font-size: 1.2em; color: #36a0d1;">${marca} <br> ${modelo}</h2>
                 <p style="font-size: 0.95em; margin: 4px 0;"><strong>Memoria: ${memoria}<br>
