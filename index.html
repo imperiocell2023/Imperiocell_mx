@@ -191,25 +191,31 @@
         if (event.key === 'Enter') filterPhones();
     });
 
-    async function filterPhones() {
-        const searchInput = document.getElementById('searchInput').value.toLowerCase();
-        const phoneSection = document.getElementById('phones');
-        phoneSection.innerHTML = ''; // Limpia el contenedor del swiper
+async function filterPhones() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const phoneSection = document.getElementById('phones');
+    phoneSection.innerHTML = ''; // Limpia el contenedor del swiper
 
-        const datos = await obtenerDatosTelefonos();
-        const telefonosFiltrados = datos
-            .filter(telefono => telefono[15] !== "x") 
-            .filter(telefono => {
-                const phoneName = `${telefono[0]} ${telefono[1]}`.toLowerCase();
-                return phoneName.includes(searchInput);
-            });
+    const datos = await obtenerDatosTelefonos();
+    const telefonosFiltrados = datos
+        .filter(telefono => telefono[15] !== "x") // Filtrar los que no tienen "x" en la columna 16
+        .filter(telefono => {
+            // Convertir tanto el nombre del teléfono como el término de búsqueda a minúsculas
+            const phoneName = `${telefono[0]} ${telefono[1]}`.toLowerCase();
+            // Retornar true si el nombre contiene el término de búsqueda como subcadena
+            return phoneName.includes(searchInput);
+        });
 
-        if (telefonosFiltrados.length > 0) {
-            mostrarTelefonos(telefonosFiltrados.slice(1));
-        } else {
-            phoneSection.innerHTML = `<p style="text-align:center;">No se encontraron resultados.</p>`;
-        }
+    // Mostrar los teléfonos filtrados o un mensaje si no hay resultados
+    if (telefonosFiltrados.length > 0) {
+        mostrarTelefonos(telefonosFiltrados.slice(1)); // Mostrar los teléfonos sin el encabezado (primera fila)
+    } else {
+        phoneSection.innerHTML = `<p style="text-align:center;">No se encontraron resultados.</p>`;
     }
+
+    // Actualizar el swiper para reflejar los cambios
+    if (phoneSwiper) phoneSwiper.update();
+}
 </script>
 
 
