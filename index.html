@@ -194,27 +194,34 @@
 async function filterPhones() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
     const phoneSection = document.getElementById('phones');
-    phoneSection.innerHTML = ''; // Limpia el contenedor del swiper
+    phoneSection.innerHTML = ''; // Limpiar el contenedor del swiper
 
     // Obtener todos los datos y aplicar el filtro por "x" en la columna 16 y el término de búsqueda
     const datos = await obtenerDatosTelefonos();
     const telefonosFiltrados = datos
         .filter(telefono => telefono[15] !== "x") // Filtrar los que no tienen "x" en la columna 16
         .filter(telefono => {
-            // Combinar marca y modelo, eliminando espacios innecesarios
-            const phoneBrandModel = `${telefono[0]} ${telefono[1]}`.toLowerCase().replace(/\s+/g, ' ');
-            return phoneBrandModel.includes(searchInput); // Comprobar si contiene el término de búsqueda
+            // Crear cadena solo con marca y modelo
+            const marca = telefono[0].toLowerCase();
+            const modelo = telefono[1].toLowerCase();
+            
+            // Comprobar si la búsqueda está contenida en marca o en modelo
+            return marca.includes(searchInput) || modelo.includes(searchInput);
         });
 
-    // Mostrar los teléfonos filtrados o un mensaje si no hay resultados
     if (telefonosFiltrados.length > 0) {
-        mostrarTelefonos(telefonosFiltrados.slice(1)); // Mostrar los teléfonos sin el encabezado (primera fila)
+        mostrarTelefonos(telefonosFiltrados.slice(1)); // Mostrar teléfonos sin la primera fila (encabezado)
     } else {
         phoneSection.innerHTML = `<p style="text-align:center;">No se encontraron resultados.</p>`;
     }
 
-    // Actualizar el swiper para reflejar los cambios
-    if (phoneSwiper) phoneSwiper.update();
+    // Actualizar el swiper y hacer scroll si hay resultados
+    if (phoneSwiper) {
+        phoneSwiper.update();
+        if (telefonosFiltrados.length > 0) {
+            phoneSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
 }
 
 
