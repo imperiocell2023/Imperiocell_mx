@@ -202,22 +202,21 @@ async function filterPhones() {
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; // Limpiar el contenedor del swiper
 
-    // Si el campo de búsqueda está vacío, recargar todos los teléfonos
+    // Si el campo de búsqueda está vacío, mostrar todos los teléfonos
+    const datos = await obtenerDatosTelefonos();
     if (searchInput === "") {
-        const datos = await obtenerDatosTelefonos();
-        const telefonosFiltrados = datos.filter(telefono => telefono[15] !== "x"); // Filtra los teléfonos válidos
-        mostrarTelefonos(telefonosFiltrados); // Mostrar todos los teléfonos
+        const telefonosFiltrados = datos.filter(telefono => telefono[15] !== "x");
+        mostrarTelefonos(telefonosFiltrados);
         if (phoneSwiper) phoneSwiper.update();
         return;
     }
 
-    // Obtener todos los datos y aplicar el filtro por "x" en la columna 16 y el término de búsqueda
-    const datos = await obtenerDatosTelefonos();
+    // Aplicar el filtro solo si hay un término de búsqueda
     const telefonosFiltrados = datos
         .filter(telefono => telefono[15] !== "x") // Filtrar los que no tienen "x" en la columna 16
         .filter(telefono => {
             const marcaModelo = `${telefono[0]} ${telefono[1]}`.toLowerCase();
-            return marcaModelo.includes(searchInput); // Comprobar si contiene el término de búsqueda
+            return marcaModelo.includes(searchInput);
         });
 
     if (telefonosFiltrados.length > 0) {
@@ -229,7 +228,6 @@ async function filterPhones() {
     // Actualizar el swiper para reflejar los cambios
     if (phoneSwiper) phoneSwiper.update();
 }
-
 
 </script>
 <footer>
