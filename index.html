@@ -92,6 +92,21 @@
         autoplay: { delay: 8000, disableOnInteraction: false },
     });
 
+    // Ajustar la altura de las imágenes en el swiper de portada según la primera imagen
+    window.addEventListener('load', () => {
+        const firstImage = document.querySelector('.portada-swiper .swiper-slide img');
+        if (firstImage) {
+            const firstImageHeight = firstImage.clientHeight;
+            
+            // Aplica la misma altura a todas las imágenes en el swiper de portada
+            document.querySelectorAll('.portada-swiper .swiper-slide img').forEach(img => {
+                img.style.height = `${firstImageHeight}px`;
+                img.style.objectFit = 'cover';
+                img.style.objectPosition = 'top';
+            });
+        }
+    });
+
 const SHEET_ID = '16RGHwlzDHBQrBP-xjfXtwu58K5myaAAKbigHxCQt2NA';
 const API_KEY = 'AIzaSyA4PH8UdUEs3Xq06ygGNJoGrImVGHGpi5c';
 const RANGE = 'Precios!A1:P22';
