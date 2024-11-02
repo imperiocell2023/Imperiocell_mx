@@ -107,6 +107,9 @@
         }
     });
 
+    // Instancia global para el Swiper de Teléfonos
+    let phoneSwiper;
+
 const SHEET_ID = '16RGHwlzDHBQrBP-xjfXtwu58K5myaAAKbigHxCQt2NA';
 const API_KEY = 'AIzaSyA4PH8UdUEs3Xq06ygGNJoGrImVGHGpi5c';
 const RANGE = 'Precios!A1:P22';
@@ -174,29 +177,31 @@ document.getElementById('searchInput').addEventListener('keydown', event => {
     if (event.key === 'Enter') filterPhones();
 });
 
-function filterPhones() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const swiperSlides = document.querySelectorAll('.phones-swiper .swiper-slide');
-    let hasVisiblePhones = false;
-    
-    swiperSlides.forEach(slide => {
-        const phoneCards = slide.querySelectorAll('.phone-card');
-        let slideHasVisiblePhone = false;
+    function filterPhones() {
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+        const swiperSlides = document.querySelectorAll('.phones-swiper .swiper-slide');
+        let visibleSlides = 0;
+        
+        swiperSlides.forEach(slide => {
+            const phoneCards = slide.querySelectorAll('.phone-card');
+            let slideHasVisiblePhone = false;
 
-        phoneCards.forEach(card => {
-            const phoneName = card.querySelector('h2').textContent.toLowerCase();
-            const isMatch = phoneName.includes(searchInput);
-            card.style.display = isMatch ? 'flex' : 'none'; // Mostrar u ocultar la tarjeta según la búsqueda
-            if (isMatch) slideHasVisiblePhone = true;
+            phoneCards.forEach(card => {
+                const phoneName = card.querySelector('h2').textContent.toLowerCase();
+                const isMatch = phoneName.includes(searchInput);
+                card.style.display = isMatch ? 'flex' : 'none';
+                if (isMatch) slideHasVisiblePhone = true;
+            });
+
+            slide.style.display = slideHasVisiblePhone ? 'block' : 'none';
+            if (slideHasVisiblePhone) visibleSlides++;
         });
 
-        slide.style.display = slideHasVisiblePhone ? 'block' : 'none';
-        if (slideHasVisiblePhone) hasVisiblePhones = true;
-    });
+        document.querySelectorAll('.phones-swiper .phones-next, .phones-swiper .phones-prev')
+            .forEach(button => button.style.display = visibleSlides > 1 ? 'block' : 'none');
 
-    document.querySelectorAll('.phones-swiper .swiper-button-next, .phones-swiper .swiper-button-prev')
-        .forEach(button => button.style.display = hasVisiblePhones ? 'block' : 'none');
-}
+        phoneSwiper.update();
+    }
 </script>
 
 <footer>
