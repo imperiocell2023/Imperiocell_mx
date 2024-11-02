@@ -82,7 +82,7 @@
     });
 
     // Swiper de Teléfonos
-    new Swiper('.phones-swiper', {
+    const phoneSwiper = new Swiper('.phones-swiper', {
         loop: true,
         grabCursor: true,
         slidesPerView: 1,
@@ -146,12 +146,42 @@ function mostrarTelefonos(telefonos) {
                 </div>
             </div>`;
     }
+    phoneSwiper.update(); // Actualiza el Swiper después de cargar los teléfonos
 }
 
 obtenerDatosTelefonos().then(datos => { 
     const telefonosFiltrados = datos.filter(telefono => telefono[15] !== "x");
     mostrarTelefonos(telefonosFiltrados.slice(1));
 });
+
+document.getElementById('searchButton').addEventListener('click', filterPhones);
+document.getElementById('searchInput').addEventListener('keydown', event => {
+    if (event.key === 'Enter') filterPhones();
+});
+
+function filterPhones() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const swiperSlides = document.querySelectorAll('.phones-swiper .swiper-slide');
+    let hasVisiblePhones = false;
+    
+    swiperSlides.forEach(slide => {
+        const phoneCards = slide.querySelectorAll('.phone-card');
+        let slideHasVisiblePhone = false;
+
+        phoneCards.forEach(card => {
+            const phoneName = card.querySelector('h2').textContent.toLowerCase();
+            const isMatch = phoneName.includes(searchInput);
+            card.style.display = isMatch ? 'flex' : 'none'; // Mostrar u ocultar la tarjeta según la búsqueda
+            if (isMatch) slideHasVisiblePhone = true;
+        });
+
+        slide.style.display = slideHasVisiblePhone ? 'block' : 'none';
+        if (slideHasVisiblePhone) hasVisiblePhones = true;
+    });
+
+    document.querySelectorAll('.phones-swiper .swiper-button-next, .phones-swiper .swiper-button-prev')
+        .forEach(button => button.style.display = hasVisiblePhones ? 'block' : 'none');
+}
 </script>
 
 <footer>
