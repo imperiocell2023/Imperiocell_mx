@@ -193,34 +193,29 @@
 
 async function filterPhones() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const datos = await obtenerDatosTelefonos();
-    
-    // Filtrar datos según el término de búsqueda y la columna 'No.'
-    const telefonosFiltrados = datos
-        .filter(telefono => telefono[15] !== "x") // Filtrar los que no tienen "x" en la columna 16
-        .filter(telefono => {
-            const phoneDetails = `${telefono[0]} ${telefono[1]} ${telefono[2]} ${telefono[10]} ${telefono[11]} ${telefono[13]}`.toLowerCase(); // Incluye más columnas
-            return phoneDetails.includes(searchInput);
-        });
-
-    // Mostrar los teléfonos filtrados
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; // Limpia el contenedor del swiper
 
-    // Si hay resultados, los mostramos
+    // Obtener todos los datos y aplicar el filtro por "x" en la columna 16 y el término de búsqueda
+    const datos = await obtenerDatosTelefonos();
+    const telefonosFiltrados = datos
+        .filter(telefono => telefono[15] !== "x") // Filtrar los que no tienen "x" en la columna 16
+        .filter(telefono => {
+            // Combinar marca y modelo, eliminando espacios innecesarios
+            const phoneBrandModel = `${telefono[0]} ${telefono[1]}`.toLowerCase().replace(/\s+/g, ' ');
+            return phoneBrandModel.includes(searchInput); // Comprobar si contiene el término de búsqueda
+        });
+
+    // Mostrar los teléfonos filtrados o un mensaje si no hay resultados
     if (telefonosFiltrados.length > 0) {
         mostrarTelefonos(telefonosFiltrados.slice(1)); // Mostrar los teléfonos sin el encabezado (primera fila)
     } else {
-        // Mostrar un mensaje si no hay resultados
         phoneSection.innerHTML = `<p style="text-align:center;">No se encontraron resultados.</p>`;
     }
 
-    // Actualizar el Swiper para reflejar los cambios en los resultados filtrados
-    if (phoneSwiper) {
-        phoneSwiper.update();
-    }
+    // Actualizar el swiper para reflejar los cambios
+    if (phoneSwiper) phoneSwiper.update();
 }
-
 
 
 </script>
