@@ -213,7 +213,7 @@ async function filterPhones() {
         });
 
     if (telefonosFiltrados.length > 0) {
-        mostrarTelefonos(telefonosFiltrados.slice(1)); // Mostrar teléfonos sin la primera fila (encabezado)
+        mostrarTelefonos(telefonosFiltrados); // Mostrar todos los teléfonos filtrados sin usar slice(1)
     } else {
         phoneSection.innerHTML = `<p style="text-align:center;">No se encontraron resultados.</p>`;
     }
@@ -226,6 +226,7 @@ async function filterPhones() {
         }
     }
 }
+
 
 
 </script>
