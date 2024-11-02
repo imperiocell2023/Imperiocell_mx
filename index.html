@@ -202,7 +202,7 @@ async function filterPhones() {
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; // Limpiar el contenedor del swiper
 
-    // Si el campo de búsqueda está vacío, recarga todos los teléfonos
+    // Si el campo de búsqueda está vacío, recargar todos los teléfonos
     if (searchInput === "") {
         const datos = await obtenerDatosTelefonos();
         const telefonosFiltrados = datos.filter(telefono => telefono[15] !== "x"); // Filtra los teléfonos válidos
@@ -229,6 +229,7 @@ async function filterPhones() {
     // Actualizar el swiper para reflejar los cambios
     if (phoneSwiper) phoneSwiper.update();
 }
+
 
 </script>
 <footer>
