@@ -201,8 +201,8 @@ async function filterPhones() {
     const telefonosFiltrados = datos
         .filter(telefono => telefono[15] !== "x") // Filtrar los que no tienen "x" en la columna 16
         .filter(telefono => {
-            // Convertir tanto la marca como el modelo a minúsculas y buscar el término de búsqueda en ambos
-            const phoneBrandModel = `${telefono[0]} ${telefono[1]}`.toLowerCase();
+            // Combinar marca y modelo, eliminando espacios innecesarios
+            const phoneBrandModel = `${telefono[0]} ${telefono[1]}`.toLowerCase().replace(/\s+/g, ' ');
             return phoneBrandModel.includes(searchInput); // Comprobar si contiene el término de búsqueda
         });
 
@@ -216,6 +216,7 @@ async function filterPhones() {
     // Actualizar el swiper para reflejar los cambios
     if (phoneSwiper) phoneSwiper.update();
 }
+
 
 </script>
 
