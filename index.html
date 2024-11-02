@@ -28,7 +28,6 @@
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-<!-- Swiper de Portada -->
 <div class="swiper-container portada-swiper">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -50,7 +49,6 @@
     </div>
 </section>
 
-<!-- Swiper de Teléfonos -->
 <div class="swiper-container phones-swiper">
     <div class="swiper-wrapper" id="phones"></div>
     <div class="swiper-button-next"></div>
@@ -70,7 +68,6 @@
 </div>
 
 <script>
-    // Swiper de Portada
     new Swiper('.portada-swiper', {
         loop: true,
         grabCursor: true,
@@ -80,8 +77,6 @@
         pagination: { el: '.swiper-pagination', clickable: true },
         autoplay: { delay: 8000, disableOnInteraction: false },
     });
-
-    // Swiper de Teléfonos
     const phoneSwiper = new Swiper('.phones-swiper', {
         loop: true,
         grabCursor: true,
@@ -98,15 +93,13 @@ window.addEventListener('load', () => {
         const firstImageHeight = firstImage.clientHeight;
         const firstImageWidth = firstImage.clientWidth;
 
-        // Aplica la altura y el ancho de la primera imagen a todas las imágenes de la portada
         document.querySelectorAll('.portada-swiper .swiper-slide img').forEach(img => {
             img.style.height = `${firstImageHeight}px`;
             img.style.width = `${firstImageWidth}px`;
-            img.style.objectFit = 'fill'; // Esto hace que la imagen llene todo el contenedor
+            img.style.objectFit = 'fill'; 
         });
     }
 });
-
 
 const SHEET_ID = '16RGHwlzDHBQrBP-xjfXtwu58K5myaAAKbigHxCQt2NA';
 const API_KEY = 'AIzaSyA4PH8UdUEs3Xq06ygGNJoGrImVGHGpi5c';
@@ -123,7 +116,7 @@ function generatePhoneCard(telefono) {
     const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
     return `
         <div class="phone-card" style="display: flex; padding: 15px; align-items: flex-start; width: 48%;">
-            <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 200px; height: auto; margin-right: 20px;">
+            <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 220px; height: auto; margin-right: 20px;">
             <div class="phone-info" style="flex: 1;">
                 <h2 style="font-size: 1.2em; color: #36a0d1;">${marca} <br> ${modelo}</h2>
                 <p style="font-size: 0.95em; margin: 4px 0;"><strong>Memoria: ${memoria}<br>
@@ -153,8 +146,8 @@ function generatePhoneCard(telefono) {
 function mostrarTelefonos(telefonos) {
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; 
-    for (let i = 0; i < telefonos.length; i += 2) {
-        const phoneCards = telefonos.slice(i, i + 2).map(generatePhoneCard).join('');
+    for (let i = 0; i < telefonos.length; i += 3) {
+        const phoneCards = telefonos.slice(i, i + 3).map(generatePhoneCard).join('');
         phoneSection.innerHTML += `
             <div class="swiper-slide">     
                 <div class="phone-group" style="display: flex; justify-content: space-between; margin-bottom: 5px;">
@@ -186,38 +179,17 @@ document.getElementById('searchInput').addEventListener('keydown', event => {
 
 function filterPhones() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const swiperSlides = document.querySelectorAll('.phones-swiper .swiper-slide');
-    let visibleSlidesCount = 0; // Contador de slides visibles
+    const phoneCards = document.querySelectorAll('.phones-swiper .phone-card');
+    let hasVisiblePhones = false;
 
-    swiperSlides.forEach(slide => {
-        const phoneCards = slide.querySelectorAll('.phone-card');
-        let slideHasVisiblePhone = false;
-
-        phoneCards.forEach(card => {
-            const phoneName = card.querySelector('h2').textContent.toLowerCase();
-            const isMatch = phoneName.includes(searchInput);
-            card.style.display = isMatch ? 'flex' : 'none'; // Mostrar u ocultar la tarjeta según la búsqueda
-            if (isMatch) slideHasVisiblePhone = true;
-        });
-
-        // Mostrar solo los slides que tienen al menos un teléfono visible
-        slide.style.display = slideHasVisiblePhone ? 'block' : 'none';
-        if (slideHasVisiblePhone) visibleSlidesCount++;
+    phoneCards.forEach(card => {
+        const phoneName = card.querySelector('h2').textContent.toLowerCase();
+        const isMatch = phoneName.includes(searchInput);
+        card.style.display = isMatch ? 'block' : 'none';
+        if (isMatch) hasVisiblePhones = true;
     });
-
-    // Actualizar los botones de navegación y la paginación según el número de slides visibles
     const swiperButtons = document.querySelectorAll('.phones-swiper .swiper-button-next, .phones-swiper .swiper-button-prev');
-    swiperButtons.forEach(button => button.style.display = visibleSlidesCount > 1 ? 'block' : 'none');
-
-    // Reinicializar el swiper para que respete los slides visibles actuales
-    if (phoneSwiper) {
-        phoneSwiper.update(); // Actualiza el Swiper para que se reflejen los cambios
-    }
-
-    // Desplazar a la sección de teléfonos solo si hay algún teléfono visible
-    if (visibleSlidesCount > 0) {
-        document.getElementById('phones').scrollIntoView({ behavior: 'smooth' });
-    }
+    swiperButtons.forEach(button => button.style.display = hasVisiblePhones ? 'block' : 'none');
 }
 
 </script>
