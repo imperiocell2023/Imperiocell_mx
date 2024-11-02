@@ -195,40 +195,39 @@
     });
 
 async function filterPhones() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase().trim();
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
     const phoneSection = document.getElementById('phones');
-    phoneSection.innerHTML = ''; // Limpia el contenedor del swiper
-
-    // Verificar si el campo de búsqueda está vacío y evitar mostrar resultados sin datos
-    if (searchInput === "") {
-        phoneSection.innerHTML = ''; // No mostrar nada si la búsqueda está vacía
-        if (phoneSwiper) phoneSwiper.update(); // Actualizar el swiper
-        return;
-    }
+    phoneSection.innerHTML = ''; // Limpiar el contenedor del swiper
 
     // Obtener todos los datos y aplicar el filtro por "x" en la columna 16 y el término de búsqueda
     const datos = await obtenerDatosTelefonos();
     const telefonosFiltrados = datos
         .filter(telefono => telefono[15] !== "x") // Filtrar los que no tienen "x" en la columna 16
         .filter(telefono => {
-            const phoneBrandModel = `${telefono[0]} ${telefono[1]}`.toLowerCase().replace(/\s+/g, ' ');
-            return phoneBrandModel.includes(searchInput); // Comprobar si contiene el término de búsqueda
+            // Crear cadena solo con marca y modelo
+            const marca = telefono[0].toLowerCase();
+            const modelo = telefono[1].toLowerCase();
+            
+            // Comprobar si la búsqueda está contenida en marca o en modelo
+            return marca.includes(searchInput) || modelo.includes(searchInput);
         });
 
     if (telefonosFiltrados.length > 0) {
-        mostrarTelefonos(telefonosFiltrados.slice(1)); 
+        mostrarTelefonos(telefonosFiltrados); // Mostrar todos los teléfonos filtrados sin usar slice(1)
     } else {
         phoneSection.innerHTML = `<p style="text-align:center;">No se encontraron resultados.</p>`;
     }
 
-    // Actualizar el swiper para reflejar los cambios
-    if (phoneSwiper) phoneSwiper.update();
+    // Actualizar el swiper y hacer scroll si hay resultados
+    if (phoneSwiper) {
+        phoneSwiper.update();
+        if (telefonosFiltrados.length > 0) {
+            phoneSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
 }
 
-
 </script>
-
-
 <footer>
     <section id="contact" style="padding:10px0; background: linear-gradient(to top,#36a0d1 38%, #f4f4f4 100%);">
         <div style="text-align: center; margin: 20px 0; color: white;">
