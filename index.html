@@ -205,25 +205,25 @@ async function filterPhones() {
 
     // Obtener todos los datos
     const datos = await obtenerDatosTelefonos();
+    
+    // Si el campo de búsqueda está vacío, mostrar todos los teléfonos
     let telefonosFiltrados;
-
-    // Si el campo de búsqueda está vacío, reiniciar mostrando todos los teléfonos
     if (searchInput === "") {
         telefonosFiltrados = datos.filter(telefono => telefono[15] !== "x");
     } else {
-        // Si hay un término de búsqueda, aplicar el filtro
+        // Aplicar filtro si hay un término de búsqueda
         telefonosFiltrados = datos
             .filter(telefono => telefono[15] !== "x") // Filtrar los que no tienen "x" en la columna 16
             .filter(telefono => {
-                const marca = telefono[0].toLowerCase();
-                const modelo = telefono[1].toLowerCase();
-                return marca.includes(searchInput) || modelo.includes(searchInput);
+                // Crear cadena solo con marca y modelo
+                const marcaModelo = `${telefono[0]} ${telefono[1]}`.toLowerCase();
+                return marcaModelo.includes(searchInput);
             });
     }
 
-    // Mostrar los teléfonos filtrados o mensaje si no hay resultados
+    // Mostrar resultados o mensaje si no hay coincidencias
     if (telefonosFiltrados.length > 0) {
-        mostrarTelefonos(telefonosFiltrados); 
+        mostrarTelefonos(telefonosFiltrados);
     } else {
         phoneSection.innerHTML = `<p style="text-align:center;">No se encontraron resultados.</p>`;
     }
