@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Imperiocell MX - Encuentra el celular perfecto a pagos sin tarjeta el mismo día. Imperiocell, Teléfonos de última generación con facilidades de crédito. celulares a credito, payjoy, macropay,  celulares nuevos, celulares a paguitos">
-<meta name="keywords" content="Imperiocell, celulares a crédito, compra de celulares, pagos sin tarjeta, celulares baratos, compra de celulares en México, celulares a credito, payjoy, macropay, celulares a paguitos, celulares nuevos">
+<meta name="keywords" content="Imperiocell, celulares a crédito, compra de celulares, pagos sin tarjeta, celulares baratos, compra de celulares en México, celulares a credito, payjoy, macropay, celulares a paguitos, celulares nuevos,payjoy tienda, tienda payjoy">
     <meta name="google-site-verification" content="SBQQrI0F29ZUx6AE3vaIHreE-2DzUO7g-t5xa1tvx6I" />
 <meta name="robots" content="index, follow">
     <title> Imperiocell MX - Tu celular perfecto a pagos</title>
@@ -199,34 +199,28 @@
     });
 
 async function filterPhones() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase().trim();
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; // Limpiar el contenedor del swiper
 
-    // Obtener todos los datos y aplicar el filtro
+    // Obtener todos los datos y aplicar el filtro por "x" en la columna 16 y el término de búsqueda
     const datos = await obtenerDatosTelefonos();
-    let telefonosFiltrados;
-
-    // Si el campo de búsqueda está vacío, muestra todos los teléfonos
-    if (searchInput === "") {
-        telefonosFiltrados = datos.filter(telefono => telefono[15] !== "x");
-    } else {
-        // Si hay un término de búsqueda, aplicar el filtro
-        telefonosFiltrados = datos
-            .filter(telefono => telefono[15] !== "x") // Filtrar los que no tienen "x" en la columna 16
-            .filter(telefono => {
-                const marcaModelo = `${telefono[0]} ${telefono[1]}`.toLowerCase();
-                return marcaModelo.includes(searchInput);
-            });
-    }
+    const telefonosFiltrados = datos
+        .filter(telefono => telefono[15] !== "x") // Filtrar los que no tienen "x" en la columna 16
+        .filter(telefono => {
+            // Crear cadena solo con marca y modelo
+            const marca = telefono[0].toLowerCase();
+            const modelo = telefono[1].toLowerCase();
+            
+            // Comprobar si la búsqueda está contenida en marca o en modelo
+            return marca.includes(searchInput) || modelo.includes(searchInput);
+        });
 
     if (telefonosFiltrados.length > 0) {
-        mostrarTelefonos(telefonosFiltrados); 
+        mostrarTelefonos(telefonosFiltrados); // Mostrar todos los teléfonos filtrados sin usar slice(1)
     } else {
         phoneSection.innerHTML = `<p style="text-align:center;">No se encontraron resultados.</p>`;
     }
-
-    // Actualizar el swiper para reflejar los cambios
     if (phoneSwiper) {
         phoneSwiper.update();
         if (telefonosFiltrados.length > 0) {
@@ -234,7 +228,6 @@ async function filterPhones() {
         }
     }
 }
-
 
 </script>
 <footer>
