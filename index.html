@@ -75,7 +75,6 @@
 </div>
 
 <script>
-    // Inicializa el carrusel de la portada una vez
     new Swiper('.portada-swiper', {
         loop: true,
         grabCursor: true,
@@ -86,10 +85,7 @@
         autoplay: { delay: 6000, disableOnInteraction: false },
     });
 
-    // Definir variable para el swiper de teléfonos
     let phoneSwiper;
-
-    // Configuración para el tamaño de las imágenes de la portada
     window.addEventListener('load', () => {
         const firstImage = document.querySelector('.portada-swiper .swiper-slide img');
         if (firstImage) {
@@ -127,7 +123,6 @@
                         Batería: ${bateria}</strong></p>
                     <p style="font-size: 0.8em; color: #555;">
                         Resolución: ${resolucion}<br>
-                        Procesador: ${procesador}<br>
                         Cargador: ${cargador}</p>
                     <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
                     <p style="font-size: 17px; color: #36a0d1;"> A crédito desde:</p>
@@ -137,7 +132,7 @@
                             <td align="right" style="color: #28a745;font-size: 15px;">Pagos:<br> ${semanal}</td>
                         </tr>
                     </table><br>
-                    <button class="buy-button" data-phone="${marca} ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal} <br> Batería: ${bateria} <br> Extras: ${extras}"
+                    <button class="buy-button" data-phone="${marca} ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal} <br> Procesador: ${procesador} <br> Extras: ${extras}"
                         data-price="${precio_web}" data-image="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg"
                         style="padding: 10px 15px; background-color: #36a0d1; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top:auto;">
                         Comprar
@@ -159,10 +154,8 @@
                 </div>`;
         }
 
-        // Reiniciar el Swiper
         if (phoneSwiper) phoneSwiper.destroy(true, true);
 
-        // Crear el Swiper de nuevo
         phoneSwiper = new Swiper('.phones-swiper', {
             loop: true,
             grabCursor: true,
@@ -234,7 +227,7 @@ async function filterPhones() {
   "@context": "https://schema.org",
   "@type": "Store",
   "name": "Imperiocell MX",
-  "description": "Compra celulares a crédito sin tarjeta en México. Encuentra los mejores modelos de última generación.",
+  "description": "Compra celulares a crédito a crédito en México. Compra celular nuevo con payjoy. Estrena celular a pagos fácil",
   "url": "https://imperiocell.github.io", 
   "logo": "https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/Logo.jpg",
   "contactPoint": {
