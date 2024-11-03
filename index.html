@@ -199,14 +199,14 @@
     });
 
 async function filterPhones() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase().trim();
+    const searchInput = document.getElementById('searchInput').value.toLowerCase().trim(); // Eliminar espacios en blanco al inicio y al final
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; // Limpiar el contenedor del swiper
 
     // Obtener todos los datos
     const datos = await obtenerDatosTelefonos();
     
-    // Si el campo de búsqueda está vacío, mostrar todos los teléfonos
+    // Si el campo de búsqueda está vacío o contiene solo espacios, mostrar todos los teléfonos
     let telefonosFiltrados;
     if (searchInput === "") {
         telefonosFiltrados = datos.filter(telefono => telefono[15] !== "x");
@@ -236,6 +236,7 @@ async function filterPhones() {
         }
     }
 }
+
 
 </script>
 <footer>
