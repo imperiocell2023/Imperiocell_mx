@@ -199,28 +199,36 @@
     });
 
 async function filterPhones() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const searchInput = document.getElementById('searchInput').value.toLowerCase().trim();
     const phoneSection = document.getElementById('phones');
     phoneSection.innerHTML = ''; // Limpiar el contenedor del swiper
 
-    // Obtener todos los datos y aplicar el filtro por "x" en la columna 16 y el término de búsqueda
+    // Obtener todos los datos
     const datos = await obtenerDatosTelefonos();
-    const telefonosFiltrados = datos
-        .filter(telefono => telefono[15] !== "x") // Filtrar los que no tienen "x" en la columna 16
-        .filter(telefono => {
-            // Crear cadena solo con marca y modelo
-            const marca = telefono[0].toLowerCase();
-            const modelo = telefono[1].toLowerCase();
-            
-            // Comprobar si la búsqueda está contenida en marca o en modelo
-            return marca.includes(searchInput) || modelo.includes(searchInput);
-        });
+    let telefonosFiltrados;
 
+    // Si el campo de búsqueda está vacío, reiniciar mostrando todos los teléfonos
+    if (searchInput === "") {
+        telefonosFiltrados = datos.filter(telefono => telefono[15] !== "x");
+    } else {
+        // Si hay un término de búsqueda, aplicar el filtro
+        telefonosFiltrados = datos
+            .filter(telefono => telefono[15] !== "x") // Filtrar los que no tienen "x" en la columna 16
+            .filter(telefono => {
+                const marca = telefono[0].toLowerCase();
+                const modelo = telefono[1].toLowerCase();
+                return marca.includes(searchInput) || modelo.includes(searchInput);
+            });
+    }
+
+    // Mostrar los teléfonos filtrados o mensaje si no hay resultados
     if (telefonosFiltrados.length > 0) {
-        mostrarTelefonos(telefonosFiltrados); // Mostrar todos los teléfonos filtrados sin usar slice(1)
+        mostrarTelefonos(telefonosFiltrados); 
     } else {
         phoneSection.innerHTML = `<p style="text-align:center;">No se encontraron resultados.</p>`;
     }
+
+    // Actualizar el swiper para reflejar los cambios
     if (phoneSwiper) {
         phoneSwiper.update();
         if (telefonosFiltrados.length > 0) {
