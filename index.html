@@ -209,7 +209,7 @@ async function filterPhones() {
             return marca.includes(searchInput) || modelo.includes(searchInput);
         });
 
-    if (telefonosFiltrados.length > 0) {
+    if (telefonosFiltrados.length >= 0) {
         mostrarTelefonos(telefonosFiltrados); // Mostrar todos los teléfonos filtrados sin usar slice(1)
     } else {
         phoneSection.innerHTML = `<p style="text-align:center;">No se encontraron resultados.</p>`;
