@@ -183,7 +183,7 @@
 
     obtenerDatosTelefonos().then(datos => { 
         const telefonosFiltrados = datos.filter(telefono => telefono[15] !== "x");
-        mostrarTelefonos(telefonosFiltrados.slice(1));
+        mostrarTelefonos(telefonosFiltrados);
     });
 
     document.getElementById('searchButton').addEventListener('click', filterPhones);
