@@ -3,7 +3,7 @@ body {
     font-weight: bold;
     margin: 0;
     padding: 0;
-    background-color: #fcfcfc; /* Color muy claro */
+    background-color: #FFFFFF; /* Color muy claro */
     overflow-x: hidden; /* Oculta el desbordamiento horizontal */
 }
 
@@ -125,7 +125,7 @@ width: 100%;
     text-align: left;
     max-width: 75%;  /* Asegura que no sobrepase el ancho de la pantalla */
     box-sizing: border-box;  /* Asegura que el padding se incluya dentro del ancho total */
-    box-shadow: 0px 4px 12px rgba(0, 0, 110, 0.29); /* Sombra suave */
+    box-shadow: 0px 4px 12px rgba(0, 0, 220, 0.33); /* Sombra suave */
 }
 
 .phone-card img {
