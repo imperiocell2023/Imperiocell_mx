@@ -63,6 +63,7 @@
     <div class="swiper-pagination"></div>
 </div>
 
+<br>
 <div class="swiper-container portada-swiper">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -154,7 +155,6 @@
                 </div>
             </div>`;
     }
-
     function mostrarTelefonos(telefonos) {
         const phoneSection = document.getElementById('phones');
         phoneSection.innerHTML = ''; 
@@ -208,23 +208,18 @@
 async function filterPhones() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
     const phoneSection = document.getElementById('phones');
-    phoneSection.innerHTML = ''; // Limpiar el contenedor del swiper
-
-    // Obtener todos los datos y aplicar el filtro por "x" en la columna 16 y el término de búsqueda
+    phoneSection.innerHTML = ''; 
     const datos = await obtenerDatosTelefonos();
     const telefonosFiltrados = datos
-        .filter(telefono => telefono[15] !== "x") // Filtrar los que no tienen "x" en la columna 16
+        .filter(telefono => telefono[15] !== "x") 
         .filter(telefono => {
-            // Crear cadena solo con marca y modelo
             const marca = telefono[0].toLowerCase();
             const modelo = telefono[1].toLowerCase();
-            
-            // Comprobar si la búsqueda está contenida en marca o en modelo
-            return marca.includes(searchInput) || modelo.includes(searchInput);
+                        return marca.includes(searchInput) || modelo.includes(searchInput);
         });
 
     if (telefonosFiltrados.length >= 0) {
-        mostrarTelefonos(telefonosFiltrados); // Mostrar todos los teléfonos filtrados sin usar slice(1)
+        mostrarTelefonos(telefonosFiltrados);
     } else {
         phoneSection.innerHTML = `<p style="text-align:center;">No se encontraron resultados.</p>`;
     }
