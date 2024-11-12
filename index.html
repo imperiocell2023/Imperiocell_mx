@@ -239,13 +239,15 @@ async function filterPhones() {
         .filter(telefono => {
             const marca = telefono[0].toLowerCase();
             const modelo = telefono[1].toLowerCase();
-                        return marca.includes(searchInput) || modelo.includes(searchInput);
+            return marca.includes(searchInput) || modelo.includes(searchInput);
         });
-    if (telefonosFiltrados.length >= 0) {
+    if (telefonosFiltrados.length > 0) {
         mostrarTelefonos(telefonosFiltrados);
+        agregarEventosImagenes(); // Reanexar eventos de clic a las imágenes tras el filtrado
     } else {
         phoneSection.innerHTML = `<p style="text-align:center;">No se encontraron resultados.</p>`;
     }
+
     if (phoneSwiper) {
         phoneSwiper.update();
         if (telefonosFiltrados.length > 0) {
