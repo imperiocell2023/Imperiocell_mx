@@ -36,7 +36,7 @@ header h1 {
     font-size: 16px;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     margin-right: 10px;
     width: 100%; /* Para pantallas pequeñas */
     max-width: 200px; /* Limita el ancho del input en pantallas grandes */
@@ -48,7 +48,7 @@ header h1 {
     background-color: #36a0d1;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
@@ -115,7 +115,7 @@ width: 100%;
 
 .phone-card {
     background-color: white;
-    border-radius: 22px;
+    border-radius: 29px;
     margin: 20px auto;
     padding: 15px;
     display: flex;
@@ -199,7 +199,7 @@ width: 100%;
 #modalImage {
     max-width: 90%; /* Tamaño máximo para que no se salga de la pantalla */
     max-height: 90%;
-    border-radius: 10px;
+    border-radius: 29px;
     cursor: pointer;
 }
 
