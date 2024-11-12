@@ -119,8 +119,6 @@ margin-bottom: 20px;
 gap: 5px; /* Ajusta este valor para reducir el espacio entre los grupos */
 padding: 0 15px; /* Ajusta este valor para definir el espacio entre el borde de la pantalla y los grupos */
 }
-    
-    }
 
 .phone-card {  
     background-color: white;
@@ -177,6 +175,13 @@ padding: 0 15px; /* Ajusta este valor para definir el espacio entre el borde de 
     .swiper-slide img {
         height: 100%; /* Ajustar la altura para pantallas pequeñas */
     }
+    .phone-group {
+display: flex;
+justify-content:space-between;
+margin-bottom: 20px;
+gap: 5px; /* Ajusta este valor para reducir el espacio entre los grupos */
+padding: 0 15px; /* Ajusta este valor para definir el espacio entre el borde de la pantalla y los grupos */
+}
 
     .phone-card {
         flex-direction: column;  /* Apila la imagen y el texto verticalmente en pantallas pequeñas */
