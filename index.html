@@ -197,6 +197,33 @@
         });
     }
 
+async function filterPhones() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const phoneSection = document.getElementById('phones');
+    phoneSection.innerHTML = ''; 
+    const datos = await obtenerDatosTelefonos();
+    const telefonosFiltrados = datos
+        .filter(telefono => telefono[15] !== "x") 
+        .filter(telefono => {
+            const marca = telefono[0].toLowerCase();
+            const modelo = telefono[1].toLowerCase();
+            return marca.includes(searchInput) || modelo.includes(searchInput);
+        });
+    if (telefonosFiltrados.length > 0) {
+        mostrarTelefonos(telefonosFiltrados);
+        agregarEventosImagenes(); // Reanexar eventos de clic a las imágenes tras el filtrado
+    } else {
+        phoneSection.innerHTML = `<p style="text-align:center;">No se encontraron resultados.</p>`;
+    }
+
+    if (phoneSwiper) {
+        phoneSwiper.update();
+        if (telefonosFiltrados.length > 0) {
+            phoneSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+}
+
     // Al cargar la página, obtener los datos de teléfonos y cargar los eventos de clic en imágenes
     document.addEventListener("DOMContentLoaded", () => {
         const modal = document.getElementById("imageModal");
@@ -228,33 +255,6 @@
         });
 
     });
-
-async function filterPhones() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const phoneSection = document.getElementById('phones');
-    phoneSection.innerHTML = ''; 
-    const datos = await obtenerDatosTelefonos();
-    const telefonosFiltrados = datos
-        .filter(telefono => telefono[15] !== "x") 
-        .filter(telefono => {
-            const marca = telefono[0].toLowerCase();
-            const modelo = telefono[1].toLowerCase();
-            return marca.includes(searchInput) || modelo.includes(searchInput);
-        });
-    if (telefonosFiltrados.length > 0) {
-        mostrarTelefonos(telefonosFiltrados);
-        agregarEventosImagenes(); // Reanexar eventos de clic a las imágenes tras el filtrado
-    } else {
-        phoneSection.innerHTML = `<p style="text-align:center;">No se encontraron resultados.</p>`;
-    }
-
-    if (phoneSwiper) {
-        phoneSwiper.update();
-        if (telefonosFiltrados.length > 0) {
-            phoneSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-}
 </script>
 <script type="application/ld+json">
 {
