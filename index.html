@@ -232,20 +232,26 @@ async function filterPhones() {
         }
     }
 }
-window.addEventListener("load", () => {
-    document.querySelectorAll(".phone-card img").forEach(image => {
-        image.addEventListener("click", () => {
-            console.log("Imagen clickeada"); // Verifica que el clic se registre
-            document.getElementById("modalImage").src = image.src; // Asigna la imagen seleccionada al modal
-            document.getElementById("imageModal").style.display = "flex"; // Muestra el modal
+document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+        document.querySelectorAll(".phone-card img").forEach(image => {
+            console.log("Evento de clic agregado a la imagen"); // Confirmación de adjunción de evento
+            image.addEventListener("click", () => {
+                console.log("Imagen clickeada"); // Confirmación del clic
+                document.getElementById("modalImage").src = image.src;
+                document.getElementById("imageModal").style.display = "flex";
+            });
         });
-    });
 
-    // Cierra el modal cuando se hace clic en cualquier parte del fondo oscuro
-    document.getElementById("imageModal").addEventListener("click", () => {
-        document.getElementById("imageModal").style.display = "none"; // Oculta el modal
-    });
+        // Evento para cerrar el modal al hacer clic en el fondo oscuro
+        const modal = document.getElementById("imageModal");
+        modal.addEventListener("click", () => {
+            console.log("Modal cerrado"); // Confirmación de cierre del modal
+            modal.style.display = "none";
+        });
+    }, 50); // Tiempo breve para asegurar que el DOM esté listo
 });
+
 
 </script>
 <script type="application/ld+json">
