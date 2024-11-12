@@ -164,7 +164,7 @@
             const phoneCards = telefonos.slice(i, i + 2).map(generatePhoneCard).join('');
             phoneSection.innerHTML += `
                 <div class="swiper-slide">     
-                    <div class="phone-group" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                    <div class="phone-group">
                         ${phoneCards}
                     </div>
                 </div>`;
@@ -195,7 +195,6 @@
         });
     }
 
-// Función para agregar eventos de clic a las imágenes
 function agregarEventosImagenes() {
     const modal = document.getElementById("imageModal");
     document.querySelectorAll(".phone-card img").forEach(image => {
