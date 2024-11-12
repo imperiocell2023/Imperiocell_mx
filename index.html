@@ -197,14 +197,36 @@
         });
     }
 
-    obtenerDatosTelefonos().then(datos => { 
-        const telefonosFiltrados = datos.filter(telefono => telefono[15] !== "x");
-        mostrarTelefonos(telefonosFiltrados);
-    });
+    // Al cargar la página, obtener los datos de teléfonos y cargar los eventos de clic en imágenes
+    document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("imageModal");
 
-    document.getElementById('searchButton').addEventListener('click', filterPhones);
-    document.getElementById('searchInput').addEventListener('keydown', event => {
-        if (event.key === 'Enter') filterPhones();
+        // Función para agregar eventos de clic a las imágenes
+        function agregarEventosImagenes() {
+            document.querySelectorAll(".phone-card img").forEach(image => {
+                image.addEventListener("click", () => {
+                    document.getElementById("modalImage").src = image.src;
+                    modal.style.display = "flex";
+                });
+            });
+        }
+
+        // Cierra el modal cuando se hace clic en cualquier parte del fondo oscuro
+        modal.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        obtenerDatosTelefonos().then(datos => {
+            const telefonosFiltrados = datos.filter(telefono => telefono[15] !== "x");
+            mostrarTelefonos(telefonosFiltrados);
+            agregarEventosImagenes(); // Asegura que los eventos se agreguen una vez que se generen las tarjetas
+        });
+
+        document.getElementById('searchButton').addEventListener('click', filterPhones);
+        document.getElementById('searchInput').addEventListener('keydown', event => {
+            if (event.key === 'Enter') filterPhones();
+        });
+
     });
 
 async function filterPhones() {
@@ -219,7 +241,6 @@ async function filterPhones() {
             const modelo = telefono[1].toLowerCase();
                         return marca.includes(searchInput) || modelo.includes(searchInput);
         });
-
     if (telefonosFiltrados.length >= 0) {
         mostrarTelefonos(telefonosFiltrados);
     } else {
@@ -232,27 +253,6 @@ async function filterPhones() {
         }
     }
 }
-document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-        document.querySelectorAll(".phone-card img").forEach(image => {
-            console.log("Evento de clic agregado a la imagen"); // Confirmación de adjunción de evento
-            image.addEventListener("click", () => {
-                console.log("Imagen clickeada"); // Confirmación del clic
-                document.getElementById("modalImage").src = image.src;
-                document.getElementById("imageModal").style.display = "flex";
-            });
-        });
-
-        // Evento para cerrar el modal al hacer clic en el fondo oscuro
-        const modal = document.getElementById("imageModal");
-        modal.addEventListener("click", () => {
-            console.log("Modal cerrado"); // Confirmación de cierre del modal
-            modal.style.display = "none";
-        });
-    }, 50); // Tiempo breve para asegurar que el DOM esté listo
-});
-
-
 </script>
 <script type="application/ld+json">
 {
