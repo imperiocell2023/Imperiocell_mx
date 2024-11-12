@@ -232,11 +232,10 @@ async function filterPhones() {
         }
     }
 }
-
 document.addEventListener("DOMContentLoaded", () => {
-    // Selecciona todas las imágenes de teléfono dentro de las tarjetas
     document.querySelectorAll(".phone-card img").forEach(image => {
         image.addEventListener("click", () => {
+            console.log("Imagen clickeada"); // Verifica que el clic se registre
             document.getElementById("modalImage").src = image.src; // Asigna la imagen seleccionada al modal
             document.getElementById("imageModal").style.display = "flex"; // Muestra el modal
         });
@@ -247,6 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("imageModal").style.display = "none"; // Oculta el modal
     });
 });
+
 </script>
 <script type="application/ld+json">
 {
