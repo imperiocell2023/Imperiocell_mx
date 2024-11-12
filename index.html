@@ -232,7 +232,7 @@ async function filterPhones() {
         }
     }
 }
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".phone-card img").forEach(image => {
         image.addEventListener("click", () => {
             console.log("Imagen clickeada"); // Verifica que el clic se registre
@@ -246,7 +246,6 @@ window.addEventListener("load", () => {
         document.getElementById("imageModal").style.display = "none"; // Oculta el modal
     });
 });
-
 
 </script>
 <script type="application/ld+json">
