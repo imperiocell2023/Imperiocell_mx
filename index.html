@@ -88,7 +88,10 @@
         Vende con nosotros a crédito
     </a>
 </div>
-
+<!-- Modal para mostrar la imagen en pantalla completa -->
+<div id="imageModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); align-items: center; justify-content: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; border-radius: 10px;" alt="Imagen ampliada del teléfono">
+</div>
 <script>
     new Swiper('.portada-swiper', {
         loop: true,
@@ -169,7 +172,6 @@
         }
 
         if (phoneSwiper) phoneSwiper.destroy(true, true);
-
         phoneSwiper = new Swiper('.phones-swiper', {
             loop: true,
             grabCursor: true,
@@ -230,6 +232,21 @@ async function filterPhones() {
         }
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Selecciona todas las imágenes de teléfono dentro de las tarjetas
+    document.querySelectorAll(".phone-card img").forEach(image => {
+        image.addEventListener("click", () => {
+            document.getElementById("modalImage").src = image.src; // Asigna la imagen seleccionada al modal
+            document.getElementById("imageModal").style.display = "flex"; // Muestra el modal
+        });
+    });
+
+    // Cierra el modal cuando se hace clic en cualquier parte del fondo oscuro
+    document.getElementById("imageModal").addEventListener("click", () => {
+        document.getElementById("imageModal").style.display = "none"; // Oculta el modal
+    });
+});
 </script>
 <script type="application/ld+json">
 {
