@@ -109,7 +109,7 @@ width: 100%;
 .phone-group {
 display: flex;
 justify-content:space-between;
-margin-bottom: 11px;
+margin-bottom: 1px;
 gap: 22px; /* Ajusta este valor para reducir el espacio entre los grupos */
 padding: 0 22px; /* Ajusta este valor para definir el espacio entre el borde de la pantalla y los grupos */
 }
