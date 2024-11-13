@@ -128,7 +128,7 @@ padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de 
     max-width: 75%;
     box-sizing: border-box;
     box-shadow: 0px 4px 12px rgba(0, 0, 330, 0.38);
-    transition: transform 0.3s ease, z-index 0.3s ease; /* Añade una transición para el z-index */
+    transition: transform 0.3s ease; /* Transición suave para el efecto de zoom */
     cursor: pointer;
     overflow: hidden; /* Asegura que el contenido ampliado no se desborde */
 }
