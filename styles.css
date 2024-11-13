@@ -110,7 +110,7 @@ width: 100%;
 display: flex;
 justify-content:space-between;
 margin-bottom: 11px;
-gap: 10px; /* Ajusta este valor para reducir el espacio entre los grupos */
+gap: 22px; /* Ajusta este valor para reducir el espacio entre los grupos */
 padding: 0 22px; /* Ajusta este valor para definir el espacio entre el borde de la pantalla y los grupos */
 }
 
@@ -173,7 +173,7 @@ padding: 0 22px; /* Ajusta este valor para definir el espacio entre el borde de 
 display: flex;
 justify-content:space-between;
 margin-bottom: 1px;
-gap: 40px; /* Ajusta este valor para reducir el espacio entre los grupos */
+gap: 22px; /* Ajusta este valor para reducir el espacio entre los grupos */
 padding: 0 22px; /* Ajusta este valor para definir el espacio entre el borde de la pantalla y los grupos */
 }
 
