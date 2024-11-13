@@ -112,7 +112,6 @@ gap: 11px; /* Ajusta este valor para reducir el espacio entre los grupos */
 padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de la pantalla y los grupos */
 }
 
-
 .phone-card {
     background-color: white;
     border-radius: 29px;
@@ -127,18 +126,16 @@ padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de 
     max-width: 75%;
     box-sizing: border-box;
     box-shadow: 0px 4px 12px rgba(0, 0, 330, 0.38);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Añadimos una transición suave */
     cursor: pointer;
     position: relative; /* Mantener la posición relativa */
-    overflow: hidden; /* Permite que el contenido de la tarjeta se amplíe fuera de sus límites */
+    overflow: visible; /* Evita que el contenido se desborde en el efecto de zoom */
+
 }
 .phone-card:hover {
-    transform: scale(1.08); /* Ajusta el nivel de zoom según sea necesario */
-    z-index: 100; /* Asegura que la tarjeta esté sobre otros elementos */
-    position: absolute; /* Saca la tarjeta del flujo para evitar que afecte el layout */
-    top: 0; /* Ajustar según sea necesario para posicionar la tarjeta correctamente */
-    left: 0; /* Ajustar según sea necesario */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5); /* Sombra más intensa para resaltar */
+    transform: scale(1.10); /* Efecto de zoom al pasar el cursor */
+    z-index: 10; /* Solo elevamos el z-index sin cambiar la posición */
+
 }
 .phone-card img {
     width: 100%;  /* Asegura que la imagen tome todo el ancho disponible */
