@@ -50,12 +50,10 @@ header h1 {
     border-radius: 8px;
     cursor: pointer;
 }
-
 nav ul {
     list-style: none;
     padding: 0;
 }
-
 nav ul li {
     display: inline;
     margin: 0 15px;
@@ -109,9 +107,9 @@ width: 100%;
 .phone-group {
 display: flex;
 justify-content:space-between;
-margin-bottom: 5px;
-gap: 20px; /* Ajusta este valor para reducir el espacio entre los grupos */
-padding: 0 22px; /* Ajusta este valor para definir el espacio entre el borde de la pantalla y los grupos */
+margin-bottom: 1px;
+gap: 11px; /* Ajusta este valor para reducir el espacio entre los grupos */
+padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de la pantalla y los grupos */
 }
 
 .phone-card {  
@@ -127,7 +125,7 @@ padding: 0 22px; /* Ajusta este valor para definir el espacio entre el borde de 
     width: 48%;
     max-width: 75%;  /* Asegura que no sobrepase el ancho de la pantalla */
     box-sizing: border-box;  /* Asegura que el padding se incluya dentro del ancho total */
-    box-shadow: 0px 4px 12px rgba(0, 0, 330, 0.33); /* Sombra suave */
+    box-shadow: 0px 4px 12px rgba(0, 0, 330, 0.38); /* Sombra suave */
 }
 
 .phone-card img {
@@ -172,9 +170,9 @@ padding: 0 22px; /* Ajusta este valor para definir el espacio entre el borde de 
     .phone-group {
 display: flex;
 justify-content:space-between;
-margin-bottom: 5px;
-gap: 20px; /* Ajusta este valor para reducir el espacio entre los grupos */
-padding: 0 22px; /* Ajusta este valor para definir el espacio entre el borde de la pantalla y los grupos */
+margin-bottom: 1px;
+gap: 11px; /* Ajusta este valor para reducir el espacio entre los grupos */
+padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de la pantalla y los grupos */
 }
 
     .phone-card {
