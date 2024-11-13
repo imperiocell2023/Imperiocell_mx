@@ -68,7 +68,9 @@ section {
     padding: 10px;
     text-align: center;
 }
-
+.swiper-wrapper {
+    overflow: visible; /* Permite que los elementos ampliados se muestren sin ser cortados */
+}
 .swiper-container {
     position: relative; /* Asegúrate de que el contenedor esté posicionado correctamente */
 width: 100%;
@@ -126,10 +128,11 @@ padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de 
     max-width: 75%;
     box-sizing: border-box;
     box-shadow: 0px 4px 12px rgba(0, 0, 330, 0.38);
-    transition: transform 0.3s ease; /* Transición suave para el efecto de zoom */
+    transition: transform 0.3s ease, z-index 0.3s ease; /* Añade una transición para el z-index */
     cursor: pointer;
+    position: relative; /* Necesario para el z-index en hover */
+    overflow: visible; /* Asegura que el contenido pueda sobresalir */
 }
-
 .phone-card img {
     width: 100%;  /* Asegura que la imagen tome todo el ancho disponible */
     margin-bottom: 10px;  /* Añade un pequeño margen debajo de la imagen */
@@ -137,9 +140,9 @@ padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de 
     height: auto;  /* Mantiene la proporción correcta de la imagen */
 }
 .phone-card:hover {
-    transform: scale(1.19); /* Efecto de zoom al pasar el cursor */
+    transform: scale(1.1); /* Ajusta el valor según el nivel de ampliación deseado */
+    z-index: 10; /* Eleva la tarjeta ampliada por encima de las otras */
 }
-
 .phone-info {
     margin-left: 0;  /* Remueve el margen izquierdo para pantallas pequeñas */
     text-align: center;  /* Centra el texto en pantallas pequeñas */
