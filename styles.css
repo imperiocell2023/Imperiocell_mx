@@ -130,7 +130,7 @@ padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     position: relative; /* Mantener la posición relativa */
-    overflow: visible; /* Permite que el contenido de la tarjeta se amplíe fuera de sus límites */
+    overflow: hidden; /* Permite que el contenido de la tarjeta se amplíe fuera de sus límites */
 }
 .phone-card:hover {
     transform: scale(1.08); /* Ajusta el nivel de zoom según sea necesario */
