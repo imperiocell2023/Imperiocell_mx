@@ -136,7 +136,7 @@ padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de 
     transition: transform 0.3s ease; /* Transición suave */
 }
 .phone-card img:hover {
-    transform: scale(1.35); /* Aumenta el tamaño de la imagen */
+    transform: scale(1.28); /* Aumenta el tamaño de la imagen */
     cursor: pointer;
 }
 
