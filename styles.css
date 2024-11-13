@@ -133,15 +133,15 @@ padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de 
     position: relative; /* Necesario para el z-index en hover */
     overflow: visible; /* Asegura que el contenido pueda sobresalir */
 }
+.phone-card:hover {
+    transform: scale(1.082); /* Ajusta el valor según el nivel de ampliación deseado */
+    z-index: 10; /* Eleva la tarjeta ampliada por encima de las otras */
+}
 .phone-card img {
     width: 100%;  /* Asegura que la imagen tome todo el ancho disponible */
     margin-bottom: 10px;  /* Añade un pequeño margen debajo de la imagen */
     max-width: 100%;  /* Evita que la imagen sea más ancha que el contenedor */
     height: auto;  /* Mantiene la proporción correcta de la imagen */
-}
-.phone-card:hover {
-    transform: scale(1.1); /* Ajusta el valor según el nivel de ampliación deseado */
-    z-index: 10; /* Eleva la tarjeta ampliada por encima de las otras */
 }
 .phone-info {
     margin-left: 0;  /* Remueve el margen izquierdo para pantallas pequeñas */
