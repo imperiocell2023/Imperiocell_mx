@@ -110,6 +110,8 @@ justify-content:space-between;
 margin-bottom: 1px;
 gap: 11px; /* Ajusta este valor para reducir el espacio entre los grupos */
 padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de la pantalla y los grupos */
+overflow: visible; /* Permite el desbordamiento vertical en las tarjetas */
+
 }
 
 .phone-card {
@@ -129,11 +131,11 @@ padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de 
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Añadimos una transición suave */
     cursor: pointer;
     position: relative; /* Mantener la posición relativa */
-    overflow: visible; /* Evita que el contenido se desborde en el efecto de zoom */
+    overflow: hidden; /* Evita que el contenido se desborde en el efecto de zoom */
 
 }
 .phone-card:hover {
-    transform: scale(1.10); /* Efecto de zoom al pasar el cursor */
+    transform: scale(1.088); /* Efecto de zoom al pasar el cursor */
     z-index: 10; /* Solo elevamos el z-index sin cambiar la posición */
 
 }
