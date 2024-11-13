@@ -126,6 +126,8 @@ padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de 
     max-width: 75%;  /* Asegura que no sobrepase el ancho de la pantalla */
     box-sizing: border-box;  /* Asegura que el padding se incluya dentro del ancho total */
     box-shadow: 0px 4px 12px rgba(0, 0, 330, 0.38); /* Sombra suave */
+    transition: transform 0.3s ease; /* Transición suave */
+
 }
 
 .phone-card img {
