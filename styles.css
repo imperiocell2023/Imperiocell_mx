@@ -107,7 +107,7 @@ width: 100%;
 .phone-group {
 display: flex;
 justify-content:space-between;
-margin-bottom: 1px;
+margin-bottom: 33px;
 gap: 11px; /* Ajusta este valor para reducir el espacio entre los grupos */
 padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de la pantalla y los grupos */
 overflow: visible; /* Permite el desbordamiento vertical en las tarjetas */
