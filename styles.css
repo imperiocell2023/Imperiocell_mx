@@ -139,6 +139,10 @@ padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de 
     transform: scale(1.19); /* Aumenta el tamaño de la imagen zoom */
     cursor: pointer;
 }
+.phone-card {
+    transform: scale(1.10); /* Aumenta el tamaño de la imagen zoom */
+    cursor: pointer;
+}
 
 .phone-info {
     margin-left: 0;  /* Remueve el margen izquierdo para pantallas pequeñas */
