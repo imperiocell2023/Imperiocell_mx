@@ -112,7 +112,7 @@ gap: 11px; /* Ajusta este valor para reducir el espacio entre los grupos */
 padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de la pantalla y los grupos */
 }
 
-.phone-card {  
+.phone-card {
     background-color: white;
     border-radius: 29px;
     margin: 10px auto;
@@ -123,11 +123,11 @@ padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de 
     flex-wrap: wrap;
     text-align: left;
     width: 48%;
-    max-width: 75%;  /* Asegura que no sobrepase el ancho de la pantalla */
-    box-sizing: border-box;  /* Asegura que el padding se incluya dentro del ancho total */
-    box-shadow: 0px 4px 12px rgba(0, 0, 330, 0.38); /* Sombra suave */
-    transition: transform 0.3s ease; /* Transición suave */
-
+    max-width: 75%;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 12px rgba(0, 0, 330, 0.38);
+    transition: transform 0.3s ease; /* Transición suave para el efecto de zoom */
+    cursor: pointer;
 }
 
 .phone-card img {
