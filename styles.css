@@ -135,15 +135,9 @@ padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de 
     margin-bottom: 10px;  /* Añade un pequeño margen debajo de la imagen */
     max-width: 100%;  /* Evita que la imagen sea más ancha que el contenedor */
     height: auto;  /* Mantiene la proporción correcta de la imagen */
-    transition: transform 0.3s ease; /* Transición suave */
 }
-.phone-card img:hover {
-    transform: scale(1.19); /* Aumenta el tamaño de la imagen zoom */
-    cursor: pointer;
-}
-.phone-card {
-    transform: scale(1.10); /* Aumenta el tamaño de la imagen zoom */
-    cursor: pointer;
+.phone-card:hover {
+    transform: scale(1.19); /* Efecto de zoom al pasar el cursor */
 }
 
 .phone-info {
