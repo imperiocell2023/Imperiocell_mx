@@ -131,8 +131,6 @@ overflow: visible; /* Permite el desbordamiento vertical en las tarjetas */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Añadimos una transición suave */
     cursor: pointer;
     position: relative; /* Mantener la posición relativa */
-    overflow: hidden; /* Evita que el contenido se desborde en el efecto de zoom */
-
 }
 .phone-card:hover {
     transform: scale(1.088); /* Efecto de zoom al pasar el cursor */
