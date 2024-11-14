@@ -10,7 +10,7 @@ body {
 header {
     background: linear-gradient(to bottom, #36a0d1, white);
     color: white;
-    padding: 10px 0;
+    padding: 7.7px 0;
     text-align: center;
     display: flex;
     justify-content: space-between;
@@ -219,7 +219,7 @@ padding: 0 7.7px; /* Ajusta este valor para definir el espacio entre el borde de
 }
 
 footer {
-    margin-top: 0;
+    margin-top: 11;
     position: relative;
     bottom: 0;
     width: 100%;
