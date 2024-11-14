@@ -165,7 +165,7 @@ padding: 0 7.7px; /* Ajusta este valor para definir el espacio entre el borde de
 }
 
 .buy-button:hover {
-    background-color: #36a0d1;
+    background-color: #2d8cb9;
 }
 
 @media (max-width: 768px) {
@@ -216,15 +216,6 @@ padding: 0 7.7px; /* Ajusta este valor para definir el espacio entre el borde de
     max-height: 90%;
     border-radius: 33px;
     cursor: pointer;
-}
-
-button {
-    margin: 20px 0; /* Asegura un margen uniforme */
-    border-radius: 22px;
-}
-
-button:hover {
-    background-color: #555;
 }
 
 footer {
