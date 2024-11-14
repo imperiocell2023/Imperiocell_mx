@@ -165,7 +165,7 @@ padding: 0 7.7px; /* Ajusta este valor para definir el espacio entre el borde de
 }
 
 .buy-button:hover {
-    background-color: #555;
+    background-color: #36a0d1;
 }
 
 @media (max-width: 768px) {
