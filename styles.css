@@ -24,7 +24,6 @@ header h1 {
 }
 .portada {
     object-fit: cover;         /* Recorta la imagen para ajustarse a las dimensiones */
-    border-radius: 10px;       /* Opcional: bordes redondeados */
     max-height: 74vh;
     object-fit: cover;
 }
@@ -77,11 +76,10 @@ section {
     position: relative; /* Asegúrate de que el contenedor esté posicionado correctamente */
 width: 100%;
     height: 100%;
-    margin-top: 8.3px; 
-    margin-bottom: 8.3px; 
+    margin-top: 7.7px; 
+    margin-bottom: 7.7px; 
     overflow: hidden; 
 }
-
 .swiper-button-next, .swiper-button-prev {
     color: #36a0d1; 
     top: 50%; /* Alinea verticalmente en el centro del contenedor */
@@ -153,8 +151,8 @@ padding: 0 7.7px; /* Ajusta este valor para definir el espacio entre el borde de
     max-width: 100%;  /* Asegura que el texto no exceda el ancho */
 }
 
-.phone-card button {
-    background-color: #333;
+.buy-button {
+    background-color: #36a0d1;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -163,10 +161,10 @@ padding: 0 7.7px; /* Ajusta este valor para definir el espacio entre el borde de
     display: block;
     width: 100%; /* Asegura que el botón ocupe todo el ancho disponible */
     box-sizing: border-box; /* Incluye el padding dentro del ancho del botón */
-    border-radius: 22px;
+    border-radius: 11px;
 }
 
-.phone-card button:hover {
+.buy-button:hover {
     background-color: #555;
 }
 
