@@ -22,7 +22,12 @@ header h1 {
     flex-grow: 1; /* Esto asegura que el título tome el espacio restante */
     text-align: center; /* Centra el título horizontalmente */
 }
-
+.portada {
+    object-fit: cover;         /* Recorta la imagen para ajustarse a las dimensiones */
+    border-radius: 10px;       /* Opcional: bordes redondeados */
+    max-height: 74vh;
+    object-fit: cover;
+}
 .search-bar {
     display: flex;
     align-items: center;
