@@ -58,7 +58,6 @@ nav ul li {
     display: inline;
     margin: 0 15px;
 }
-
 nav ul li a {
     color: white;
     text-decoration: none;
@@ -78,8 +77,7 @@ width: 100%;
     overflow: hidden; 
 }
 
-.swiper-button-next,
-.swiper-button-prev {
+.swiper-button-next, .swiper-button-prev {
     color: #36a0d1; 
     top: 50%; /* Alinea verticalmente en el centro del contenedor */
     transform: translateY(-50%); /* Ajusta la posición */
@@ -196,6 +194,7 @@ padding: 0 11px; /* Ajusta este valor para definir el espacio entre el borde de 
         max-width: 100%;  /* Asegura que el texto no exceda el ancho */
     }
 }
+
 #imageModal {
     display: none; /* Oculto inicialmente */
     position: fixed;
