@@ -88,7 +88,7 @@ width: 100%;
 }
 .swiper-pagination {
     position: absolute; /* Posiciona los puntos de paginación en relación al contenedor */
-    bottom: 10px; /* Ajusta la distancia desde la parte inferior del carrusel */
+    bottom: -10px; /* Ajusta la distancia desde la parte inferior del carrusel */
     left: 50%; /* Centra horizontalmente los puntos */
     transform: translateX(-50%); /* Ajusta el desplazamiento para centrar */
 }
