@@ -6,7 +6,10 @@ body {
     background-color: #FFFFFF; 
     overflow-x: hidden; /* Oculta el desbordamiento horizontal */
 }
-
+div {
+  max-width: 100%;
+  overflow: hidden; /* Opcional: si hay contenido adicional */
+}
 header {
     background: linear-gradient(to bottom, #36a0d1, white);
     color: white;
