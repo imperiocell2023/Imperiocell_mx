@@ -78,7 +78,7 @@ width: 100%;
     margin-top: 7.7px; 
     margin-bottom: 7.7px; 
     overflow: hidden; 
-    padding-bottom: 20px; /* Da espacio extra al final del carrusel */
+    padding-bottom: 25px; /* Da espacio extra al final del carrusel */
 
 }
 .swiper-button-next, .swiper-button-prev {
@@ -111,9 +111,9 @@ width: 100%;
 .phone-group {
 display: flex;
 justify-content:space-between;
-margin-top: 44px;
-margin-bottom: 44px;
-gap: 9.2px; /* Ajusta este valor para reducir el espacio entre los grupos */
+margin-top: 38px;
+margin-bottom: 38px;
+gap: 7.4px; /* Ajusta este valor para reducir el espacio entre los grupos */
 padding: 0 7.7px; /* Ajusta este valor para definir el espacio entre el borde de la pantalla y los grupos */
 }
 
@@ -176,9 +176,9 @@ padding: 0 7.7px; /* Ajusta este valor para definir el espacio entre el borde de
     .phone-group {
 display: flex;
 justify-content:space-between;
-margin-top: 44px;
-margin-bottom: 44px;
-gap: 9.2px; /* Ajusta este valor para reducir el espacio entre los grupos */
+margin-top: 38px;
+margin-bottom: 38px;
+gap: 7.4px; /* Ajusta este valor para reducir el espacio entre los grupos */
 padding: 0 7.7px; /* Ajusta este valor para definir el espacio entre el borde de la pantalla y los grupos */
 }
 
