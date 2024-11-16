@@ -12,6 +12,14 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="icon" href="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/Logo.jpg" type="image/jpeg">
+    <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXX');
+</script>
 </head>
 <body>
 <header>
@@ -136,23 +144,22 @@ alt="Imagen a lo largo" class="portada">
     function generatePhoneCard(telefono) {
         const [marca, modelo, memoria, camara, frontal, precio, enganche, total, semanal, bateria, resolucion, procesador, extras, cargador, precio_web, no] = telefono;
         return `
-        <br>
             <div class="phone-card">
                 <img src="https://raw.githubusercontent.com/imperiocell2023/Imperiocell_mx/main/images/${modelo.replace(/\s+/g, ' ')}.jpg" alt="${modelo}" style="width: 220px; height: auto; margin-right: 20px;">
                 <div class="phone-info" style="flex: 1;">
                     <h2 style="font-size: 1.2em; color: #36a0d1;">${marca} <br> ${modelo}</h2>
-                    <p style="font-size: 0.95em; margin: 4px 0;"><strong>Memoria: ${memoria}<br>
+                    <p style="font-size: 0.88em; margin: 4px 0;"><strong>Memoria: ${memoria}<br>
                         Cámara: ${camara} Frontal: ${frontal} <br>
                         Batería: ${bateria}</strong></p>
-                    <p style="font-size: 0.8em; color: #555;">
+                    <p style="font-size: 0.77em; color: #555;">
                         Resolución: ${resolucion}<br>
                         Cargador: ${cargador}</p>
-                    <p style="font-size: 0.95em; margin: 7px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
-                    <p style="font-size: 17px; color: #36a0d1;"> A crédito desde:</p>
+                    <p style="font-size: 0.92em; margin: 7px 0;color: #28a745;"><strong> ${precio_web}</strong></p>
+                    <p style="font-size: 15px; color: #36a0d1;"> A crédito desde:</p>
                     <table style="width: 92%;">
                         <tr>
-                            <td align="left" style="color: #28a745;font-size: 15px;">Enganche:<br> ${enganche}</td>
-                            <td align="right" style="color: #28a745;font-size: 15px;">Pagos:<br> ${semanal}</td>
+                            <td align="left" style="color: #28a745;font-size: 14px;">Enganche:<br> ${enganche}</td>
+                            <td align="right" style="color: #28a745;font-size: 14px;">Pagos:<br> ${semanal}</td>
                         </tr>
                     </table><br>
                     <button class="buy-button" data-phone="${marca} ${modelo} <br> Memoria: ${memoria} <br> Cámara: ${camara} Frontal: ${frontal} <br> Procesador: ${procesador} <br> Extras: ${extras}"
@@ -160,7 +167,7 @@ alt="Imagen a lo largo" class="portada">
                         Comprar
                     </button>
                 </div>
-            </div><br>`;
+            </div>`;
     }
     function mostrarTelefonos(telefonos) {
         const phoneSection = document.getElementById('phones');
