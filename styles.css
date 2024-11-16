@@ -136,7 +136,7 @@ padding: 0 7.7px; /* Ajusta este valor para definir el espacio entre el borde de
     position: relative; /* Mantener la posición relativa */
 }
 .phone-card:hover {
-    transform: scale(1.10); /* Efecto de zoom al pasar el cursor */
+    transform: scale(1.088); /* Efecto de zoom al pasar el cursor */
     z-index: 10; /* Solo elevamos el z-index sin cambiar la posición */
 
 }
