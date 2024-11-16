@@ -78,7 +78,7 @@ width: 100%;
     margin-top: 7.7px; 
     margin-bottom: 7.7px; 
     overflow: hidden; 
-    padding-bottom: 150px; /* Da espacio extra al final del carrusel */
+    padding-bottom: 20px; /* Da espacio extra al final del carrusel */
 
 }
 .swiper-button-next, .swiper-button-prev {
